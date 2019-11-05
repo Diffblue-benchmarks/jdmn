@@ -19,6 +19,7 @@
         <groupId>com.goldmansachs.jdmn</groupId>
         <artifactId>jdmn-parent</artifactId>
         <version>3.3.1-SNAPSHOT</version>
+        <relativePath>../dmn-parent/pom.xml</relativePath>
     </parent>
 
     <artifactId>jdmn-maven-plugin</artifactId>
