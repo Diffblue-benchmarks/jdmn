@@ -14,7 +14,6 @@
     <modules>
         <module>dmn-parent</module>
         <module>dmn-core</module>
-        <module>dmn-maven-plugin</module>
     </modules>
 
     <dependencies>
