@@ -1,0 +1,30 @@
+package com.gs.dmn.feel.analysis.semantics;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.mockito.Mockito.mock;
+
+import com.gs.dmn.feel.analysis.syntax.ast.expression.Expression;
+
+import org.junit.Test;
+
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.semantics.SemanticError
+ *
+ * @author Diffblue JCover
+ */
+
+public class SemanticErrorTest {
+
+    @Test(timeout=10000)
+    public void constructor() {
+        Expression expression1 = mock(Expression.class);
+        SemanticError semanticError = new SemanticError(expression1, "foo");
+        assertThat(semanticError.getCause(), is(nullValue()));
+        assertThat(semanticError.getLocalizedMessage(), is("'Expression$$EnhancerByMockitoWithCGLIB$$e433f650': foo"));
+        assertThat(semanticError.getMessage(), is("'Expression$$EnhancerByMockitoWithCGLIB$$e433f650': foo"));
+        // array literal with unexpected element type StackTraceElement
+        // array literal with unexpected element type Throwable
+    }
+}

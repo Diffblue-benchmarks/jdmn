@@ -541,34 +541,6 @@ specific language governing permissions and limitations under the License.]]></i
                 </plugin>
 
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.0.0-M2</version>
-                    <executions>
-                        <execution>
-                            <id>enforce-java</id>
-                            <goals>
-                                <goal>enforce</goal>
-                            </goals>
-                            <configuration>
-                                <rules>
-                                    <requireJavaVersion>
-                                        <version>${java.version}</version>
-                                    </requireJavaVersion>
-                                    <DependencyConvergence />
-                                    <requirePluginVersions>
-                                        <banLatest>true</banLatest>
-                                        <banRelease>true</banRelease>
-                                        <banSnapshots>${ban.snapshot}</banSnapshots>
-                                        <unCheckedPluginList>com.goldmansachs.jdmn:jdmn-maven-plugin</unCheckedPluginList>
-                                    </requirePluginVersions>
-                                </rules>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>2.7</version>

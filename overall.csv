@@ -1,0 +1,494 @@
+,,,Spring Components,,,Dcover No Jcover fuzz,time(Seconds):,780,Dcover Jcover-fuzz,time(Seconds):,1411,Jcover test verification on,time(Seconds):,725
+GROUP,PACKAGE,CLASS,@Service,@Controller,Info,LINE_MISSED,LINE_COVERED,Coverage,LINE_MISSED,LINE_COVERED,Coverage,LINE_MISSED,LINE_COVERED,Coverage
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.literal,BooleanLiteral,,,,0,6,1.0,0,6,1.0,4,2,0.3333333333333333
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.literal,NullLiteral,,,,0,6,1.0,0,6,1.0,4,2,0.3333333333333333
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.literal,DateTimeLiteral,,,,11,13,0.5416666666666666,6,18,0.75,19,5,0.20833333333333334
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.literal,ListLiteral,,,,21,11,0.34375,21,11,0.34375,26,6,0.1875
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.literal,Literal,,,,0,2,1.0,0,2,1.0,0,2,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.literal,NumericLiteral,,,,0,6,1.0,0,6,1.0,4,2,0.3333333333333333
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.literal,StringLiteral,,,,0,6,1.0,0,6,1.0,4,2,0.3333333333333333
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.literal,SimpleLiteral,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.feel.interpreter,MethodUtils,,,,33,0,0.0,33,0,0.0,25,8,0.24242424242424243
+jDMN: Core,com.gs.dmn.feel.interpreter,JavaFunctionInfo,,,,41,8,0.16326530612244897,41,8,0.16326530612244897,37,12,0.24489795918367346
+jDMN: Core,com.gs.dmn.feel.interpreter,FEELInterpreterImpl,,,,0,2,1.0,0,2,1.0,2,0,0.0
+jDMN: Core,com.gs.dmn.feel.interpreter,FEELInterpreterVisitor,,,,618,9,0.014354066985645933,618,9,0.014354066985645933,627,0,0.0
+jDMN: Core,com.gs.dmn.feel.interpreter,MemberUtils,,,,34,0,0.0,34,0,0.0,34,0,0.0
+jDMN: Core,com.gs.dmn.feel.interpreter,AbstractFEELInterpreter,,,,23,4,0.14814814814814814,23,4,0.14814814814814814,27,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.numeric,DefaultNumericType,,,,94,5,0.050505050505050504,94,5,0.050505050505050504,25,74,0.7474747474747475
+jDMN: Core,com.gs.dmn.feel.lib.type.numeric,DoubleNumericType,,,,81,3,0.03571428571428571,81,3,0.03571428571428571,24,60,0.7142857142857143
+jDMN: Core,org.omg.spec.dmn._20151101.model,TContextEntry,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TBuiltinAggregator,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,1,6,0.8571428571428571
+jDMN: Core,org.omg.spec.dmn._20151101.model,TContext,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDecision,n/a,n/a,Could not find file,40,0,0.0,40,0,0.0,0,40,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TInformationItem,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TImport,n/a,n/a,Could not find file,10,0,0.0,10,0,0.0,0,10,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TAssociation,n/a,n/a,Could not find file,12,0,0.0,12,0,0.0,1,11,0.9166666666666666
+jDMN: Core,org.omg.spec.dmn._20151101.model,TFunctionDefinition,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDecisionTable,n/a,n/a,Could not find file,26,0,0.0,26,0,0.0,2,24,0.9230769230769231
+jDMN: Core,org.omg.spec.dmn._20151101.model,TLiteralExpression,n/a,n/a,Could not find file,10,0,0.0,10,0,0.0,0,10,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TNamedElement,n/a,n/a,Could not find file,2,2,0.5,2,2,0.5,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TBinding,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TArtifact,n/a,n/a,Could not find file,1,0,0.0,1,0,0.0,0,1,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDMNElement,n/a,n/a,Could not find file,8,7,0.4666666666666667,8,7,0.4666666666666667,0,15,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TBusinessKnowledgeModel,n/a,n/a,Could not find file,13,0,0.0,13,0,0.0,0,13,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,ObjectFactory,n/a,n/a,Could not find file,95,0,0.0,95,0,0.0,0,95,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TTextAnnotation,n/a,n/a,Could not find file,9,0,0.0,9,0,0.0,0,9,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TElementCollection,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TRelation,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDMNElementReference,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TOrganizationUnit,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TUnaryTests,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDecisionRule,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDRGElement,n/a,n/a,Could not find file,1,0,0.0,1,0,0.0,0,1,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TKnowledgeRequirement,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDecisionTableOrientation,n/a,n/a,Could not find file,12,0,0.0,12,0,0.0,4,8,0.6666666666666666
+jDMN: Core,org.omg.spec.dmn._20151101.model,TAssociationDirection,n/a,n/a,Could not find file,12,0,0.0,12,0,0.0,4,8,0.6666666666666666
+jDMN: Core,org.omg.spec.dmn._20151101.model,TInvocation,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TInputClause,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,THitPolicy,n/a,n/a,Could not find file,16,0,0.0,16,0,0.0,4,12,0.75
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDecisionService,n/a,n/a,Could not find file,13,0,0.0,13,0,0.0,0,13,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TInputData,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TItemDefinition,n/a,n/a,Could not find file,18,0,0.0,18,0,0.0,1,17,0.9444444444444444
+jDMN: Core,org.omg.spec.dmn._20151101.model,TKnowledgeSource,n/a,n/a,Could not find file,13,0,0.0,13,0,0.0,0,13,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TImportedValues,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TAuthorityRequirement,n/a,n/a,Could not find file,10,0,0.0,10,0,0.0,0,10,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TOutputClause,n/a,n/a,Could not find file,13,0,0.0,13,0,0.0,0,13,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDefinitions,n/a,n/a,Could not find file,12,26,0.6842105263157895,12,26,0.6842105263157895,0,38,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TList,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TExpression,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TDMNElement.ExtensionElements,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TPerformanceIndicator,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TInformationRequirement,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20151101.model,TBusinessContextElement,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.logic,Conjunction,,,,0,4,1.0,0,4,1.0,2,2,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.logic,LogicNegation,,,,0,4,1.0,0,4,1.0,2,2,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.logic,LogicExpression,,,,0,10,1.0,0,10,1.0,5,5,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.logic,Disjunction,,,,0,4,1.0,0,4,1.0,2,2,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast,NopVisitor,,,,0,51,1.0,0,51,1.0,51,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast,AbstractVisitor,,,,0,1,1.0,0,1,1.0,1,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast,Element,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast,AbstractAnalysisVisitor,,,,6,5,0.45454545454545453,6,5,0.45454545454545453,11,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast,FEELContext,,,,9,6,0.4,9,6,0.4,15,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast,CloneVisitor,,,,10,101,0.9099099099099099,10,101,0.9099099099099099,111,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast,ASTFactory,,,,36,104,0.7428571428571429,36,104,0.7428571428571429,46,94,0.6714285714285714
+jDMN: Core,com.gs.dmn.feel.analysis,AbstractFEELAnalyzer,,,,18,3,0.14285714285714285,18,3,0.14285714285714285,21,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis,FEELAnalyzerImpl,,,,2,21,0.9130434782608695,2,21,0.9130434782608695,23,0,0.0
+jDMN: Core,com.gs.dmn.log,NopBuildLogger,,,,3,2,0.4,3,2,0.4,0,5,1.0
+jDMN: Core,com.gs.dmn.log,Slf4jBuildLogger,,,,6,5,0.45454545454545453,6,5,0.45454545454545453,0,11,1.0
+jDMN: Core,com.gs.dmn.feel.lib.type.list,DefaultListType,,,,8,3,0.2727272727272727,8,3,0.2727272727272727,0,11,1.0
+jDMN: Core,com.gs.dmn.runtime,MixedJavaTimeDMNBaseDecision,,,,1,8,0.8888888888888888,1,8,0.8888888888888888,9,0,0.0
+jDMN: Core,com.gs.dmn.runtime,Context,,,,4,36,0.9,4,36,0.9,17,23,0.575
+jDMN: Core,com.gs.dmn.runtime,PairComparator,,,,3,7,0.7,3,7,0.7,0,10,1.0
+jDMN: Core,com.gs.dmn.runtime,Pair,,,,3,10,0.7692307692307693,3,10,0.7692307692307693,2,11,0.8461538461538461
+jDMN: Core,com.gs.dmn.runtime,DMNType,,,,1,0,0.0,1,0,0.0,1,0,0.0
+jDMN: Core,com.gs.dmn.runtime,Assert,,,,86,0,0.0,86,0,0.0,86,0,0.0
+jDMN: Core,com.gs.dmn.runtime,PureJavaTimeDMNBaseDecision,,,,1,8,0.8888888888888888,1,8,0.8888888888888888,9,0,0.0
+jDMN: Core,com.gs.dmn.runtime,DoubleMixedJavaTimeDMNBaseDecision,,,,1,8,0.8888888888888888,1,8,0.8888888888888888,9,0,0.0
+jDMN: Core,com.gs.dmn.runtime,RuleOutput,,,,3,4,0.5714285714285714,3,4,0.5714285714285714,4,3,0.42857142857142855
+jDMN: Core,com.gs.dmn.runtime,RuleOutputList,,,,30,19,0.3877551020408163,30,19,0.3877551020408163,12,37,0.7551020408163265
+jDMN: Core,com.gs.dmn.runtime,LazyEval,,,,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,com.gs.dmn.runtime,DMNRuntimeException,,,,2,4,0.6666666666666666,2,4,0.6666666666666666,4,2,0.3333333333333333
+jDMN: Core,com.gs.dmn.runtime,UniformJavaTimeDMNBaseDecision,,,,1,8,0.8888888888888888,1,8,0.8888888888888888,9,0,0.0
+jDMN: Core,com.gs.dmn.runtime,DefaultDMNBaseDecision,,,,1,8,0.8888888888888888,1,8,0.8888888888888888,9,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.uniform,ZonedTimeType,,,,53,3,0.05357142857142857,53,3,0.05357142857142857,56,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.uniform,JavaTimeCalendarType,,,,42,3,0.06666666666666667,42,3,0.06666666666666667,45,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.uniform,ZonedDateType,,,,54,3,0.05263157894736842,54,3,0.05263157894736842,57,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.uniform,ZonedDateTimeType,,,,68,3,0.04225352112676056,68,3,0.04225352112676056,71,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,DurationUtil,,,,12,6,0.3333333333333333,12,6,0.3333333333333333,18,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,BigDecimalUtil,,,,77,52,0.40310077519379844,77,52,0.40310077519379844,25,104,0.8062015503875969
+jDMN: Core,com.gs.dmn.feel.lib,DateUtil,,,,17,13,0.43333333333333335,17,13,0.43333333333333335,30,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,DefaultFEELLib,,,,371,168,0.3116883116883117,358,181,0.3358070500927644,539,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,MixedJavaTimeFEELLib,,,,325,218,0.4014732965009208,311,232,0.427255985267035,543,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,DateAndTimeUtil,,,,68,20,0.22727272727272727,68,20,0.22727272727272727,88,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,TimeUtil,,,,36,16,0.3076923076923077,36,16,0.3076923076923077,52,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,StandardFEELLib,,,,2,3,0.6,2,3,0.6,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,PureJavaTimeFEELLib,,,,381,184,0.3256637168141593,369,196,0.34690265486725663,565,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,DoubleMixedJavaTimeFEELLib,,,,308,236,0.4338235294117647,292,252,0.4632352941176471,544,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,StringEscapeUtil,,,,58,67,0.536,55,70,0.56,55,70,0.56
+jDMN: Core,com.gs.dmn.feel.lib,DoubleUtil,,,,72,53,0.424,70,55,0.44,16,109,0.872
+jDMN: Core,com.gs.dmn.feel.lib,BaseFEELLib,,,,148,13,0.08074534161490683,148,13,0.08074534161490683,161,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,StringUtil,,,,18,75,0.8064516129032258,17,76,0.8172043010752689,2,91,0.978494623655914
+jDMN: Core,com.gs.dmn.feel.lib,XMLDatataypeFactory,,,,3,1,0.25,3,1,0.25,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,DateTimeUtil,,,,92,88,0.4888888888888889,84,96,0.5333333333333333,180,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,UniformJavaTimeFEELLib,,,,286,198,0.4090909090909091,272,212,0.4380165289256198,484,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib,DurationUtil.new Throwable() {...},n/a,n/a,Could not find file,0,2,1.0,0,2,1.0,2,0,0.0
+jDMN: Core,com.gs.dmn.runtime.listener,LoggingEventListener,,,,8,3,0.2727272727272727,8,3,0.2727272727272727,0,11,1.0
+jDMN: Core,com.gs.dmn.runtime.listener,DRGElement,,,,0,16,1.0,0,16,1.0,0,16,1.0
+jDMN: Core,com.gs.dmn.runtime.listener,CompositeListener,,,,16,0,0.0,16,0,0.0,0,16,1.0
+jDMN: Core,com.gs.dmn.runtime.listener,Rule,,,,0,6,1.0,0,6,1.0,0,6,1.0
+jDMN: Core,com.gs.dmn.runtime.listener,Arguments,,,,1,10,0.9090909090909091,1,10,0.9090909090909091,10,1,0.09090909090909091
+jDMN: Core,com.gs.dmn.runtime.listener,NopEventListener,,,,6,0,0.0,6,0,0.0,0,6,1.0
+jDMN: Core,com.gs.dmn.tck,TestCasesReader,,,,32,0,0.0,32,0,0.0,32,0,0.0
+jDMN: Core,com.gs.dmn.tck,TCKTestCasesToJUnitTransformer,,,,39,0,0.0,39,0,0.0,39,0,0.0
+jDMN: Core,com.gs.dmn.tck,TCKUtil,,,,270,69,0.20353982300884957,270,69,0.20353982300884957,339,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax,ErrorListener,,,,0,3,1.0,0,3,1.0,3,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.xml,DefaultDurationType,,,,66,3,0.043478260869565216,66,3,0.043478260869565216,69,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.xml,DefaultTimeType,,,,31,3,0.08823529411764706,31,3,0.08823529411764706,34,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.xml,FEELXMLGregorianCalendar,,,,438,276,0.3865546218487395,390,324,0.453781512605042,714,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.xml,DoubleDefaultDurationType,,,,66,3,0.043478260869565216,66,3,0.043478260869565216,69,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.xml,DefaultDateTimeType,,,,31,3,0.08823529411764706,31,3,0.08823529411764706,34,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.xml,DefaultXMLCalendarType,,,,40,3,0.06976744186046512,40,3,0.06976744186046512,43,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.xml,DefaultDateType,,,,31,3,0.08823529411764706,31,3,0.08823529411764706,34,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type,BaseType,,,,4,3,0.42857142857142855,4,3,0.42857142857142855,2,5,0.7142857142857143
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,TestCases,n/a,n/a,Could not find file,9,1,0.1,9,1,0.1,0,10,1.0
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,ValueType.List,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,TestCases.TestCase.ExtensionElements,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,TestCaseType,n/a,n/a,Could not find file,5,7,0.5833333333333334,5,7,0.5833333333333334,4,8,0.6666666666666666
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,ValueType.ExtensionElements,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,ValueType,n/a,n/a,Could not find file,8,7,0.4666666666666667,8,7,0.4666666666666667,0,15,1.0
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,TestCases.TestCase.InputNode,n/a,n/a,Could not find file,2,2,0.5,2,2,0.5,2,2,0.5
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,TestCases.TestCase.ResultNode,n/a,n/a,Could not find file,19,2,0.09523809523809523,19,2,0.09523809523809523,13,8,0.38095238095238093
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,ObjectFactory,n/a,n/a,Could not find file,16,0,0.0,16,0,0.0,0,16,1.0
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,TestCases.TestCase,n/a,n/a,Could not find file,22,7,0.2413793103448276,22,7,0.2413793103448276,13,16,0.5517241379310345
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,TestCases.Labels,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.dmn.tck.marshaller._20160719,ValueType.Component,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,2,2,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,FunctionInvocation,,,,62,10,0.1388888888888889,62,10,0.1388888888888889,68,4,0.05555555555555555
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,ParameterConversions,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,DeclarationMatch,,,,0,8,1.0,0,8,1.0,0,8,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,ConversionKind,,,,0,2,1.0,0,2,1.0,0,2,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,PositionalParameterConversions,,,,11,9,0.45,11,9,0.45,6,14,0.7
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,Context,,,,11,18,0.6206896551724138,11,18,0.6206896551724138,24,5,0.1724137931034483
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,NamedParameters,,,,8,28,0.7777777777777778,8,28,0.7777777777777778,19,17,0.4722222222222222
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,NamedParameterTypes,,,,29,23,0.4423076923076923,29,23,0.4423076923076923,52,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,FunctionDefinition,,,,3,12,0.8,3,12,0.8,10,5,0.3333333333333333
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,ContextEntry,,,,0,8,1.0,0,8,1.0,2,6,0.75
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,ContextEntryKey,,,,1,7,0.875,1,7,0.875,3,5,0.625
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,Parameters,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,Conversion,,,,9,11,0.55,9,11,0.55,6,14,0.7
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,FormalParameter,,,,5,17,0.7727272727272727,5,17,0.7727272727272727,7,15,0.6818181818181818
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,PositionalParameters,,,,16,17,0.5151515151515151,16,17,0.5151515151515151,16,17,0.5151515151515151
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,PositionalParameterTypes,,,,28,19,0.40425531914893614,28,19,0.40425531914893614,12,35,0.7446808510638298
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,ParameterTypes,,,,8,8,0.5,8,8,0.5,0,16,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.function,NamedParameterConversions,,,,15,12,0.4444444444444444,15,12,0.4444444444444444,4,23,0.8518518518518519
+jDMN: Core,com.gs.dmn.runtime.annotation,HitPolicy,,,,1,16,0.9411764705882353,0,17,1.0,1,16,0.9411764705882353
+jDMN: Core,com.gs.dmn.runtime.annotation,AnnotationSet,,,,4,6,0.6,4,6,0.6,0,10,1.0
+jDMN: Core,com.gs.dmn.runtime.annotation,ExpressionKind,,,,7,17,0.7083333333333334,7,17,0.7083333333333334,7,17,0.7083333333333334
+jDMN: Core,com.gs.dmn.runtime.annotation,DRGElementKind,,,,5,13,0.7222222222222222,5,13,0.7222222222222222,5,13,0.7222222222222222
+jDMN: Core,com.gs.dmn.runtime.annotation,Annotation,,,,4,15,0.7894736842105263,4,15,0.7894736842105263,9,10,0.5263157894736842
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,PathExpression,,,,2,18,0.9,2,18,0.9,16,4,0.2
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,IteratorDomain,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,Name,,,,0,8,1.0,0,8,1.0,4,4,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,QualifiedName,,,,2,8,0.8,2,8,0.8,10,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,Iterator,,,,0,8,1.0,0,8,1.0,2,6,0.75
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,ExpressionList,,,,0,15,1.0,0,15,1.0,11,4,0.26666666666666666
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,Expression,,,,15,20,0.5714285714285714,15,20,0.5714285714285714,32,3,0.08571428571428572
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,ExpressionIteratorDomain,,,,0,9,1.0,0,9,1.0,4,5,0.5555555555555556
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,NamedExpression,,,,12,1,0.07692307692307693,12,1,0.07692307692307693,12,1,0.07692307692307693
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression,RangeIteratorDomain,,,,0,11,1.0,0,11,1.0,4,7,0.6363636363636364
+jDMN: Core,com.gs.dmn.transformation.basic,RelationToJavaTransformer,,,,28,6,0.17647058823529413,28,6,0.17647058823529413,34,0,0.0
+jDMN: Core,com.gs.dmn.transformation.basic,QualifiedName,,,,10,17,0.6296296296296297,9,18,0.6666666666666666,5,22,0.8148148148148148
+jDMN: Core,com.gs.dmn.transformation.basic,BasicDMN2JavaTransformer,,,,555,377,0.40450643776824036,545,387,0.41523605150214593,932,0,0.0
+jDMN: Core,com.gs.dmn.transformation.basic,LiteralExpressionToJavaTransformer,,,,7,5,0.4166666666666667,7,5,0.4166666666666667,12,0,0.0
+jDMN: Core,com.gs.dmn.transformation.basic,FunctionDefinitionToJavaTransformer,,,,15,5,0.25,15,5,0.25,20,0,0.0
+jDMN: Core,com.gs.dmn.transformation.basic,InvocationToJavaTransformer,,,,30,4,0.11764705882352941,30,4,0.11764705882352941,34,0,0.0
+jDMN: Core,com.gs.dmn.transformation.basic,DecisionTableToJavaTransformer,,,,162,39,0.19402985074626866,162,39,0.19402985074626866,201,0,0.0
+jDMN: Core,com.gs.dmn.transformation.basic,ContextToJavaTransformer,,,,60,4,0.0625,60,4,0.0625,64,0,0.0
+jDMN: Core,com.gs.dmn.runtime.interpreter.environment,Environment,,,,5,15,0.75,5,15,0.75,15,5,0.25
+jDMN: Core,com.gs.dmn.runtime.interpreter.environment,RuntimeEnvironment,,,,0,2,1.0,0,2,1.0,0,2,1.0
+jDMN: Core,com.gs.dmn.runtime.interpreter.environment,RuntimeEnvironmentFactory,,,,3,6,0.6666666666666666,3,6,0.6666666666666666,4,5,0.5555555555555556
+jDMN: Core,com.gs.dmn.transformation.lazy,LazyEvaluationOptimisation,,,,4,4,0.5,4,4,0.5,0,8,1.0
+jDMN: Core,com.gs.dmn.transformation.lazy,NopLazyEvaluationDetector,,,,0,2,1.0,0,2,1.0,0,2,1.0
+jDMN: Core,com.gs.dmn.transformation.lazy,SimpleLazyEvaluationDetector,,,,0,7,1.0,0,7,1.0,0,7,1.0
+jDMN: Core,com.gs.dmn.transformation.lazy,CompositeLazyEvaluationDetector,,,,11,0,0.0,11,0,0.0,11,0,0.0
+jDMN: Core,com.gs.dmn.transformation.lazy,SparseDecisionDetector,,,,24,13,0.35135135135135137,24,13,0.35135135135135137,19,18,0.4864864864864865
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,Type,,,,3,3,0.5,3,3,0.5,5,1,0.16666666666666666
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,DateType,,,,0,12,1.0,0,12,1.0,0,12,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,FEELTypes,,,,1,39,0.975,1,39,0.975,1,39,0.975
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,ListType,,,,4,27,0.8709677419354839,4,27,0.8709677419354839,17,14,0.45161290322580644
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,DurationType,,,,2,21,0.9130434782608695,2,21,0.9130434782608695,2,21,0.9130434782608695
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,ContextType,,,,48,26,0.35135135135135137,48,26,0.35135135135135137,64,10,0.13513513513513514
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,RangeType,,,,4,21,0.84,4,21,0.84,25,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,NullType,,,,0,5,1.0,0,5,1.0,0,5,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,BuiltinFunctionType,,,,51,24,0.32,51,24,0.32,67,8,0.10666666666666667
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,AnyType,,,,0,5,1.0,0,5,1.0,0,5,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,BooleanType,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,TimeType,,,,0,12,1.0,0,12,1.0,0,12,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,DataType,,,,0,5,1.0,0,5,1.0,1,4,0.8
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,DateTimeType,,,,0,18,1.0,0,18,1.0,0,18,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,NamedType,,,,0,6,1.0,0,6,1.0,1,5,0.8333333333333334
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,NumberType,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,ItemDefinitionType,,,,48,36,0.42857142857142855,48,36,0.42857142857142855,58,26,0.30952380952380953
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,TupleType,,,,15,18,0.5454545454545454,15,18,0.5454545454545454,33,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,TypeDeserializer,,,,66,22,0.25,66,22,0.25,77,11,0.125
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,DMNFunctionType,,,,15,11,0.4230769230769231,15,11,0.4230769230769231,26,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,EnumerationType,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,FunctionType,,,,7,11,0.6111111111111112,7,11,0.6111111111111112,10,8,0.4444444444444444
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,StringType,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.type,FEELFunctionType,,,,15,17,0.53125,15,17,0.53125,32,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,SimplePositiveUnaryTest,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,ExpressionTest,,,,1,9,0.9,1,9,0.9,6,4,0.4
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,PositiveUnaryTest,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,UnaryTests,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,PositiveUnaryTests,,,,0,12,1.0,0,12,1.0,6,6,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,Any,,,,0,5,1.0,0,5,1.0,4,1,0.2
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,NullTest,,,,0,5,1.0,0,5,1.0,4,1,0.2
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,SimplePositiveUnaryTests,,,,0,12,1.0,0,12,1.0,6,6,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,OperatorTest,,,,12,8,0.4,12,8,0.4,16,4,0.2
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,NegatedSimplePositiveUnaryTests,,,,4,10,0.7142857142857143,4,10,0.7142857142857143,11,3,0.21428571428571427
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,RangeTest,,,,2,15,0.8823529411764706,2,15,0.8823529411764706,7,10,0.5882352941176471
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,NegatedPositiveUnaryTests,,,,4,10,0.7142857142857143,4,10,0.7142857142857143,11,3,0.21428571428571427
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,ListTest,,,,7,10,0.5882352941176471,7,10,0.5882352941176471,13,4,0.23529411764705882
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.test,SimpleUnaryTests,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.AdditionContext,n/a,n/a,Could not find file,0,9,1.0,0,9,1.0,9,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimpleExpressionsRootContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.FunctionDefinitionContext,n/a,n/a,Could not find file,0,12,1.0,0,12,1.0,12,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.IdentifierContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.BooleanLiteralContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.NumericLiteralContext,n/a,n/a,Could not find file,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.PositionalParametersContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.QuantifiedExpressionContext,n/a,n/a,Could not find file,0,12,1.0,0,12,1.0,12,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimpleUnaryTestsContext,n/a,n/a,Could not find file,0,8,1.0,0,8,1.0,8,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ForExpressionContext,n/a,n/a,Could not find file,0,14,1.0,0,14,1.0,14,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ExponentiationContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ParameterNameContext,n/a,n/a,Could not find file,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.UnaryTestsRootContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.TextualExpressionsContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.IntervalStartParContext,n/a,n/a,Could not find file,0,6,1.0,0,6,1.0,6,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ContextContext,n/a,n/a,Could not find file,0,9,1.0,0,9,1.0,9,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.StringLiteralContext,n/a,n/a,Could not find file,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.TextualExpressionsRootContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.PositiveUnaryTestsContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimpleLiteralContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ExpressionRootContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimplePositiveUnaryTestContext,n/a,n/a,Could not find file,0,9,1.0,0,9,1.0,9,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.KeyContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ContextEntryContext,n/a,n/a,Could not find file,0,6,1.0,0,6,1.0,6,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.IfExpressionContext,n/a,n/a,Could not find file,0,8,1.0,0,8,1.0,8,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser,n/a,n/a,Could not find file,1166,393,0.2520846696600385,1166,393,0.2520846696600385,1559,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimpleExpressionContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.IntervalContext,n/a,n/a,Could not find file,0,8,1.0,0,8,1.0,8,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.BoxedExpressionContext,n/a,n/a,Could not find file,0,6,1.0,0,6,1.0,6,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.UnaryTestsContext,n/a,n/a,Could not find file,0,8,1.0,0,8,1.0,8,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ListContext,n/a,n/a,Could not find file,0,9,1.0,0,9,1.0,9,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.PrimaryExpressionContext,n/a,n/a,Could not find file,0,10,1.0,0,10,1.0,10,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.NamedParametersContext,n/a,n/a,Could not find file,0,11,1.0,0,11,1.0,11,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.IntervalEndParContext,n/a,n/a,Could not find file,0,6,1.0,0,6,1.0,6,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ParametersContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.PositiveUnaryTestContext,n/a,n/a,Could not find file,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.FormalParameterContext,n/a,n/a,Could not find file,0,6,1.0,0,6,1.0,6,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.MultiplicationContext,n/a,n/a,Could not find file,0,9,1.0,0,9,1.0,9,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.BoxedExpressionRootContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimpleUnaryTestsRootContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.InstanceOfContext,n/a,n/a,Could not find file,0,6,1.0,0,6,1.0,6,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.TextualExpressionContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.DisjunctionContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ConjunctionContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.TypeContext,n/a,n/a,Could not find file,0,15,1.0,0,15,1.0,15,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELLexer,n/a,n/a,Could not find file,8,27,0.7714285714285715,8,27,0.7714285714285715,35,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.DateTimeLiteralContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimpleExpressionsContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.EndpointContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ArithmeticExpressionContext,n/a,n/a,Could not find file,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ComparisonContext,n/a,n/a,Could not find file,0,20,1.0,0,20,1.0,20,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimpleValueContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ExpressionContext,n/a,n/a,Could not find file,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.LiteralContext,n/a,n/a,Could not find file,0,5,1.0,0,5,1.0,5,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.ArithmeticNegationContext,n/a,n/a,Could not find file,0,8,1.0,0,8,1.0,8,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.QualifiedNameContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.PostfixExpressionContext,n/a,n/a,Could not find file,0,16,1.0,0,16,1.0,16,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.SimplePositiveUnaryTestsContext,n/a,n/a,Could not find file,0,7,1.0,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.antlrv4,FEELParser.IterationDomainContext,n/a,n/a,Could not find file,0,6,1.0,0,6,1.0,6,0,0.0
+jDMN: Core,com.gs.dmn.runtime.interpreter,PositionalArguments,,,,2,9,0.8181818181818182,2,9,0.8181818181818182,0,11,1.0
+jDMN: Core,com.gs.dmn.runtime.interpreter,StandardDMNInterpreter,,,,507,43,0.07818181818181819,507,43,0.07818181818181819,550,0,0.0
+jDMN: Core,com.gs.dmn.runtime.interpreter,Arguments,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.runtime.interpreter,InterpretedRuleOutput,,,,32,10,0.23809523809523808,32,10,0.23809523809523808,31,11,0.2619047619047619
+jDMN: Core,com.gs.dmn.runtime.interpreter,Result,,,,0,8,1.0,0,8,1.0,0,8,1.0
+jDMN: Core,com.gs.dmn.runtime.interpreter,NamedArguments,,,,17,8,0.32,17,8,0.32,6,19,0.76
+jDMN: Core,com.gs.dmn.runtime.interpreter,InputClausePair,,,,0,6,1.0,0,6,1.0,0,6,1.0
+jDMN: Core,com.gs.dmn.runtime.interpreter,ImportPath,,,,0,17,1.0,0,17,1.0,7,10,0.5882352941176471
+jDMN: Core,com.gs.dmn.feel.synthesis.type,DoubleMixedJavaTimeFEELTypeTranslator,,,,0,26,1.0,0,26,1.0,0,26,1.0
+jDMN: Core,com.gs.dmn.feel.synthesis.type,UniformJavaTimeFEELTypeTranslator,,,,0,26,1.0,0,26,1.0,0,26,1.0
+jDMN: Core,com.gs.dmn.feel.synthesis.type,StandardFEELTypeTranslator,,,,0,26,1.0,0,26,1.0,0,26,1.0
+jDMN: Core,com.gs.dmn.feel.synthesis.type,PureJavaTimeFEELTypeTranslator,,,,0,26,1.0,0,26,1.0,0,26,1.0
+jDMN: Core,com.gs.dmn.feel.synthesis.type,MixedJavaTimeFEELTypeTranslator,,,,0,26,1.0,0,26,1.0,0,26,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TInformationRequirement,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDRGElement,n/a,n/a,Could not find file,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TContextEntry,n/a,n/a,Could not find file,4,3,0.42857142857142855,4,3,0.42857142857142855,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TInvocation,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDecisionService,n/a,n/a,Could not find file,3,10,0.7692307692307693,3,10,0.7692307692307693,0,13,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TUnaryTests,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,KnownColor,n/a,n/a,Could not find file,26,0,0.0,26,0,0.0,4,22,0.8461538461538461
+jDMN: Core,org.omg.spec.dmn._20180521.model,Style,n/a,n/a,Could not find file,9,0,0.0,9,0,0.0,4,5,0.5555555555555556
+jDMN: Core,org.omg.spec.dmn._20180521.model,TAssociation,n/a,n/a,Could not find file,12,0,0.0,12,0,0.0,1,11,0.9166666666666666
+jDMN: Core,org.omg.spec.dmn._20180521.model,TPerformanceIndicator,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TKnowledgeRequirement,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,Diagram,n/a,n/a,Could not find file,10,0,0.0,10,0,0.0,6,4,0.4
+jDMN: Core,org.omg.spec.dmn._20180521.model,TRelation,n/a,n/a,Could not find file,6,1,0.14285714285714285,6,1,0.14285714285714285,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TInformationItem,n/a,n/a,Could not find file,2,2,0.5,2,2,0.5,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TArtifact,n/a,n/a,Could not find file,1,0,0.0,1,0,0.0,0,1,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,THitPolicy,n/a,n/a,Could not find file,2,14,0.875,2,14,0.875,0,16,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDecisionTable,n/a,n/a,Could not find file,15,11,0.4230769230769231,15,11,0.4230769230769231,2,24,0.9230769230769231
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDecisionRule.AnnotationEntry,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,2,2,0.5
+jDMN: Core,org.omg.spec.dmn._20180521.model,Style.Extension,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TBuiltinAggregator,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,1,6,0.8571428571428571
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDecisionTableOrientation,n/a,n/a,Could not find file,12,0,0.0,12,0,0.0,4,8,0.6666666666666666
+jDMN: Core,org.omg.spec.dmn._20180521.model,TLiteralExpression,n/a,n/a,Could not find file,8,2,0.2,8,2,0.2,0,10,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TExpression,n/a,n/a,Could not find file,2,2,0.5,2,2,0.5,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,AlignmentKind,n/a,n/a,Could not find file,12,0,0.0,12,0,0.0,4,8,0.6666666666666666
+jDMN: Core,org.omg.spec.dmn._20180521.model,TAuthorityRequirement,n/a,n/a,Could not find file,10,0,0.0,10,0,0.0,0,10,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TImport,n/a,n/a,Could not find file,10,0,0.0,10,0,0.0,0,10,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDMNElementReference,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TFunctionKind,n/a,n/a,Could not find file,5,7,0.5833333333333334,5,7,0.5833333333333334,4,8,0.6666666666666666
+jDMN: Core,org.omg.spec.dmn._20180521.model,TElementCollection,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,DMNShape,n/a,n/a,Could not find file,18,0,0.0,18,0,0.0,1,17,0.9444444444444444
+jDMN: Core,org.omg.spec.dmn._20180521.model,TContext,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,Point,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TTextAnnotation,n/a,n/a,Could not find file,9,0,0.0,9,0,0.0,0,9,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,Edge,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TFunctionDefinition,n/a,n/a,Could not find file,12,0,0.0,12,0,0.0,1,11,0.9166666666666666
+jDMN: Core,org.omg.spec.dmn._20180521.model,TBusinessContextElement,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDecision,n/a,n/a,Could not find file,36,4,0.1,36,4,0.1,0,40,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDefinitions,n/a,n/a,Could not find file,5,36,0.8780487804878049,5,36,0.8780487804878049,0,41,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,Shape,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,2,2,0.5
+jDMN: Core,org.omg.spec.dmn._20180521.model,Dimension,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,DMNLabel,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TOutputClause,n/a,n/a,Could not find file,9,4,0.3076923076923077,9,4,0.3076923076923077,0,13,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,Bounds,n/a,n/a,Could not find file,13,0,0.0,13,0,0.0,0,13,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,DMNDiagram,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,Color,n/a,n/a,Could not find file,10,0,0.0,10,0,0.0,0,10,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,ObjectFactory,n/a,n/a,Could not find file,98,48,0.3287671232876712,98,48,0.3287671232876712,0,146,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TInputClause,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TItemDefinition,n/a,n/a,Could not find file,11,7,0.3888888888888889,11,7,0.3888888888888889,1,17,0.9444444444444444
+jDMN: Core,org.omg.spec.dmn._20180521.model,TBinding,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,DMNStyle,n/a,n/a,Could not find file,34,0,0.0,34,0,0.0,0,34,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TImportedValues,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TOrganizationUnit,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,DiagramElement,n/a,n/a,Could not find file,15,0,0.0,15,0,0.0,8,7,0.4666666666666667
+jDMN: Core,org.omg.spec.dmn._20180521.model,TInputData,n/a,n/a,Could not find file,3,1,0.25,3,1,0.25,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TNamedElement,n/a,n/a,Could not find file,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TInvocable,n/a,n/a,Could not find file,2,2,0.5,2,2,0.5,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,DMNEdge,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDMNElement.ExtensionElements,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TKnowledgeSource,n/a,n/a,Could not find file,13,0,0.0,13,0,0.0,0,13,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TAssociationDirection,n/a,n/a,Could not find file,12,0,0.0,12,0,0.0,4,8,0.6666666666666666
+jDMN: Core,org.omg.spec.dmn._20180521.model,DiagramElement.Extension,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,DMNDecisionServiceDividerLine,n/a,n/a,Could not find file,1,0,0.0,1,0,0.0,0,1,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,DMNDI,n/a,n/a,Could not find file,7,0,0.0,7,0,0.0,0,7,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDMNElement,n/a,n/a,Could not find file,0,15,1.0,0,15,1.0,0,15,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TList,n/a,n/a,Could not find file,4,0,0.0,4,0,0.0,0,4,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TDecisionRule,n/a,n/a,Could not find file,9,1,0.1,9,1,0.1,0,10,1.0
+jDMN: Core,org.omg.spec.dmn._20180521.model,TBusinessKnowledgeModel,n/a,n/a,Could not find file,9,1,0.1,9,1,0.1,0,10,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.textual,FilterExpression,,,,8,16,0.6666666666666666,8,16,0.6666666666666666,20,4,0.16666666666666666
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.textual,IfExpression,,,,12,15,0.5555555555555556,12,15,0.5555555555555556,19,8,0.2962962962962963
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.textual,InstanceOfExpression,,,,0,10,1.0,0,10,1.0,6,4,0.4
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.textual,ForExpression,,,,9,8,0.47058823529411764,9,8,0.47058823529411764,13,4,0.23529411764705882
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.textual,QuantifiedExpression,,,,3,11,0.7857142857142857,3,11,0.7857142857142857,9,5,0.35714285714285715
+jDMN: Core,com.gs.dmn.transformation.formatter,NopJavaFormatter,,,,0,2,1.0,0,2,1.0,0,2,1.0
+jDMN: Core,com.gs.dmn.transformation.formatter,GoogleJavaFormatter,,,,3,15,0.8333333333333334,3,15,0.8333333333333334,6,12,0.6666666666666666
+jDMN: Core,com.gs.dmn.validation,SimpleDMNValidator,,,,0,6,1.0,0,6,1.0,0,6,1.0
+jDMN: Core,com.gs.dmn.validation,DefaultDMNValidator,,,,113,25,0.18115942028985507,113,25,0.18115942028985507,91,47,0.34057971014492755
+jDMN: Core,com.gs.dmn.validation,CompositeDMNValidator,,,,5,7,0.5833333333333334,5,7,0.5833333333333334,12,0,0.0
+jDMN: Core,com.gs.dmn.validation,NopDMNValidator,,,,0,3,1.0,0,3,1.0,0,3,1.0
+jDMN: Core,com.gs.dmn.feel.synthesis,FEELToJavaForInterpreterVisitor,,,,2,4,0.6666666666666666,2,4,0.6666666666666666,6,0,0.0
+jDMN: Core,com.gs.dmn.feel.synthesis,SimpleExpressionsToJavaVisitor,,,,73,2,0.02666666666666667,73,2,0.02666666666666667,75,0,0.0
+jDMN: Core,com.gs.dmn.feel.synthesis,FEELTranslatorImpl,,,,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.synthesis,JavaOperator.Associativity,n/a,n/a,Could not find file,0,2,1.0,0,2,1.0,0,2,1.0
+jDMN: Core,com.gs.dmn.feel.synthesis,JavaOperator,,,,0,12,1.0,0,12,1.0,0,12,1.0
+jDMN: Core,com.gs.dmn.feel.synthesis,FEELToJavaVisitor,,,,184,98,0.3475177304964539,183,99,0.35106382978723405,282,0,0.0
+jDMN: Core,com.gs.dmn.feel.synthesis,FEELTranslatorForInterpreter,,,,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.synthesis,AbstractFEELTranslator,,,,26,5,0.16129032258064516,26,5,0.16129032258064516,31,0,0.0
+jDMN: Core,com.gs.dmn.feel.synthesis,AbstractFEELToJavaVisitor,,,,52,38,0.4222222222222222,52,38,0.4222222222222222,90,0,0.0
+jDMN: Core,com.gs.dmn.feel.synthesis,JavaOperator.Notation,n/a,n/a,Could not find file,0,2,1.0,0,2,1.0,0,2,1.0
+jDMN: Core,com.gs.dmn.feel,OperatorDecisionTable,,,,31,135,0.8132530120481928,22,144,0.8674698795180723,166,0,0.0
+jDMN: Core,com.gs.dmn.feel,OperatorTableInputEntry,,,,2,24,0.9230769230769231,2,24,0.9230769230769231,26,0,0.0
+jDMN: Core,com.gs.dmn.runtime.compiler,JavaCompilerImpl,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.runtime.compiler,JavaAssistClassData,,,,0,6,1.0,0,6,1.0,0,6,1.0
+jDMN: Core,com.gs.dmn.runtime.compiler,JavaSourceFromString,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.runtime.compiler,JavaxToolsCompiler,,,,27,27,0.5,26,28,0.5185185185185185,21,33,0.6111111111111112
+jDMN: Core,com.gs.dmn.runtime.compiler,JavaxToolsClassData,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.runtime.compiler,ClassDataImpl,,,,0,6,1.0,0,6,1.0,0,6,1.0
+jDMN: Core,com.gs.dmn.runtime.compiler,JavaAssistCompiler,,,,26,3,0.10344827586206896,26,3,0.10344827586206896,29,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic,Multiplication,,,,2,5,0.7142857142857143,2,5,0.7142857142857143,5,2,0.2857142857142857
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic,ArithmeticExpression,,,,0,8,1.0,0,8,1.0,3,5,0.625
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic,ArithmeticNegation,,,,1,8,0.8888888888888888,1,8,0.8888888888888888,7,2,0.2222222222222222
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic,Exponentiation,,,,2,5,0.7142857142857143,2,5,0.7142857142857143,5,2,0.2857142857142857
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic,Addition,,,,2,5,0.7142857142857143,2,5,0.7142857142857143,5,2,0.2857142857142857
+jDMN: Core,com.gs.dmn.feel.lib.type.time.mixed,LocalDateType,,,,70,3,0.0410958904109589,70,3,0.0410958904109589,73,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.mixed,OffsetTimeType,,,,72,3,0.04,72,3,0.04,75,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.mixed,ZonedDateTimeType,,,,74,3,0.03896103896103896,74,3,0.03896103896103896,77,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.mixed,JavaTimeCalendarType,,,,10,3,0.23076923076923078,10,3,0.23076923076923078,13,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.context,DefaultContextType,,,,8,3,0.2727272727272727,8,3,0.2727272727272727,0,11,1.0
+jDMN: Core,com.gs.dmn.serialization,DMNReader,,,,91,0,0.0,91,0,0.0,91,0,0.0
+jDMN: Core,com.gs.dmn.serialization,XMLUtil,,,,3,15,0.8333333333333334,3,15,0.8333333333333334,3,15,0.8333333333333334
+jDMN: Core,com.gs.dmn.serialization,DMNSerializer,,,,3,0,0.0,3,0,0.0,0,3,1.0
+jDMN: Core,com.gs.dmn.serialization,DefaultTypeDeserializationConfigurer,,,,0,2,1.0,0,2,1.0,0,2,1.0
+jDMN: Core,com.gs.dmn.serialization,DMNDialectTransformer,,,,448,49,0.09859154929577464,448,49,0.09859154929577464,448,49,0.09859154929577464
+jDMN: Core,com.gs.dmn.serialization,PrefixNamespaceMappings,,,,13,5,0.2777777777777778,13,5,0.2777777777777778,6,12,0.6666666666666666
+jDMN: Core,com.gs.dmn.serialization,DMNConstants,,,,1,0,0.0,1,0,0.0,1,0,0.0
+jDMN: Core,com.gs.dmn.serialization,JsonSerializer,,,,15,0,0.0,15,0,0.0,15,0,0.0
+jDMN: Core,com.gs.dmn.serialization,DMNVersion,,,,5,34,0.8717948717948718,5,34,0.8717948717948718,5,34,0.8717948717948718
+jDMN: Core,com.gs.dmn.serialization,SchemaValidator,,,,28,0,0.0,28,0,0.0,17,11,0.39285714285714285
+jDMN: Core,com.gs.dmn.serialization,DMNNamespacePrefixMapper,,,,0,19,1.0,0,19,1.0,0,19,1.0
+jDMN: Core,com.gs.dmn.serialization,DMNWriter,,,,53,0,0.0,53,0,0.0,27,26,0.49056603773584906
+jDMN: Core,com.gs.dmn,DMNModelRepository,,,,302,276,0.47750865051903113,300,278,0.4809688581314879,320,258,0.4463667820069204
+jDMN: Core,com.gs.dmn,StartMarker,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.type,ContextTypeExpression,,,,2,5,0.7142857142857143,2,5,0.7142857142857143,4,3,0.42857142857142855
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.type,FunctionTypeExpression,,,,2,7,0.7777777777777778,2,7,0.7777777777777778,5,4,0.4444444444444444
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.type,ListTypeExpression,,,,0,6,1.0,0,6,1.0,3,3,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.type,TypeExpression,,,,1,1,0.5,1,1,0.5,1,1,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.type,NamedTypeExpression,,,,0,6,1.0,0,6,1.0,3,3,0.5
+jDMN: Core,com.gs.dmn.runtime.serialization,XMLGregorianCalendarSerializer,,,,2,1,0.3333333333333333,2,1,0.3333333333333333,3,0,0.0
+jDMN: Core,com.gs.dmn.runtime.serialization,XMLGregorianCalendarDeserializer,,,,12,2,0.14285714285714285,12,2,0.14285714285714285,14,0,0.0
+jDMN: Core,com.gs.dmn.runtime.cache,DefaultCache,,,,5,7,0.5833333333333334,5,7,0.5833333333333334,0,12,1.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time,JavaTimeType,,,,0,2,1.0,0,2,1.0,2,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.logic,DefaultBooleanType,,,,45,4,0.08163265306122448,45,4,0.08163265306122448,8,41,0.8367346938775511
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,VariableDeclaration,,,,0,6,1.0,0,6,1.0,0,6,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,BusinessKnowledgeModelDeclaration,,,,0,2,1.0,0,2,1.0,2,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,Declaration,,,,0,4,1.0,0,4,1.0,0,4,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,DecisionServiceDeclaration,,,,0,2,1.0,0,2,1.0,2,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,DefaultDMNEnvironmentFactory,,,,1,101,0.9901960784313726,1,101,0.9901960784313726,0,102,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,Environment,,,,27,42,0.6086956521739131,27,42,0.6086956521739131,26,43,0.6231884057971014
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,EnvironmentFactory,,,,9,3,0.25,9,3,0.25,9,3,0.25
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,FunctionDeclaration,,,,0,6,1.0,0,6,1.0,3,3,0.5
+jDMN: Core,com.gs.dmn.feel.analysis.semantics.environment,Parameter,,,,0,11,1.0,0,11,1.0,2,9,0.8181818181818182
+jDMN: Core,com.gs.dmn.transformation.java,CompoundStatement,,,,2,4,0.6666666666666666,2,4,0.6666666666666666,0,6,1.0
+jDMN: Core,com.gs.dmn.transformation.java,Statement,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.transformation.java,ExpressionStatement,,,,0,6,1.0,0,6,1.0,0,6,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics,AddItemFilterVisitor,,,,8,14,0.6363636363636364,8,14,0.6363636363636364,22,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics,ReplaceItemFilterVisitor,,,,0,8,1.0,0,8,1.0,8,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics,FEELSemanticVisitor,,,,189,85,0.3102189781021898,189,85,0.3102189781021898,274,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics,SemanticError,,,,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.feel.analysis.semantics,UpdatePartialVisitor,,,,1,6,0.8571428571428571,0,7,1.0,7,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.pure,TemporalDateTimeType,,,,94,3,0.030927835051546393,94,3,0.030927835051546393,97,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.pure,LocalDateType,,,,68,3,0.04225352112676056,68,3,0.04225352112676056,71,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.pure,OffsetTimeType,,,,71,0,0.0,71,0,0.0,71,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.time.pure,TemporalAmountDurationType,,,,90,3,0.03225806451612903,90,3,0.03225806451612903,22,71,0.7634408602150538
+jDMN: Core,com.gs.dmn.feel.lib.type.time.pure,TemporalTimeType,,,,92,3,0.031578947368421054,92,3,0.031578947368421054,95,0,0.0
+jDMN: Core,com.gs.dmn.runtime.discovery,DecisionDiscovery,,,,0,5,1.0,0,5,1.0,0,5,1.0
+jDMN: Core,com.gs.dmn.dialect,MixedJavaTimeDMNDialectDefinition,,,,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.dialect,PureJavaTimeDMNDialectDefinition,,,,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.dialect,DoubleMixedJavaTimeDMNDialectDefinition,,,,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.dialect,UniformJavaTimeDMNDialectDefinition,,,,0,4,1.0,0,4,1.0,4,0,0.0
+jDMN: Core,com.gs.dmn.dialect,StandardDMNDialectDefinition,,,,1,8,0.8888888888888888,1,8,0.8888888888888888,9,0,0.0
+jDMN: Core,com.gs.dmn.dialect,AbstractDMNDialectDefinition,,,,3,1,0.25,3,1,0.25,4,0,0.0
+jDMN: Core,com.gs.dmn.runtime.external,DefaultExternalFunctionExecutor,,,,7,4,0.36363636363636365,7,4,0.36363636363636365,11,0,0.0
+jDMN: Core,com.gs.dmn.feel.lib.type.string,DefaultStringType,,,,45,2,0.0425531914893617,45,2,0.0425531914893617,0,47,1.0
+jDMN: Core,com.gs.dmn.transformation.template,TreeTemplateProvider,,,,0,9,1.0,0,9,1.0,0,9,1.0
+jDMN: Core,com.gs.dmn.transformation.template,DagTemplateProvider,,,,0,9,1.0,0,9,1.0,0,9,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.scanner,ContextDependentFEELLexer,,,,191,32,0.14349775784753363,191,32,0.14349775784753363,154,69,0.3094170403587444
+jDMN: Core,com.gs.dmn.feel.analysis.scanner,LexicalContext,,,,24,0,0.0,24,0,0.0,2,22,0.9166666666666666
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.comparison,InExpression,,,,0,18,1.0,0,18,1.0,12,6,0.3333333333333333
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.comparison,Relational,,,,2,11,0.8461538461538461,2,11,0.8461538461538461,8,5,0.38461538461538464
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.comparison,Comparison,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.feel.analysis.syntax.ast.expression.comparison,BetweenExpression,,,,3,11,0.7857142857142857,3,11,0.7857142857142857,9,5,0.35714285714285715
+jDMN: Core,com.gs.dmn.transformation,CompositeDMNTransformer,,,,5,9,0.6428571428571429,5,9,0.6428571428571429,14,0,0.0
+jDMN: Core,com.gs.dmn.transformation,SimpleDMNTransformer,,,,0,1,1.0,0,1,1.0,0,1,1.0
+jDMN: Core,com.gs.dmn.transformation,NameMappings,n/a,n/a,Could not find file,5,2,0.2857142857142857,5,2,0.2857142857142857,0,7,1.0
+jDMN: Core,com.gs.dmn.transformation,NopDMNTransformer,,,,0,3,1.0,0,3,1.0,0,3,1.0
+jDMN: Core,com.gs.dmn.transformation,DMNToJavaTransformer,,,,125,2,0.015748031496062992,125,2,0.015748031496062992,127,0,0.0
+jDMN: Core,com.gs.dmn.transformation,AbstractDMNTransformer,,,,23,0,0.0,23,0,0.0,23,0,0.0
+jDMN: Core,com.gs.dmn.transformation,ToQuotedNameTransformer,,,,2,7,0.7777777777777778,1,8,0.8888888888888888,0,9,1.0
+jDMN: Core,com.gs.dmn.transformation,DMNTransformer,,,,1,0,0.0,1,0,0.0,1,0,0.0
+jDMN: Core,com.gs.dmn.transformation,ToSimpleNameTransformer,,,,56,9,0.13846153846153847,55,10,0.15384615384615385,34,31,0.47692307692307695
+jDMN: Core,com.gs.dmn.transformation,AbstractFileTransformer,,,,48,0,0.0,48,0,0.0,48,0,0.0
+jDMN: Core,com.gs.dmn.transformation,InputParamUtil,,,,3,6,0.6666666666666666,3,6,0.6666666666666666,2,7,0.7777777777777778
+jDMN: Core,com.gs.dmn.transformation,NameTransformer,,,,388,12,0.03,388,12,0.03,387,13,0.0325
+jDMN: Core,com.gs.dmn.transformation,AbstractTemplateBasedTransformer,,,,30,2,0.0625,30,2,0.0625,32,0,0.0
+jDMN: Maven Plugin,com.gs.dmn.maven.configuration,OptionallyConfigurableComponentConverter,,,,45,0,0.0,45,0,0.0,45,0,0.0
+jDMN: Maven Plugin,com.gs.dmn.maven.configuration,DMNMojoComponentConfigurator,,,,4,0,0.0,4,0,0.0,4,0,0.0
+jDMN: Maven Plugin,com.gs.dmn.maven.configuration,OptionallyConfigurableMojoComponent,,,,4,10,0.7142857142857143,4,10,0.7142857142857143,8,6,0.42857142857142855
+jDMN: Maven Plugin,com.gs.dmn.maven.configuration.components,DMNTransformerComponent,,,,0,7,1.0,0,7,1.0,4,3,0.42857142857142855
+jDMN: Maven Plugin,com.gs.dmn.maven,AbstractDMNMojo,,,,44,3,0.06382978723404255,44,3,0.06382978723404255,47,0,0.0
+jDMN: Maven Plugin,com.gs.dmn.maven,MavenBuildLogger,,,,11,0,0.0,11,0,0.0,0,11,1.0
+jDMN: Maven Plugin,com.gs.dmn.maven,TCKToJUnitMojo,,,,21,1,0.045454545454545456,21,1,0.045454545454545456,22,0,0.0
+jDMN: Maven Plugin,com.gs.dmn.maven,DMNToJavaMojo,,,,25,1,0.038461538461538464,25,1,0.038461538461538464,26,0,0.0
