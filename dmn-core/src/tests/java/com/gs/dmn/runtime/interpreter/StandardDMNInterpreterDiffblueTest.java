@@ -8,7 +8,6 @@ import com.gs.dmn.feel.analysis.semantics.type.AnyType;
 import com.gs.dmn.feel.analysis.semantics.type.Type;
 import com.gs.dmn.feel.analysis.syntax.ast.FEELContext;
 import com.gs.dmn.feel.lib.DefaultFEELLib;
-import com.gs.dmn.feel.lib.FEELLib;
 import com.gs.dmn.feel.synthesis.type.DoubleMixedJavaTimeFEELTypeTranslator;
 import com.gs.dmn.runtime.DMNRuntimeException;
 import com.gs.dmn.runtime.annotation.DRGElementKind;
@@ -220,16 +219,16 @@ public class StandardDMNInterpreterDiffblueTest {
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
     BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
         feelTypeTranslator, new NopLazyEvaluationDetector(), null);
+    DefaultFEELLib defaultFEELLib = new DefaultFEELLib();
 
     // Act
     StandardDMNInterpreter actualStandardDMNInterpreter = new StandardDMNInterpreter(basicDMN2JavaTransformer,
-        new DefaultFEELLib());
+        defaultFEELLib);
 
     // Assert
-    FEELLib expectedFeelLib = actualStandardDMNInterpreter.feelLib;
     BasicDMN2JavaTransformer actualBasicDMNTransformer = actualStandardDMNInterpreter.getBasicDMNTransformer();
     assertSame(basicDMN2JavaTransformer, actualBasicDMNTransformer);
-    assertSame(expectedFeelLib, actualStandardDMNInterpreter.getFeelLib());
+    assertSame(defaultFEELLib, actualStandardDMNInterpreter.getFeelLib());
   }
 }
 

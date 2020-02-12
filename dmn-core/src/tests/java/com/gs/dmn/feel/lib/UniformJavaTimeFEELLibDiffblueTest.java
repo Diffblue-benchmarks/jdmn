@@ -101,6 +101,12 @@ public class UniformJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void makeZonedDateTimeTest2() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).makeZonedDateTime(""));
+  }
+
+  @Test(timeout=10000)
   public void makeZonedDateTimeTest() {
     // Arrange, Act and Assert
     assertNull((new UniformJavaTimeFEELLib()).makeZonedDateTime("foo"));
@@ -137,9 +143,15 @@ public class UniformJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void numberTest2() {
+  public void numberTest10() {
     // Arrange, Act and Assert
     assertNull((new UniformJavaTimeFEELLib()).number("foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest9() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).number(""));
   }
 
   @Test(timeout=10000)
@@ -278,6 +290,12 @@ public class UniformJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void durationTest2() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).duration(""));
+  }
+
+  @Test(timeout=10000)
   public void durationTest() {
     // Arrange, Act and Assert
     assertNull((new UniformJavaTimeFEELLib()).duration("foo"));
@@ -361,9 +379,51 @@ public class UniformJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void numberTest() {
+  public void numberTest8() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).number("foo", ".", ","));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest7() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).number(".", ".", ","));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest6() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).number("foo", " ", ","));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest5() {
     // Arrange, Act and Assert
     assertNull((new UniformJavaTimeFEELLib()).number("foo", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest4() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).number(" ", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest3() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).number("foo", " ", "."));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest2() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).number("foo", ",", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest() {
+    // Arrange, Act and Assert
+    assertNull((new UniformJavaTimeFEELLib()).number("foo", " ", "foo"));
   }
 
   @Test(timeout=10000)

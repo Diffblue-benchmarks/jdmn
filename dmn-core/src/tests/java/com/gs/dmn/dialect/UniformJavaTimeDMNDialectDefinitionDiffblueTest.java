@@ -20,6 +20,13 @@ public class UniformJavaTimeDMNDialectDefinitionDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void constructorTest() {
+    // Arrange, Act and Assert
+    assertEquals("com.gs.dmn.runtime.UniformJavaTimeDMNBaseDecision",
+        (new UniformJavaTimeDMNDialectDefinition()).getDecisionBaseClass());
+  }
+
+  @Test(timeout=10000)
   public void createFEELLibTest() {
     // Arrange, Act and Assert
     assertTrue((new UniformJavaTimeDMNDialectDefinition())

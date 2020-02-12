@@ -2,14 +2,21 @@ package com.gs.dmn.runtime.interpreter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import java.util.List;
 import org.junit.Test;
 
 public class ImportPathDiffblueTest {
   @Test(timeout=10000)
-  public void isEmptyTest3() {
+  public void isEmptyTest4() {
     // Arrange, Act and Assert
     assertFalse(ImportPath.isEmpty("name"));
+  }
+
+  @Test(timeout=10000)
+  public void isEmptyTest3() {
+    // Arrange, Act and Assert
+    assertTrue(ImportPath.isEmpty(new ImportPath("")));
   }
 
   @Test(timeout=10000)

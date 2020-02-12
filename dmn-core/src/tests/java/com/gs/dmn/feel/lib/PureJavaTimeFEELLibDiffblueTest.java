@@ -106,7 +106,13 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void numberTest2() {
+  public void numberTest7() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).number(""));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest6() {
     // Arrange, Act and Assert
     assertNull((new PureJavaTimeFEELLib()).number("foo"));
   }
@@ -222,6 +228,12 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void durationTest2() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).duration(""));
+  }
+
+  @Test(timeout=10000)
   public void durationTest() {
     // Arrange, Act and Assert
     assertNull((new PureJavaTimeFEELLib()).duration("foo"));
@@ -246,9 +258,15 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void dateAndTimeTest() {
+  public void dateAndTimeTest2() {
     // Arrange, Act and Assert
     assertNull((new PureJavaTimeFEELLib()).dateAndTime("foo"));
+  }
+
+  @Test(timeout=10000)
+  public void dateAndTimeTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).dateAndTime(""));
   }
 
   @Test(timeout=10000)
@@ -292,7 +310,7 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void replaceTest2() {
+  public void replaceTest3() {
     // Arrange, Act and Assert
     assertNull((new PureJavaTimeFEELLib()).replace("foo", "foo", "foo", "foo"));
   }
@@ -329,9 +347,33 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void numberTest() {
+  public void numberTest5() {
     // Arrange, Act and Assert
     assertNull((new PureJavaTimeFEELLib()).number("foo", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest4() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).number("foo", " ", "."));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest3() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).number("foo", ".", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest2() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).number("foo", " ", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).number(" ", "foo", "foo"));
   }
 
   @Test(timeout=10000)
@@ -377,9 +419,15 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void replaceTest() {
+  public void replaceTest2() {
     // Arrange, Act and Assert
     assertEquals("foo", (new PureJavaTimeFEELLib()).replace("foo", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void replaceTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).replace("foo", "", "foo"));
   }
 
   @Test(timeout=10000)

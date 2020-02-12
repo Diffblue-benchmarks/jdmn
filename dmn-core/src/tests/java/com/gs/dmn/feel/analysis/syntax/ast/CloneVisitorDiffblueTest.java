@@ -67,7 +67,7 @@ public class CloneVisitorDiffblueTest {
   public ExpectedException thrown = ExpectedException.none();
 
   @Test(timeout=10000)
-  public void visitTest48() {
+  public void visitTest49() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     NegatedSimplePositiveUnaryTests element = new NegatedSimplePositiveUnaryTests(new SimplePositiveUnaryTests(null));
@@ -88,7 +88,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest47() {
+  public void visitTest48() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     PathExpression element = new PathExpression(new ExpressionList(), "foo");
@@ -110,7 +110,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest46() {
+  public void visitTest47() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     Iterator element = new Iterator("name", new ExpressionIteratorDomain(new ExpressionList()));
@@ -133,7 +133,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest45() {
+  public void visitTest46() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ListTest element = new ListTest(new ListLiteral(null));
@@ -153,7 +153,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest44() {
+  public void visitTest45() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     SimplePositiveUnaryTests element = new SimplePositiveUnaryTests(null);
@@ -168,7 +168,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest43() {
+  public void visitTest44() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList element = new ExpressionList();
@@ -183,7 +183,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest42() {
+  public void visitTest43() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ContextEntryKey element = new ContextEntryKey("foo");
@@ -193,7 +193,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest41() {
+  public void visitTest42() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     NamedTypeExpression namedTypeExpression = new NamedTypeExpression("name");
@@ -209,7 +209,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest40() {
+  public void visitTest41() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     Context element = new Context(null);
@@ -224,7 +224,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest39() {
+  public void visitTest40() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList function = new ExpressionList();
@@ -248,7 +248,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest38() {
+  public void visitTest39() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList leftOperand = new ExpressionList();
@@ -275,7 +275,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest37() {
+  public void visitTest38() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList start = new ExpressionList();
@@ -299,7 +299,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest36() {
+  public void visitTest37() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     NamedParameters element = new NamedParameters(null);
@@ -309,7 +309,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest35() {
+  public void visitTest36() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ListLiteral element = new ListLiteral(null);
@@ -324,7 +324,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest34() {
+  public void visitTest35() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     OperatorTest element = new OperatorTest("foo", new ExpressionList());
@@ -345,7 +345,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest33() {
+  public void visitTest34() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     NamedTypeExpression element = new NamedTypeExpression("name");
@@ -359,7 +359,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest32() {
+  public void visitTest33() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList condition = new ExpressionList();
@@ -391,7 +391,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest31() {
+  public void visitTest32() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ArithmeticNegation element = new ArithmeticNegation(new ExpressionList());
@@ -414,7 +414,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest30() {
+  public void visitTest31() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     FormalParameter formalParameter = new FormalParameter("name", new AnyType());
@@ -424,7 +424,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest29() {
+  public void visitTest30() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     Name element = new Name("name");
@@ -439,7 +439,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest28() {
+  public void visitTest29() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList leftOperand = new ExpressionList();
@@ -466,7 +466,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest27() {
+  public void visitTest28() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList value = new ExpressionList();
@@ -487,7 +487,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest26() {
+  public void visitTest27() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList leftOperand = new ExpressionList();
@@ -514,7 +514,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest25() {
+  public void visitTest26() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ContextTypeExpression element = new ContextTypeExpression(null);
@@ -526,7 +526,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest24() {
+  public void visitTest25() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ListTypeExpression element = new ListTypeExpression(new NamedTypeExpression("name"));
@@ -541,7 +541,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest23() {
+  public void visitTest24() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     Any any = new Any();
@@ -551,7 +551,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest22() {
+  public void visitTest23() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList value = new ExpressionList();
@@ -583,7 +583,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest21() {
+  public void visitTest22() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionTest element = new ExpressionTest(new ExpressionList());
@@ -603,7 +603,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest20() {
+  public void visitTest21() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionIteratorDomain element = new ExpressionIteratorDomain(new ExpressionList());
@@ -621,7 +621,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest19() {
+  public void visitTest20() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     BooleanLiteral element = new BooleanLiteral("value");
@@ -633,7 +633,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest18() {
+  public void visitTest19() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList leftOperand = new ExpressionList();
@@ -660,7 +660,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest17() {
+  public void visitTest18() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     NullTest nullTest = new NullTest();
@@ -670,7 +670,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest16() {
+  public void visitTest17() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     PositiveUnaryTests element = new PositiveUnaryTests(null);
@@ -685,7 +685,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest15() {
+  public void visitTest16() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     NullLiteral element = new NullLiteral();
@@ -696,7 +696,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest14() {
+  public void visitTest15() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     PositionalParameters element = new PositionalParameters(null);
@@ -706,7 +706,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest13() {
+  public void visitTest14() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ContextEntryKey key = new ContextEntryKey("foo");
@@ -728,7 +728,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest12() {
+  public void visitTest13() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList leftOperand = new ExpressionList();
@@ -755,7 +755,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest11() {
+  public void visitTest12() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList leftOperand = new ExpressionList();
@@ -782,7 +782,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest10() {
+  public void visitTest11() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     QualifiedName element = new QualifiedName(null);
@@ -793,7 +793,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest9() {
+  public void visitTest10() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList source = new ExpressionList();
@@ -819,7 +819,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest8() {
+  public void visitTest9() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     NumericLiteral element = new NumericLiteral("value");
@@ -831,7 +831,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest7() {
+  public void visitTest8() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     DateTimeLiteral element = new DateTimeLiteral("foo", "foo");
@@ -846,7 +846,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest6() {
+  public void visitTest7() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     FunctionDefinition functionDefinition = new FunctionDefinition(null, new ExpressionList(), true);
@@ -856,7 +856,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest5() {
+  public void visitTest6() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList leftOperand = new ExpressionList();
@@ -882,7 +882,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest4() {
+  public void visitTest5() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     LogicNegation element = new LogicNegation(new ExpressionList());
@@ -905,7 +905,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest3() {
+  public void visitTest4() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     StringLiteral element = new StringLiteral("value");
@@ -917,7 +917,7 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest2() {
+  public void visitTest3() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     NegatedPositiveUnaryTests element = new NegatedPositiveUnaryTests(new PositiveUnaryTests(null));
@@ -937,11 +937,40 @@ public class CloneVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest() {
+  public void visitTest2() {
     // Arrange
     CloneVisitor cloneVisitor = new CloneVisitor();
     ExpressionList start = new ExpressionList();
     RangeTest element = new RangeTest(true, start, true, new ExpressionList());
+
+    // Act
+    Object actualVisitResult = cloneVisitor.visit(element, FEELContext.makeContext(null));
+
+    // Assert
+    Type type = ((RangeTest) actualVisitResult).getType();
+    String actualToStringResult = actualVisitResult.toString();
+    boolean actualIsOpenStartResult = ((RangeTest) actualVisitResult).isOpenStart();
+    Expression start1 = ((RangeTest) actualVisitResult).getStart();
+    Expression end = ((RangeTest) actualVisitResult).getEnd();
+    assertTrue(type instanceof AnyType);
+    assertTrue(((RangeTest) actualVisitResult).isOpenEnd());
+    assertEquals("IntervalTest(true,ExpressionList(),true,ExpressionList" + "())", actualToStringResult);
+    Type actualType = end.getType();
+    String actualToStringResult1 = end.toString();
+    assertTrue(actualIsOpenStartResult);
+    Type actualType1 = start1.getType();
+    assertEquals("ExpressionList()", actualToStringResult1);
+    assertEquals("ExpressionList()", start1.toString());
+    assertSame(type, actualType1);
+    assertSame(type, actualType);
+  }
+
+  @Test(timeout=10000)
+  public void visitTest() {
+    // Arrange
+    CloneVisitor cloneVisitor = new CloneVisitor();
+    ExpressionList start = new ExpressionList();
+    RangeTest element = new RangeTest(false, start, true, new ExpressionList());
 
     // Act
     Object actualVisitResult = cloneVisitor.visit(element, FEELContext.makeContext(null));

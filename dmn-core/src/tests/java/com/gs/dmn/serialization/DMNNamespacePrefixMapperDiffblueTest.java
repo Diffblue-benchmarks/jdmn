@@ -22,7 +22,7 @@ public class DMNNamespacePrefixMapperDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void constructorTest2() {
+  public void constructorTest3() {
     // Arrange and Act
     DMNNamespacePrefixMapper actualDmnNamespacePrefixMapper = new DMNNamespacePrefixMapper();
 
@@ -50,6 +50,19 @@ public class DMNNamespacePrefixMapperDiffblueTest {
   public void getUserPrefixTest() {
     // Arrange, Act and Assert
     assertNull((new DMNNamespacePrefixMapper()).getUserPrefix());
+  }
+
+  @Test(timeout=10000)
+  public void constructorTest2() {
+    // Arrange and Act
+    DMNNamespacePrefixMapper actualDmnNamespacePrefixMapper = new DMNNamespacePrefixMapper("", "foo");
+
+    // Assert
+    String actualUserPrefix = actualDmnNamespacePrefixMapper.getUserPrefix();
+    String[] preDeclaredNamespaceUris = actualDmnNamespacePrefixMapper.getPreDeclaredNamespaceUris();
+    assertEquals("foo", actualUserPrefix);
+    assertEquals("", actualDmnNamespacePrefixMapper.getUserNamespace());
+    assertEquals(6, preDeclaredNamespaceUris.length);
   }
 
   @Test(timeout=10000)

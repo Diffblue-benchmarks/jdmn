@@ -120,6 +120,12 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void dateAndTimeTest4() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).dateAndTime(""));
+  }
+
+  @Test(timeout=10000)
   public void dateAndTimeTest3() {
     // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).dateAndTime("foo"));
@@ -139,9 +145,15 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void numberTest2() {
+  public void numberTest9() {
     // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).number("foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest8() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).number(""));
   }
 
   @Test(timeout=10000)
@@ -292,9 +304,15 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void durationTest() {
+  public void durationTest2() {
     // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).duration("foo"));
+  }
+
+  @Test(timeout=10000)
+  public void durationTest() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).duration(""));
   }
 
   @Test(timeout=10000)
@@ -350,7 +368,7 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void replaceTest2() {
+  public void replaceTest3() {
     // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).replace("foo", "foo", "foo", "foo"));
   }
@@ -387,9 +405,45 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void numberTest() {
+  public void numberTest7() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).number(".", ".", ","));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest6() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).number("foo", ".", ","));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest5() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).number("foo", " ", ","));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest4() {
     // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).number("foo", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest3() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).number(" ", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest2() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).number("foo", " ", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).number("foo", " ", "."));
   }
 
   @Test(timeout=10000)
@@ -456,6 +510,12 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   public void orTest() {
     // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).or("foo", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void replaceTest2() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).replace("foo", "", "foo"));
   }
 
   @Test(timeout=10000)

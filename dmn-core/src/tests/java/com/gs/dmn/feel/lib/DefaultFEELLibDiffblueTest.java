@@ -106,7 +106,13 @@ public class DefaultFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void numberTest2() {
+  public void numberTest7() {
+    // Arrange, Act and Assert
+    assertNull((new DefaultFEELLib()).number(""));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest6() {
     // Arrange, Act and Assert
     assertNull((new DefaultFEELLib()).number("foo"));
   }
@@ -211,9 +217,15 @@ public class DefaultFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void dateTest2() {
+  public void dateTest3() {
     // Arrange, Act and Assert
     assertNull((new DefaultFEELLib()).date("foo"));
+  }
+
+  @Test(timeout=10000)
+  public void dateTest2() {
+    // Arrange, Act and Assert
+    assertNull((new DefaultFEELLib()).date(""));
   }
 
   @Test(timeout=10000)
@@ -232,6 +244,12 @@ public class DefaultFEELLibDiffblueTest {
   public void sqrtTest() {
     // Arrange, Act and Assert
     assertNull((new DefaultFEELLib()).sqrt(null));
+  }
+
+  @Test(timeout=10000)
+  public void durationTest2() {
+    // Arrange, Act and Assert
+    assertNull((new DefaultFEELLib()).duration(""));
   }
 
   @Test(timeout=10000)
@@ -273,7 +291,7 @@ public class DefaultFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void replaceTest2() {
+  public void replaceTest3() {
     // Arrange, Act and Assert
     assertNull((new DefaultFEELLib()).replace("foo", "foo", "foo", "foo"));
   }
@@ -316,9 +334,33 @@ public class DefaultFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void numberTest() {
+  public void numberTest5() {
+    // Arrange, Act and Assert
+    assertNull((new DefaultFEELLib()).number(" ", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest4() {
+    // Arrange, Act and Assert
+    assertNull((new DefaultFEELLib()).number("foo", " ", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest3() {
     // Arrange, Act and Assert
     assertNull((new DefaultFEELLib()).number("foo", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest2() {
+    // Arrange, Act and Assert
+    assertNull((new DefaultFEELLib()).number("foo", ".", "."));
+  }
+
+  @Test(timeout=10000)
+  public void numberTest() {
+    // Arrange, Act and Assert
+    assertNull((new DefaultFEELLib()).number("foo", " ", "."));
   }
 
   @Test(timeout=10000)
@@ -364,9 +406,15 @@ public class DefaultFEELLibDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void replaceTest() {
+  public void replaceTest2() {
     // Arrange, Act and Assert
     assertEquals("foo", (new DefaultFEELLib()).replace("foo", "foo", "foo"));
+  }
+
+  @Test(timeout=10000)
+  public void replaceTest() {
+    // Arrange, Act and Assert
+    assertNull((new DefaultFEELLib()).replace("foo", "", "foo"));
   }
 
   @Test(timeout=10000)

@@ -25,8 +25,12 @@ public class DoubleUtilDiffblueTest {
 
   @Test(timeout=10000)
   public void evenTest() {
-    // Arrange, Act and Assert
-    assertEquals(Boolean.valueOf(true), DoubleUtil.even(Double.valueOf(10.0)));
+    // Arrange
+    Boolean actualEvenResult = DoubleUtil.even(Double.valueOf(10.0));
+
+    // Act and Assert
+    assertEquals(Boolean.valueOf(true), actualEvenResult);
+    assertNull(DoubleUtil.even(Double.valueOf(0.5)));
   }
 
   @Test(timeout=10000)
@@ -109,8 +113,12 @@ public class DoubleUtilDiffblueTest {
 
   @Test(timeout=10000)
   public void oddTest() {
-    // Arrange, Act and Assert
-    assertEquals(Boolean.valueOf(false), DoubleUtil.odd(Double.valueOf(10.0)));
+    // Arrange
+    Boolean actualOddResult = DoubleUtil.odd(Double.valueOf(10.0));
+
+    // Act and Assert
+    assertEquals(Boolean.valueOf(false), actualOddResult);
+    assertNull(DoubleUtil.odd(Double.valueOf(0.5)));
   }
 
   @Test(timeout=10000)

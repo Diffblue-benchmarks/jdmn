@@ -2,6 +2,7 @@ package com.gs.dmn.feel.lib;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import java.util.List;
 import javax.xml.xpath.XPathExpressionException;
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,8 +27,12 @@ public class StringUtilDiffblueTest {
 
   @Test(timeout=10000)
   public void substringBeforeTest() {
-    // Arrange, Act and Assert
-    assertEquals("", StringUtil.substringBefore("foo", "foo"));
+    // Arrange
+    String actualSubstringBeforeResult = StringUtil.substringBefore("foo", "foo");
+
+    // Act and Assert
+    assertEquals("", actualSubstringBeforeResult);
+    assertEquals("", StringUtil.substringBefore("", "foo"));
   }
 
   @Test(timeout=10000)
@@ -44,8 +49,12 @@ public class StringUtilDiffblueTest {
 
   @Test(timeout=10000)
   public void substringAfterTest() {
-    // Arrange, Act and Assert
-    assertEquals("", StringUtil.substringAfter("foo", "foo"));
+    // Arrange
+    String actualSubstringAfterResult = StringUtil.substringAfter("foo", "foo");
+
+    // Act and Assert
+    assertEquals("", actualSubstringAfterResult);
+    assertEquals("", StringUtil.substringAfter("", "foo"));
   }
 
   @Test(timeout=10000)
@@ -68,9 +77,20 @@ public class StringUtilDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void stripQuotesTest() {
+  public void stripQuotesTest2() {
     // Arrange, Act and Assert
-    assertEquals("value", StringUtil.stripQuotes("value"));
+    thrown.expect(StringIndexOutOfBoundsException.class);
+    StringUtil.stripQuotes("\"");
+  }
+
+  @Test(timeout=10000)
+  public void stripQuotesTest() {
+    // Arrange
+    String actualStripQuotesResult = StringUtil.stripQuotes("value");
+
+    // Act and Assert
+    assertEquals("value", actualStripQuotesResult);
+    assertEquals("", StringUtil.stripQuotes(""));
   }
 
   @Test(timeout=10000)
@@ -93,8 +113,15 @@ public class StringUtilDiffblueTest {
 
   @Test(timeout=10000)
   public void splitTest() {
-    // Arrange, Act and Assert
-    assertEquals(2, StringUtil.split("foo", "foo").size());
+    // Arrange
+    List splitResult = StringUtil.split("foo", "foo");
+
+    // Act
+    List actualSplitResult = StringUtil.split("", "foo");
+
+    // Assert
+    assertEquals(2, splitResult.size());
+    assertNull(actualSplitResult);
   }
 }
 

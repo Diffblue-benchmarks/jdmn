@@ -37,13 +37,40 @@ public class JavaxToolsCompilerDiffblueTest {
         "name");
   }
   @Test(timeout=10000)
-  public void compileTest() throws Exception {
+  public void compileTest4() throws Exception {
     // Arrange
     JavaxToolsCompiler javaxToolsCompiler = new JavaxToolsCompiler();
 
     // Act and Assert
     thrown.expect(DMNRuntimeException.class);
     javaxToolsCompiler.compile(new JavaxToolsClassData("name", "name", "foo"));
+  }
+  @Test(timeout=10000)
+  public void compileTest3() throws Exception {
+    // Arrange
+    JavaxToolsCompiler javaxToolsCompiler = new JavaxToolsCompiler();
+
+    // Act and Assert
+    thrown.expect(DMNRuntimeException.class);
+    javaxToolsCompiler.compile(new JavaxToolsClassData("", "name", "foo"));
+  }
+  @Test(timeout=10000)
+  public void compileTest2() throws Exception {
+    // Arrange
+    JavaxToolsCompiler javaxToolsCompiler = new JavaxToolsCompiler();
+
+    // Act and Assert
+    thrown.expect(ClassNotFoundException.class);
+    javaxToolsCompiler.compile(new JavaxToolsClassData("name", "name", ""));
+  }
+  @Test(timeout=10000)
+  public void compileTest() throws Exception {
+    // Arrange
+    JavaxToolsCompiler javaxToolsCompiler = new JavaxToolsCompiler();
+
+    // Act and Assert
+    thrown.expect(DMNRuntimeException.class);
+    javaxToolsCompiler.compile(new JavaxToolsClassData("name", "name", "-d"));
   }
 }
 

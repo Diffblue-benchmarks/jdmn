@@ -19,6 +19,12 @@ public class ToSimpleNameTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void transformNameTest2() {
+    // Arrange, Act and Assert
+    assertEquals("", (new ToSimpleNameTransformer()).transformName(""));
+  }
+
+  @Test(timeout=10000)
   public void transformNameTest() {
     // Arrange, Act and Assert
     assertEquals("name", (new ToSimpleNameTransformer()).transformName("name"));

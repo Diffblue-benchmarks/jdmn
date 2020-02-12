@@ -58,6 +58,17 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void qualifiedNameTest2() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertEquals("name", (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator,
+        new NopLazyEvaluationDetector(), null)).qualifiedName("", "name"));
+  }
+
+  @Test(timeout=10000)
   public void qualifiedNameTest() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
@@ -106,7 +117,7 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void drgElementDefaultArgumentsExtraTest() {
+  public void drgElementDefaultArgumentsExtraTest2() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -117,6 +128,34 @@ public class BasicDMN2JavaTransformerDiffblueTest {
             + ".DefaultExternalFunctionExecutor()",
         (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator, new NopLazyEvaluationDetector(),
             null)).drgElementDefaultArgumentsExtra("foo"));
+  }
+
+  @Test(timeout=10000)
+  public void drgElementDefaultArgumentsExtraTest() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertEquals(
+        "new com.gs.dmn.runtime.listener.LoggingEventListener" + "(LOGGER), new com.gs.dmn.runtime.external"
+            + ".DefaultExternalFunctionExecutor()",
+        (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator, new NopLazyEvaluationDetector(),
+            null)).drgElementDefaultArgumentsExtra(""));
+  }
+
+  @Test(timeout=10000)
+  public void drgElementSignatureExtraTest2() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertEquals(
+        "com.gs.dmn.runtime.listener.EventListener eventListener_,"
+            + " com.gs.dmn.runtime.external.ExternalFunctionExecutor" + " externalExecutor_",
+        (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator, new NopLazyEvaluationDetector(),
+            null)).drgElementSignatureExtra(""));
   }
 
   @Test(timeout=10000)
@@ -159,7 +198,7 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void toFEELTypeTest3() {
+  public void toFEELTypeTest4() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -405,7 +444,20 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void convertToItemDefinitionTypeTest() {
+  public void convertToItemDefinitionTypeTest3() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
+
+    // Act and Assert
+    assertEquals("type.ToS.toToS(foo)",
+        basicDMN2JavaTransformer.convertToItemDefinitionType("foo", new ItemDefinitionType("to%s")));
+  }
+
+  @Test(timeout=10000)
+  public void convertToItemDefinitionTypeTest2() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -415,6 +467,19 @@ public class BasicDMN2JavaTransformerDiffblueTest {
     // Act and Assert
     assertEquals("type.Name.toName(foo)",
         basicDMN2JavaTransformer.convertToItemDefinitionType("foo", new ItemDefinitionType("name")));
+  }
+
+  @Test(timeout=10000)
+  public void convertToItemDefinitionTypeTest() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
+
+    // Act and Assert
+    assertEquals("type..to(foo)",
+        basicDMN2JavaTransformer.convertToItemDefinitionType("foo", new ItemDefinitionType(".")));
   }
 
   @Test(timeout=10000)
@@ -517,6 +582,17 @@ public class BasicDMN2JavaTransformerDiffblueTest {
     // Act and Assert
     assertEquals("com.gs.dmn.runtime.annotation.AnnotationSet" + " annotationSet_",
         basicDMN2JavaTransformer.ruleSignature(new TDecision()));
+  }
+
+  @Test(timeout=10000)
+  public void toFEELTypeTest3() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertNull((new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator,
+        new NopLazyEvaluationDetector(), null)).toFEELType(""));
   }
 
   @Test(timeout=10000)
@@ -758,6 +834,17 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void augmentArgumentListTest2() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertEquals("annotationSet_", (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator,
+        new NopLazyEvaluationDetector(), null)).augmentArgumentList(""));
+  }
+
+  @Test(timeout=10000)
   public void augmentArgumentListTest() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
@@ -858,7 +945,7 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void augmentSignatureTest() {
+  public void augmentSignatureTest2() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -867,6 +954,18 @@ public class BasicDMN2JavaTransformerDiffblueTest {
     assertEquals("foo, com.gs.dmn.runtime.annotation.AnnotationSet" + " annotationSet_",
         (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator, new NopLazyEvaluationDetector(),
             null)).augmentSignature("foo"));
+  }
+
+  @Test(timeout=10000)
+  public void augmentSignatureTest() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertEquals("com.gs.dmn.runtime.annotation.AnnotationSet" + " annotationSet_",
+        (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator, new NopLazyEvaluationDetector(),
+            null)).augmentSignature(""));
   }
 
   @Test(timeout=10000)
@@ -908,14 +1007,15 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   public void constructorTest2() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
-    DoubleMixedJavaTimeFEELTypeTranslator doubleMixedJavaTimeFEELTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
 
     // Act
     BasicDMN2JavaTransformer actualBasicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
-        doubleMixedJavaTimeFEELTypeTranslator, new NopLazyEvaluationDetector(), null);
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
 
     // Assert
     FEELTranslator expectedFEELTranslator = actualBasicDMN2JavaTransformer.feelTranslator;
+    FEELTypeTranslator expectedFEELTypeTranslator = actualBasicDMN2JavaTransformer.feelTypeTranslator;
     DMNModelRepository actualDMNModelRepository = actualBasicDMN2JavaTransformer.getDMNModelRepository();
     FEELTranslator actualFEELTranslator = actualBasicDMN2JavaTransformer.getFEELTranslator();
     FEELTypeTranslator actualFEELTypeTranslator = actualBasicDMN2JavaTransformer.getFEELTypeTranslator();
@@ -924,7 +1024,7 @@ public class BasicDMN2JavaTransformerDiffblueTest {
     assertNull(actualBasicDMN2JavaTransformer.getEnvironmentFactory());
     assertSame(expectedFEELTranslator, actualFEELTranslator);
     assertFalse(actualIsCachingResult);
-    assertSame(doubleMixedJavaTimeFEELTypeTranslator, actualFEELTypeTranslator);
+    assertSame(expectedFEELTypeTranslator, actualFEELTypeTranslator);
   }
 
   @Test(timeout=10000)
@@ -1010,7 +1110,7 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void javaFriendlyVariableNameTest() {
+  public void javaFriendlyVariableNameTest4() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -1018,6 +1118,41 @@ public class BasicDMN2JavaTransformerDiffblueTest {
     // Act and Assert
     assertEquals("name", (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator,
         new NopLazyEvaluationDetector(), null)).javaFriendlyVariableName("name"));
+  }
+
+  @Test(timeout=10000)
+  public void javaFriendlyVariableNameTest3() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    thrown.expect(DMNRuntimeException.class);
+    (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator, new NopLazyEvaluationDetector(), null))
+        .javaFriendlyVariableName("");
+  }
+
+  @Test(timeout=10000)
+  public void javaFriendlyVariableNameTest2() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertEquals("", (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator,
+        new NopLazyEvaluationDetector(), null)).javaFriendlyVariableName("\\."));
+  }
+
+  @Test(timeout=10000)
+  public void javaFriendlyVariableNameTest() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertEquals("cannotBuildVariableNameFromEmptyString",
+        (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator, new NopLazyEvaluationDetector(),
+            null)).javaFriendlyVariableName("Cannot build variable name from empty string"));
   }
 
   @Test(timeout=10000)
@@ -1198,10 +1333,11 @@ public class BasicDMN2JavaTransformerDiffblueTest {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
 
     // Act and Assert
-    assertSame(dmnModelRepository, (new BasicDMN2JavaTransformer(dmnModelRepository, null, feelTypeTranslator,
-        new NopLazyEvaluationDetector(), null)).getDMNModelRepository());
+    assertSame(basicDMN2JavaTransformer.dmnModelRepository, basicDMN2JavaTransformer.getDMNModelRepository());
   }
 
   @Test(timeout=10000)
@@ -1512,6 +1648,19 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
+  public void convertTypeTest2() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
+    AnyType anyType = new AnyType();
+
+    // Act and Assert
+    assertSame(anyType, basicDMN2JavaTransformer.convertType(anyType, false));
+  }
+
+  @Test(timeout=10000)
   public void convertTypeTest() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
@@ -1596,11 +1745,12 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   public void getFEELTypeTranslatorTest() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
-    DoubleMixedJavaTimeFEELTypeTranslator doubleMixedJavaTimeFEELTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
 
     // Act and Assert
-    assertSame(doubleMixedJavaTimeFEELTypeTranslator, (new BasicDMN2JavaTransformer(dmnModelRepository, null,
-        doubleMixedJavaTimeFEELTypeTranslator, new NopLazyEvaluationDetector(), null)).getFEELTypeTranslator());
+    assertSame(basicDMN2JavaTransformer.feelTypeTranslator, basicDMN2JavaTransformer.getFEELTypeTranslator());
   }
 
   @Test(timeout=10000)
@@ -1720,6 +1870,17 @@ public class BasicDMN2JavaTransformerDiffblueTest {
     // Act and Assert
     thrown.expect(DMNRuntimeException.class);
     basicDMN2JavaTransformer.drgElementEvaluateSignature(new TDRGElement());
+  }
+
+  @Test(timeout=10000)
+  public void drgElementArgumentsExtraTest2() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+
+    // Act and Assert
+    assertEquals("eventListener_, externalExecutor_", (new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null)).drgElementArgumentsExtra(""));
   }
 
   @Test(timeout=10000)
@@ -1967,7 +2128,7 @@ public class BasicDMN2JavaTransformerDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void applyMethodTest() {
+  public void applyMethodTest4() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -1983,6 +2144,59 @@ public class BasicDMN2JavaTransformerDiffblueTest {
         basicDMN2JavaTransformer.applyMethod(
             new BuiltinFunctionType(anyType, parameter, new Parameter("name", new AnyType()), parameter), "foo", true,
             "name"));
+  }
+
+  @Test(timeout=10000)
+  public void applyMethodTest3() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
+    AnyType anyType = new AnyType();
+    Parameter parameter = new Parameter("name", anyType);
+
+    // Act and Assert
+    assertEquals(
+        "public Object apply(foo) {Object name =" + " (Object)args[0]; Object SSSArgsS = (Object)args[1];"
+            + " Object name = (Object)args[2];return %s %s =" + " (%s)args[%s];;}",
+        basicDMN2JavaTransformer.applyMethod(new BuiltinFunctionType(anyType, parameter,
+            new Parameter("%s %s = (%s)args[%s];", new AnyType()), parameter), "foo", true, "%s %s = (%s)args[%s];"));
+  }
+
+  @Test(timeout=10000)
+  public void applyMethodTest2() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
+    AnyType anyType = new AnyType();
+    Parameter parameter = new Parameter("name", anyType);
+
+    // Act and Assert
+    thrown.expect(DMNRuntimeException.class);
+    basicDMN2JavaTransformer.applyMethod(
+        new BuiltinFunctionType(anyType, parameter, new Parameter(" ", new AnyType()), parameter), "foo", true, " ");
+  }
+
+  @Test(timeout=10000)
+  public void applyMethodTest() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    BasicDMN2JavaTransformer basicDMN2JavaTransformer = new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null);
+    AnyType anyType = new AnyType();
+    Parameter parameter = new Parameter("name", anyType);
+
+    // Act and Assert
+    assertEquals(
+        "public Object apply(foo) {Object name = (Object)args[0];" + " Object  = (Object)args[1]; Object name ="
+            + " (Object)args[2];return \\.;}",
+        basicDMN2JavaTransformer.applyMethod(
+            new BuiltinFunctionType(anyType, parameter, new Parameter("\\.", new AnyType()), parameter), "foo", true,
+            "\\."));
   }
 
   @Test(timeout=10000)

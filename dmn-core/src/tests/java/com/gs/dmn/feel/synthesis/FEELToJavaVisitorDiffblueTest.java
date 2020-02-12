@@ -64,7 +64,7 @@ public class FEELToJavaVisitorDiffblueTest {
   public ExpectedException thrown = ExpectedException.none();
 
   @Test(timeout=10000)
-  public void visitTest43() {
+  public void visitTest44() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -77,7 +77,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest42() {
+  public void visitTest43() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -91,7 +91,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest41() {
+  public void visitTest42() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -105,7 +105,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest40() {
+  public void visitTest41() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -119,7 +119,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest39() {
+  public void visitTest40() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -132,7 +132,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest38() {
+  public void visitTest39() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -146,7 +146,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest37() {
+  public void visitTest38() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -159,7 +159,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest36() {
+  public void visitTest37() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -173,7 +173,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest35() {
+  public void visitTest36() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -186,7 +186,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest34() {
+  public void visitTest35() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -201,7 +201,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest33() {
+  public void visitTest34() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -216,7 +216,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest32() {
+  public void visitTest33() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -231,7 +231,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest31() {
+  public void visitTest32() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -246,7 +246,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest30() {
+  public void visitTest31() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -259,7 +259,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest29() {
+  public void visitTest30() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -273,7 +273,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest28() {
+  public void visitTest29() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -289,7 +289,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest27() {
+  public void visitTest28() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -303,7 +303,7 @@ public class FEELToJavaVisitorDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void visitTest26() {
+  public void visitTest27() {
     // Arrange
     DMNModelRepository dmnModelRepository = new DMNModelRepository();
     DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
@@ -313,6 +313,20 @@ public class FEELToJavaVisitorDiffblueTest {
 
     // Act and Assert
     thrown.expect(UnsupportedOperationException.class);
+    feelToJavaVisitor.visit(element, FEELContext.makeContext(null));
+  }
+
+  @Test(timeout=10000)
+  public void visitTest26() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    FEELToJavaVisitor feelToJavaVisitor = new FEELToJavaVisitor(new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null));
+    Name element = new Name("?");
+
+    // Act and Assert
+    thrown.expect(NullPointerException.class);
     feelToJavaVisitor.visit(element, FEELContext.makeContext(null));
   }
 
@@ -383,6 +397,19 @@ public class FEELToJavaVisitorDiffblueTest {
     // Act and Assert
     thrown.expect(UnsupportedOperationException.class);
     feelToJavaVisitor.visit(element, FEELContext.makeContext(null));
+  }
+
+  @Test(timeout=10000)
+  public void nameToJavaTest2() {
+    // Arrange
+    DMNModelRepository dmnModelRepository = new DMNModelRepository();
+    DoubleMixedJavaTimeFEELTypeTranslator feelTypeTranslator = new DoubleMixedJavaTimeFEELTypeTranslator();
+    FEELToJavaVisitor feelToJavaVisitor = new FEELToJavaVisitor(new BasicDMN2JavaTransformer(dmnModelRepository, null,
+        feelTypeTranslator, new NopLazyEvaluationDetector(), null));
+
+    // Act and Assert
+    thrown.expect(NullPointerException.class);
+    feelToJavaVisitor.nameToJava("?", FEELContext.makeContext(null));
   }
 
   @Test(timeout=10000)

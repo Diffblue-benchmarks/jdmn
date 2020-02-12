@@ -43,10 +43,17 @@ public class DateTimeLiteralDiffblueTest {
   }
 
   @Test(timeout=10000)
-  public void deriveTypeTest() {
+  public void deriveTypeTest2() {
     // Arrange, Act and Assert
     thrown.expect(SemanticError.class);
     (new DateTimeLiteral("foo", "foo")).deriveType(null);
+  }
+
+  @Test(timeout=10000)
+  public void deriveTypeTest() {
+    // Arrange, Act and Assert
+    thrown.expect(SemanticError.class);
+    (new DateTimeLiteral("duration", "foo")).deriveType(null);
   }
 
   @Test(timeout=10000)
