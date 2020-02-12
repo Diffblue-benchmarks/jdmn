@@ -1,653 +1,373 @@
 package com.gs.dmn;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsSame.sameInstance;
 import static org.junit.Assert.assertTrue;
-import com.gs.dmn.runtime.DMNRuntimeException;
+
+import com.gs.dmn.runtime.Pair;
 import com.gs.dmn.serialization.PrefixNamespaceMappings;
 import com.gs.dmn.transformation.basic.QualifiedName;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-import org.junit.Rule;
+
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
-import org.omg.spec.dmn._20180521.model.TBusinessKnowledgeModel;
 import org.omg.spec.dmn._20180521.model.TDMNElement;
 import org.omg.spec.dmn._20180521.model.TDRGElement;
 import org.omg.spec.dmn._20180521.model.TDecision;
-import org.omg.spec.dmn._20180521.model.TDecisionService;
 import org.omg.spec.dmn._20180521.model.TDecisionTable;
 import org.omg.spec.dmn._20180521.model.TDefinitions;
 import org.omg.spec.dmn._20180521.model.THitPolicy;
-import org.omg.spec.dmn._20180521.model.TInputData;
+import org.omg.spec.dmn._20180521.model.TInformationRequirement;
 import org.omg.spec.dmn._20180521.model.TItemDefinition;
 import org.omg.spec.dmn._20180521.model.TNamedElement;
 
+/**
+ * Unit tests for com.gs.dmn.DMNModelRepository
+ *
+ * @author Diffblue JCover
+ */
+
 public class DMNModelRepositoryDiffblueTest {
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
-
-  @Test(timeout=10000)
-  public void isMultipleHitTest() {
-    // Arrange, Act and Assert
-    assertFalse((new DMNModelRepository()).isMultipleHit(THitPolicy.UNIQUE));
-  }
-
-  @Test(timeout=10000)
-  public void isEmptyTest() {
-    // Arrange, Act and Assert
-    assertTrue((new DMNModelRepository()).isEmpty(null));
-  }
-
-  @Test(timeout=10000)
-  public void findDRGElementByNameTest() {
-    // Arrange, Act and Assert
-    thrown.expect(DMNRuntimeException.class);
-    (new DMNModelRepository()).findDRGElementByName("name");
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest4() {
-    // Arrange and Act
-    DMNModelRepository actualDmnModelRepository = new DMNModelRepository(new TDefinitions());
-
-    // Assert
-    PrefixNamespaceMappings expectedPrefixNamespaceMappings = actualDmnModelRepository.prefixNamespaceMappings;
-    List<TDefinitions> expectedAllDefinitions = actualDmnModelRepository.allDefinitions;
-    TDefinitions expectedRootDefinitions = actualDmnModelRepository.rootDefinitions;
-    List<TDefinitions> actualAllDefinitions = actualDmnModelRepository.getAllDefinitions();
-    TDefinitions actualRootDefinitions = actualDmnModelRepository.getRootDefinitions();
-    assertSame(expectedAllDefinitions, actualAllDefinitions);
-    assertSame(expectedPrefixNamespaceMappings, actualDmnModelRepository.getPrefixNamespaceMappings());
-    assertSame(expectedRootDefinitions, actualRootDefinitions);
-  }
-
-  @Test(timeout=10000)
-  public void getRootDefinitionsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertSame(dmnModelRepository.rootDefinitions, dmnModelRepository.getRootDefinitions());
-  }
-
-  @Test(timeout=10000)
-  public void findChildDefinitionsTest2() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertNull(dmnModelRepository.findChildDefinitions(new TDRGElement(), "foo"));
-  }
-
-  @Test(timeout=10000)
-  public void findChildDefinitionsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    thrown.expect(StringIndexOutOfBoundsException.class);
-    dmnModelRepository.findChildDefinitions(new TDRGElement(), "http://");
-  }
-
-  @Test(timeout=10000)
-  public void isInvocationExpressionTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    thrown.expect(UnsupportedOperationException.class);
-    dmnModelRepository.isInvocationExpression(new TDRGElement());
-  }
-
-  @Test(timeout=10000)
-  public void directDRGElementsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.directDRGElements(new TDRGElement()).size());
-  }
-
-  @Test(timeout=10000)
-  public void allInputDatasTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.allInputDatas(new TDRGElement()).size());
-  }
-
-  @Test(timeout=10000)
-  public void lookupItemDefinitionTest3() {
-    // Arrange, Act and Assert
-    assertNull((new DMNModelRepository()).lookupItemDefinition("name"));
-  }
-
-  @Test(timeout=10000)
-  public void decisionsTest2() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.decisions(new TDefinitions()).size());
-  }
-
-  @Test(timeout=10000)
-  public void hasAggregatorTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertFalse(dmnModelRepository.hasAggregator(new TDecisionTable()));
-  }
-
-  @Test(timeout=10000)
-  public void removeSingleQuotesTest2() {
-    // Arrange, Act and Assert
-    thrown.expect(StringIndexOutOfBoundsException.class);
-    (new DMNModelRepository()).removeSingleQuotes("'");
-  }
-
-  @Test(timeout=10000)
-  public void removeSingleQuotesTest() {
-    // Arrange, Act and Assert
-    assertEquals("name", (new DMNModelRepository()).removeSingleQuotes("name"));
-  }
-
-  @Test(timeout=10000)
-  public void findDecisionServiceByNameTest() {
-    // Arrange, Act and Assert
-    thrown.expect(DMNRuntimeException.class);
-    (new DMNModelRepository()).findDecisionServiceByName("name");
-  }
-
-  @Test(timeout=10000)
-  public void inputDatasTest2() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act
-    List<TInputData> actualInputDatasResult = dmnModelRepository.inputDatas();
-
-    // Assert
-    assertSame(dmnModelRepository.inputDatas, actualInputDatasResult);
-    assertEquals(0, actualInputDatasResult.size());
-    assertSame(actualInputDatasResult, dmnModelRepository.inputDatas);
-  }
-
-  @Test(timeout=10000)
-  public void typeRefTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    thrown.expect(UnsupportedOperationException.class);
-    dmnModelRepository.typeRef(new TNamedElement());
-  }
-
-  @Test(timeout=10000)
-  public void itemDefinitionsTest2() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act
-    List<TItemDefinition> actualItemDefinitionsResult = dmnModelRepository.itemDefinitions();
-
-    // Assert
-    assertSame(dmnModelRepository.itemDefinitions, actualItemDefinitionsResult);
-    assertEquals(0, actualItemDefinitionsResult.size());
-    assertSame(actualItemDefinitionsResult, dmnModelRepository.itemDefinitions);
-  }
-
-  @Test(timeout=10000)
-  public void allSubDecisionsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.allSubDecisions(new TDRGElement()).size());
-  }
-
-  @Test(timeout=10000)
-  public void directInputDatasTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.directInputDatas(new TDRGElement()).size());
-  }
-
-  @Test(timeout=10000)
-  public void getAllDefinitionsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act
-    List<TDefinitions> actualAllDefinitions = dmnModelRepository.getAllDefinitions();
-
-    // Assert
-    assertSame(dmnModelRepository.allDefinitions, actualAllDefinitions);
-    assertEquals(1, actualAllDefinitions.size());
-  }
-
-  @Test(timeout=10000)
-  public void isContextExpressionTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    thrown.expect(UnsupportedOperationException.class);
-    dmnModelRepository.isContextExpression(new TDRGElement());
-  }
-
-  @Test(timeout=10000)
-  public void getOutputDecisionTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    thrown.expect(DMNRuntimeException.class);
-    dmnModelRepository.getOutputDecision(new TDecisionService());
-  }
-
-  @Test(timeout=10000)
-  public void hasNamespaceTest() {
-    // Arrange, Act and Assert
-    assertFalse(DMNModelRepository.hasNamespace("foo"));
-  }
-
-  @Test(timeout=10000)
-  public void isOutputOrderHitTest() {
-    // Arrange, Act and Assert
-    assertFalse((new DMNModelRepository()).isOutputOrderHit(THitPolicy.UNIQUE));
-  }
-
-  @Test(timeout=10000)
-  public void hasDefaultValueTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertFalse(dmnModelRepository.hasDefaultValue(new TDecisionTable()));
-  }
-
-  @Test(timeout=10000)
-  public void inputDatasTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.inputDatas(new TDefinitions()).size());
-  }
-
-  @Test(timeout=10000)
-  public void getPrefixNamespaceMappingsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertSame(dmnModelRepository.prefixNamespaceMappings, dmnModelRepository.getPrefixNamespaceMappings());
-  }
-
-  @Test(timeout=10000)
-  public void businessKnowledgeModelsTest2() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act
-    List<TBusinessKnowledgeModel> actualBusinessKnowledgeModelsResult = dmnModelRepository.businessKnowledgeModels();
-
-    // Assert
-    assertSame(dmnModelRepository.businessKnowledgeModels, actualBusinessKnowledgeModelsResult);
-    assertEquals(0, actualBusinessKnowledgeModelsResult.size());
-    assertSame(actualBusinessKnowledgeModelsResult, dmnModelRepository.businessKnowledgeModels);
-  }
-
-  @Test(timeout=10000)
-  public void findKnowledgeModelByNameTest() {
-    // Arrange, Act and Assert
-    thrown.expect(DMNRuntimeException.class);
-    (new DMNModelRepository()).findKnowledgeModelByName("name");
-  }
-
-  @Test(timeout=10000)
-  public void labelTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals("", dmnModelRepository.label(new TDMNElement()));
-  }
-
-  @Test(timeout=10000)
-  public void variableTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertNull(dmnModelRepository.variable(new TNamedElement()));
-  }
-
-  @Test(timeout=10000)
-  public void atLeastTwoRulesTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertFalse(dmnModelRepository.atLeastTwoRules(new TDecisionTable()));
-  }
-
-  @Test(timeout=10000)
-  public void drgElementsTest2() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.drgElements(new TDefinitions()).size());
-  }
-
-  @Test(timeout=10000)
-  public void extractIdTest() {
-    // Arrange
-    String actualExtractIdResult = DMNModelRepository.extractId("foo");
-
-    // Act and Assert
-    assertEquals("foo", actualExtractIdResult);
-    assertEquals("http://", DMNModelRepository.extractId("http://"));
-  }
-
-  @Test(timeout=10000)
-  public void isFreeTextLiteralExpressionTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    thrown.expect(UnsupportedOperationException.class);
-    dmnModelRepository.isFreeTextLiteralExpression(new TNamedElement());
-  }
-
-  @Test(timeout=10000)
-  public void isQuotedNameTest2() {
-    // Arrange, Act and Assert
-    assertTrue((new DMNModelRepository()).isQuotedName("'"));
-  }
-
-  @Test(timeout=10000)
-  public void isQuotedNameTest() {
-    // Arrange, Act and Assert
-    assertFalse((new DMNModelRepository()).isQuotedName("name"));
-  }
-
-  @Test(timeout=10000)
-  public void allInvocablesTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new DMNModelRepository()).allInvocables(null).size());
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest3() {
-    // Arrange and Act
-    DMNModelRepository actualDmnModelRepository = new DMNModelRepository();
-
-    // Assert
-    PrefixNamespaceMappings expectedPrefixNamespaceMappings = actualDmnModelRepository.prefixNamespaceMappings;
-    List<TDefinitions> expectedAllDefinitions = actualDmnModelRepository.allDefinitions;
-    TDefinitions expectedRootDefinitions = actualDmnModelRepository.rootDefinitions;
-    List<TDefinitions> actualAllDefinitions = actualDmnModelRepository.getAllDefinitions();
-    TDefinitions actualRootDefinitions = actualDmnModelRepository.getRootDefinitions();
-    assertSame(expectedAllDefinitions, actualAllDefinitions);
-    assertSame(expectedPrefixNamespaceMappings, actualDmnModelRepository.getPrefixNamespaceMappings());
-    assertSame(expectedRootDefinitions, actualRootDefinitions);
-  }
-
-  @Test(timeout=10000)
-  public void decisionServicesTest2() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act
-    List<TDecisionService> actualDecisionServicesResult = dmnModelRepository.decisionServices();
-
-    // Assert
-    assertSame(dmnModelRepository.decisionServices, actualDecisionServicesResult);
-    assertEquals(0, actualDecisionServicesResult.size());
-    assertSame(actualDecisionServicesResult, dmnModelRepository.decisionServices);
-  }
-
-  @Test(timeout=10000)
-  public void itemDefinitionsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-    TDefinitions tDefinitions = new TDefinitions();
-
-    // Act
-    List<TItemDefinition> actualItemDefinitionsResult = dmnModelRepository.itemDefinitions(tDefinitions);
-
-    // Assert
-    assertEquals(0, actualItemDefinitionsResult.size());
-    assertSame(actualItemDefinitionsResult, tDefinitions.getItemDefinition());
-  }
-
-  @Test(timeout=10000)
-  public void sortItemComponentTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.sortItemComponent(new TItemDefinition()).size());
-  }
-
-  @Test(timeout=10000)
-  public void decisionsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act
-    List<TDecision> actualDecisionsResult = dmnModelRepository.decisions();
-
-    // Assert
-    assertSame(dmnModelRepository.decisions, actualDecisionsResult);
-    assertEquals(0, actualDecisionsResult.size());
-    assertSame(actualDecisionsResult, dmnModelRepository.decisions);
-  }
-
-  @Test(timeout=10000)
-  public void isFirstSingleHitTest() {
-    // Arrange, Act and Assert
-    assertFalse((new DMNModelRepository()).isFirstSingleHit(THitPolicy.UNIQUE));
-  }
-
-  @Test(timeout=10000)
-  public void nameTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertNull(dmnModelRepository.name(new TNamedElement()));
-  }
-
-  @Test(timeout=10000)
-  public void makeRefTest() {
-    // Arrange
-    String actualMakeRefResult = DMNModelRepository.makeRef("foo", "foo");
-
-    // Act and Assert
-    assertEquals("foofoo", actualMakeRefResult);
-    assertEquals("foo", DMNModelRepository.makeRef("", "foo"));
-  }
-
-  @Test(timeout=10000)
-  public void normalizeTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-    TItemDefinition tItemDefinition = new TItemDefinition();
-
-    // Act and Assert
-    assertSame(tItemDefinition, dmnModelRepository.normalize(tItemDefinition));
-  }
-
-  @Test(timeout=10000)
-  public void extractNamespaceTest2() {
-    // Arrange, Act and Assert
-    thrown.expect(StringIndexOutOfBoundsException.class);
-    (new DMNModelRepository()).extractNamespace("http://");
-  }
-
-  @Test(timeout=10000)
-  public void extractNamespaceTest() {
-    // Arrange, Act and Assert
-    assertNull((new DMNModelRepository()).extractNamespace("foo"));
-  }
-
-  @Test(timeout=10000)
-  public void lookupItemDefinitionTest2() {
-    // Arrange, Act and Assert
-    assertNull((new DMNModelRepository()).lookupItemDefinition(null, (QualifiedName) null));
-  }
-
-  @Test(timeout=10000)
-  public void isSingleHitTest() {
-    // Arrange, Act and Assert
-    assertTrue((new DMNModelRepository()).isSingleHit(THitPolicy.UNIQUE));
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest2() {
-    // Arrange
-    TDefinitions rootDefinitions = new TDefinitions();
-
-    // Act
-    DMNModelRepository actualDmnModelRepository = new DMNModelRepository(rootDefinitions,
-        new PrefixNamespaceMappings());
-
-    // Assert
-    PrefixNamespaceMappings expectedPrefixNamespaceMappings = actualDmnModelRepository.prefixNamespaceMappings;
-    List<TDefinitions> expectedAllDefinitions = actualDmnModelRepository.allDefinitions;
-    TDefinitions expectedRootDefinitions = actualDmnModelRepository.rootDefinitions;
-    List<TDefinitions> actualAllDefinitions = actualDmnModelRepository.getAllDefinitions();
-    TDefinitions actualRootDefinitions = actualDmnModelRepository.getRootDefinitions();
-    assertSame(expectedAllDefinitions, actualAllDefinitions);
-    assertSame(expectedPrefixNamespaceMappings, actualDmnModelRepository.getPrefixNamespaceMappings());
-    assertSame(expectedRootDefinitions, actualRootDefinitions);
-  }
-
-  @Test(timeout=10000)
-  public void directSubInvocablesTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new DMNModelRepository()).directSubInvocables(null).size());
-  }
-
-  @Test(timeout=10000)
-  public void computeCachedElementsTest2() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new DMNModelRepository()).computeCachedElements(false).size());
-  }
-
-  @Test(timeout=10000)
-  public void computeCachedElementsTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new DMNModelRepository()).computeCachedElements(true).size());
-  }
-
-  @Test(timeout=10000)
-  public void directSubDecisionsTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new DMNModelRepository()).directSubDecisions(null).size());
-  }
-
-  @Test(timeout=10000)
-  public void getImportedNamesTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new DMNModelRepository()).getImportedNames().size());
-  }
-
-  @Test(timeout=10000)
-  public void decisionServicesTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.decisionServices(new TDefinitions()).size());
-  }
-
-  @Test(timeout=10000)
-  public void expressionTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    thrown.expect(UnsupportedOperationException.class);
-    dmnModelRepository.expression(new TNamedElement());
-  }
-
-  @Test(timeout=10000)
-  public void drgElementsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act
-    List<TDRGElement> actualDrgElementsResult = dmnModelRepository.drgElements();
-
-    // Assert
-    assertSame(dmnModelRepository.drgElements, actualDrgElementsResult);
-    assertEquals(0, actualDrgElementsResult.size());
-    assertSame(actualDrgElementsResult, dmnModelRepository.drgElements);
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange
-    TDefinitions tDefinitions = new TDefinitions();
-
-    // Act
-    DMNModelRepository actualDmnModelRepository = new DMNModelRepository(tDefinitions, null,
-        new PrefixNamespaceMappings());
-
-    // Assert
-    PrefixNamespaceMappings expectedPrefixNamespaceMappings = actualDmnModelRepository.prefixNamespaceMappings;
-    List<TDefinitions> expectedAllDefinitions = actualDmnModelRepository.allDefinitions;
-    List<TDefinitions> actualAllDefinitions = actualDmnModelRepository.getAllDefinitions();
-    TDefinitions actualRootDefinitions = actualDmnModelRepository.getRootDefinitions();
-    assertSame(expectedAllDefinitions, actualAllDefinitions);
-    assertSame(expectedPrefixNamespaceMappings, actualDmnModelRepository.getPrefixNamespaceMappings());
-    assertSame(tDefinitions, actualRootDefinitions);
-  }
-
-  @Test(timeout=10000)
-  public void nextTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertNull(dmnModelRepository.next(new TItemDefinition()));
-  }
-
-  @Test(timeout=10000)
-  public void displayNameTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    thrown.expect(DMNRuntimeException.class);
-    dmnModelRepository.displayName(new TNamedElement());
-  }
-
-  @Test(timeout=10000)
-  public void businessKnowledgeModelsTest() {
-    // Arrange
-    DMNModelRepository dmnModelRepository = new DMNModelRepository();
-
-    // Act and Assert
-    assertEquals(0, dmnModelRepository.businessKnowledgeModels(new TDefinitions()).size());
-  }
-
-  @Test(timeout=10000)
-  public void lookupItemDefinitionTest() {
-    // Arrange, Act and Assert
-    assertNull((new DMNModelRepository()).lookupItemDefinition((QualifiedName) null));
-  }
+
+    @Test(timeout=10000)
+    public void addElementMap() {
+        new DMNModelRepository().addElementMap(new TDRGElement(), new TDefinitions());
+    }
+
+    @Test(timeout=10000)
+    public void allInputDatas() {
+        assertTrue(new DMNModelRepository().allInputDatas(new TDRGElement()).isEmpty());
+        assertTrue(new DMNModelRepository().allInputDatas(null).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void allInvocablesReturnsEmpty() {
+        assertTrue(new DMNModelRepository().allInvocables(new TDRGElement()).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void allSubDecisionsReturnsEmpty() {
+        assertTrue(new DMNModelRepository().allSubDecisions(new TDRGElement()).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void atLeastTwoRules() {
+        assertThat(new DMNModelRepository().atLeastTwoRules(new TDecisionTable()), is(false));
+        assertThat(new DMNModelRepository((TDefinitions)null).atLeastTwoRules(new TDecisionTable()), is(false));
+        assertThat(new DMNModelRepository(new TDefinitions(), null, new PrefixNamespaceMappings()).atLeastTwoRules(new TDecisionTable()), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void businessKnowledgeModels() {
+        assertTrue(new DMNModelRepository().businessKnowledgeModels().isEmpty());
+        assertTrue(new DMNModelRepository().businessKnowledgeModels(new TDefinitions()).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void collectInputsTdrgElementsIsEmpty() {
+        new DMNModelRepository().collectInputs(new TDecision(), new HashSet<TDRGElement>());
+    }
+
+    @Test(timeout=10000)
+    public void computeCachedElements() {
+        assertTrue(new DMNModelRepository().computeCachedElements(false).isEmpty());
+        assertTrue(new DMNModelRepository().computeCachedElements(true).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void constructor() {
+        TDefinitions rootDefinitions = new TDefinitions();
+        List<TDefinitions> importedDefinitions = new ArrayList<TDefinitions>();
+        TDefinitions obj1 = new TDefinitions();
+        ((ArrayList<TDefinitions>)importedDefinitions).add(obj1);
+        PrefixNamespaceMappings prefixNamespaceMappings = new PrefixNamespaceMappings();
+        DMNModelRepository obj2 = new DMNModelRepository(rootDefinitions, importedDefinitions, prefixNamespaceMappings);
+        assertThat(obj2.getAllDefinitions().size(), is(1));
+        assertThat(obj2.getAllDefinitions().get(0), sameInstance(obj1));
+        assertTrue(obj2.getImportedNames().isEmpty());
+        assertThat(obj2.getPrefixNamespaceMappings(), sameInstance(prefixNamespaceMappings));
+        assertThat(obj2.getRootDefinitions(), sameInstance(rootDefinitions));
+    }
+
+    @Test(timeout=10000)
+    public void decisionServices() {
+        assertTrue(new DMNModelRepository().decisionServices().isEmpty());
+        assertTrue(new DMNModelRepository().decisionServices(new TDefinitions()).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void decisionsReturnsEmpty() {
+        assertTrue(new DMNModelRepository().decisions().isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void directDRGElementsReturnsEmpty() {
+        assertTrue(new DMNModelRepository().directDRGElements(new TDRGElement()).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void directInputDatas() {
+        List<TInformationRequirement> informationRequirement = new ArrayList<TInformationRequirement>();
+        ((ArrayList<TInformationRequirement>)informationRequirement).add(new TInformationRequirement());
+        assertTrue(new DMNModelRepository().directInputDatas(new TDRGElement(), informationRequirement).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void directInputDatasInformationRequirementIsEmpty() {
+        assertTrue(new DMNModelRepository().directInputDatas(new TDRGElement(), new ArrayList<TInformationRequirement>()).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void drgElementsReturnsEmpty() {
+        assertTrue(new DMNModelRepository().drgElements().isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void extractId() {
+        assertThat(DMNModelRepository.extractId("http://"), is("http://"));
+        assertThat(DMNModelRepository.extractId("foo"), is("foo"));
+        assertThat(DMNModelRepository.extractId("#"), is(""));
+    }
+
+    @Test(timeout=10000)
+    public void extractNamespaceHrefIsFooReturnsNull() {
+        assertThat(new DMNModelRepository().extractNamespace("foo"), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void findChildDefinitionsHrefIsFooReturnsNull() {
+        assertThat(new DMNModelRepository().findChildDefinitions(new TDRGElement(), "foo"), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void getImportedNamesReturnsEmpty() {
+        assertTrue(new DMNModelRepository().getImportedNames().isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void getPrefixNamespaceMappings() {
+        PrefixNamespaceMappings prefixNamespaceMappings = new PrefixNamespaceMappings();
+        assertThat(new DMNModelRepository(new TDefinitions(), prefixNamespaceMappings).getPrefixNamespaceMappings(), sameInstance(prefixNamespaceMappings));
+    }
+
+    @Test(timeout=10000)
+    public void getRootDefinitions() {
+        DMNModelRepository obj1 = new DMNModelRepository();
+        TDefinitions result = obj1.getRootDefinitions();
+        assertTrue(result.getArtifact().isEmpty());
+        assertTrue(result.getBusinessContextElement().isEmpty());
+        assertThat(result.getDMNDI(), is(nullValue()));
+        assertTrue(result.getDrgElement().isEmpty());
+        assertTrue(result.getElementCollection().isEmpty());
+        assertThat(result.getExporter(), is(nullValue()));
+        assertThat(result.getExporterVersion(), is(nullValue()));
+        assertThat(result.getExpressionLanguage(), is("http://www.omg.org/spec/FEEL/20140401"));
+        assertTrue(result.getImport().isEmpty());
+        assertTrue(result.getItemDefinition().isEmpty());
+        assertThat(result.getNamespace(), is(nullValue()));
+        assertThat(result.getTypeLanguage(), is("http://www.omg.org/spec/FEEL/20140401"));
+        assertThat(result.getName(), is(nullValue()));
+        assertThat(result.getDescription(), is(nullValue()));
+        assertThat(result.getExtensionElements(), is(nullValue()));
+        assertThat(result.getId(), is(nullValue()));
+        assertThat(result.getLabel(), is(nullValue()));
+        assertThat(result.getOtherAttributes().isEmpty(), is(true));
+        assertThat(obj1.getAllDefinitions().size(), is(1));
+        assertThat(obj1.getAllDefinitions().get(0), sameInstance(result));
+        assertThat(obj1.getRootDefinitions(), sameInstance(result));
+    }
+
+    @Test(timeout=10000)
+    public void hasAggregatorReturnsFalse() {
+        assertThat(new DMNModelRepository().hasAggregator(new TDecisionTable()), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void hasDefaultValueReturnsFalse() {
+        assertThat(new DMNModelRepository().hasDefaultValue(new TDecisionTable()), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void hasNamespace() {
+        assertThat(DMNModelRepository.hasNamespace("foo"), is(false));
+        assertThat(DMNModelRepository.hasNamespace("http://"), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void importNameForIdReferenceIsNullReturnsNull() {
+        assertThat(new DMNModelRepository().importNameForId(null, "/bin/bash"), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void importNameReferenceIsNullReturnsNull() {
+        assertThat(new DMNModelRepository().importName(null), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void inputDatas() {
+        assertTrue(new DMNModelRepository().inputDatas().isEmpty());
+        assertTrue(new DMNModelRepository().inputDatas(new TDefinitions()).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void isEmpty() {
+        assertThat(new DMNModelRepository().isEmpty(new ArrayList<org.omg.spec.dmn._20180521.model.TItemDefinition>()), is(true));
+        assertThat(new DMNModelRepository().isEmpty(null), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void isEmptyReturnsFalse() {
+        List<TItemDefinition> list = new ArrayList<TItemDefinition>();
+        ((ArrayList<TItemDefinition>)list).add(new TItemDefinition());
+        assertThat(new DMNModelRepository().isEmpty(list), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void isFirstSingleHit() {
+        assertThat(new DMNModelRepository().isFirstSingleHit(THitPolicy.UNIQUE), is(false));
+        assertThat(new DMNModelRepository(new Pair<TDefinitions, PrefixNamespaceMappings>(new TDefinitions(), new PrefixNamespaceMappings())).isFirstSingleHit(THitPolicy.UNIQUE), is(false));
+        assertThat(new DMNModelRepository(new TDefinitions()).isFirstSingleHit(THitPolicy.UNIQUE), is(false));
+        assertThat(new DMNModelRepository().isFirstSingleHit(THitPolicy.FIRST), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void isMultipleHit() {
+        assertThat(new DMNModelRepository().isMultipleHit(THitPolicy.COLLECT), is(true));
+        assertThat(new DMNModelRepository().isMultipleHit(THitPolicy.OUTPUT_ORDER), is(true));
+        assertThat(new DMNModelRepository().isMultipleHit(THitPolicy.RULE_ORDER), is(true));
+        assertThat(new DMNModelRepository().isMultipleHit(THitPolicy.UNIQUE), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void isOutputOrderHit() {
+        assertThat(new DMNModelRepository().isOutputOrderHit(THitPolicy.OUTPUT_ORDER), is(true));
+        assertThat(new DMNModelRepository().isOutputOrderHit(THitPolicy.PRIORITY), is(true));
+        assertThat(new DMNModelRepository().isOutputOrderHit(THitPolicy.UNIQUE), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void isQuotedName() {
+        assertThat(new DMNModelRepository().isQuotedName("bar"), is(false));
+        assertThat(new DMNModelRepository().isQuotedName(null), is(false));
+        assertThat(new DMNModelRepository().isQuotedName("'"), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void isSingleHit() {
+        assertThat(new DMNModelRepository().isSingleHit(THitPolicy.ANY), is(true));
+        assertThat(new DMNModelRepository().isSingleHit(THitPolicy.COLLECT), is(false));
+        assertThat(new DMNModelRepository().isSingleHit(THitPolicy.FIRST), is(true));
+        assertThat(new DMNModelRepository().isSingleHit(null), is(true));
+        assertThat(new DMNModelRepository().isSingleHit(THitPolicy.PRIORITY), is(true));
+        assertThat(new DMNModelRepository().isSingleHit(THitPolicy.UNIQUE), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void itemDefinitions1() {
+        assertTrue(new DMNModelRepository().itemDefinitions().isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void itemDefinitions2() {
+        TDefinitions definitions2 = new TDefinitions();
+        List<TItemDefinition> result = new DMNModelRepository().itemDefinitions(definitions2);
+        assertThat(definitions2.getItemDefinition(), sameInstance(result));
+        assertTrue(result.isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void labelReturnsEmpty() {
+        assertThat(new DMNModelRepository().label(new TDMNElement()), is(""));
+    }
+
+    @Test(timeout=10000)
+    public void lookupItemDefinition1() {
+        List<TItemDefinition> itemDefinitionList = new ArrayList<TItemDefinition>();
+        ((ArrayList<TItemDefinition>)itemDefinitionList).add(new TItemDefinition());
+        assertThat(new DMNModelRepository().lookupItemDefinition(itemDefinitionList, new QualifiedName("/bin/bash")), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void lookupItemDefinition2() {
+        List<TItemDefinition> itemDefinitionList = new ArrayList<TItemDefinition>();
+        ((ArrayList<TItemDefinition>)itemDefinitionList).add(new TItemDefinition());
+        assertThat(new DMNModelRepository().lookupItemDefinition(itemDefinitionList, "/bin/bash"), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void lookupItemDefinition3() {
+        assertThat(new DMNModelRepository().lookupItemDefinition(new QualifiedName("bar")), is(nullValue()));
+        assertThat(new DMNModelRepository().lookupItemDefinition("bar"), is(nullValue()));
+        assertThat(new DMNModelRepository().lookupItemDefinition((String)null), is(nullValue()));
+        assertThat(new DMNModelRepository().lookupItemDefinition((QualifiedName)null), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void makeRef() {
+        assertThat(DMNModelRepository.makeRef("bar", "Felix"), is("barFelix"));
+        assertThat(DMNModelRepository.makeRef("", "Felix"), is("Felix"));
+    }
+
+    @Test(timeout=10000)
+    public void nameReturnsNull() {
+        assertThat(new DMNModelRepository().name(new TNamedElement()), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void normalize() {
+        TItemDefinition itemDefinition = new TItemDefinition();
+        assertThat(new DMNModelRepository().normalize(itemDefinition), sameInstance(itemDefinition));
+    }
+
+    @Test(timeout=10000)
+    public void normalizeDefinitionsIsNull() {
+        new DMNModelRepository().normalize((TDefinitions)null);
+    }
+
+    @Test(timeout=10000)
+    public void normalizeItemDefinitionIsNullReturnsNull() {
+        assertThat(new DMNModelRepository().normalize((TItemDefinition)null), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void removeSingleQuotesNameIsBarReturnsBar() {
+        assertThat(new DMNModelRepository().removeSingleQuotes("bar"), is("bar"));
+    }
+
+    @Test(timeout=10000)
+    public void sortItemComponent() {
+        assertTrue(new DMNModelRepository().sortItemComponent(new TItemDefinition()).isEmpty());
+        assertTrue(new DMNModelRepository().sortItemComponent(null).isEmpty());
+    }
+
+    @Test(timeout=10000)
+    public void topologicalSortDecisionsIsEmpty() {
+        TDecision parent = new TDecision();
+        List<TDecision> decisions = new ArrayList<TDecision>();
+        new DMNModelRepository().topologicalSort(parent, decisions);
+        assertThat(decisions.size(), is(1));
+        assertThat(decisions.get(0), sameInstance(parent));
+    }
+
+    @Test(timeout=10000)
+    public void topologicalSortWithMarkersObjectsIsEmpty() {
+        TDecision parent = new TDecision();
+        List<Object> objects = new ArrayList<Object>();
+        new DMNModelRepository().topologicalSortWithMarkers(parent, objects);
+        assertThat(objects.size(), is(2));
+        assertThat(objects.get(0), instanceOf(StartMarker.class));
+        assertThat(((StartMarker)objects.get(0)).getDecision(), sameInstance(parent));
+        assertThat(objects.get(1), instanceOf(TDecision.class));
+        assertThat(((TDecision)objects.get(1)), sameInstance(parent));
+    }
+
+    @Test(timeout=10000)
+    public void variableReturnsNull() {
+        assertThat(new DMNModelRepository().variable(new TNamedElement()), is(nullValue()));
+    }
 }
-

@@ -1,55 +1,53 @@
 package com.gs.dmn.runtime.interpreter;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-import com.gs.dmn.feel.analysis.semantics.type.AnyType;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsSame.sameInstance;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import com.gs.dmn.feel.analysis.semantics.type.Type;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.interpreter.Result
+ *
+ * @author Diffblue JCover
+ */
+
 public class ResultDiffblueTest {
-  @Test(timeout=10000)
-  public void getValueTest() {
-    // Arrange, Act and Assert
-    assertEquals("value", (new Result("value", new AnyType())).getValue());
-  }
 
-  @Test(timeout=10000)
-  public void valueTest() {
-    // Arrange, Act and Assert
-    assertEquals("value", Result.value(new Result("value", new AnyType())));
-  }
+    @Test(timeout=10000)
+    public void type() {
+        Type type = mock(Type.class);
+        when(type.isValid())
+            .thenReturn(false);
+        Result result1 = new Result("foo", type);
+        Type result2 = Result.type(result1);
+        assertThat(result2.isValid(), is(false));
+        assertThat(result1.getType(), sameInstance(result2));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange
-    AnyType anyType = new AnyType();
+    @Test(timeout=10000)
+    public void typeResultIsNullReturnsNull() {
+        assertThat(Result.type(null), is(nullValue()));
+    }
 
-    // Act
-    Result actualResult = new Result("value", anyType);
+    @Test(timeout=10000)
+    public void valueResultIsNullReturnsNull() {
+        assertThat(Result.value(null), is(nullValue()));
+    }
 
-    // Assert
-    Type actualType = actualResult.getType();
-    assertSame(anyType, actualType);
-    assertTrue(actualResult.getValue() instanceof String);
-  }
-
-  @Test(timeout=10000)
-  public void getTypeTest() {
-    // Arrange
-    AnyType anyType = new AnyType();
-
-    // Act and Assert
-    assertSame(anyType, (new Result("value", anyType)).getType());
-  }
-
-  @Test(timeout=10000)
-  public void typeTest() {
-    // Arrange
-    AnyType anyType = new AnyType();
-
-    // Act and Assert
-    assertSame(anyType, Result.type(new Result("value", anyType)));
-  }
+    @Test(timeout=10000)
+    public void valueReturnsFoo() {
+        Type type = mock(Type.class);
+        Result result1 = new Result("foo", type);
+        Object result2 = Result.value(result1);
+        assertThat(result2, instanceOf(String.class));
+        assertThat(((String)result2), is("foo"));
+        assertThat(result1.getValue(), sameInstance(result2));
+    }
 }
-

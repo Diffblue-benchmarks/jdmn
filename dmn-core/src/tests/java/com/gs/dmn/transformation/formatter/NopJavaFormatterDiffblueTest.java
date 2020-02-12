@@ -1,13 +1,20 @@
 package com.gs.dmn.transformation.formatter;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import org.junit.Test;
 
-public class NopJavaFormatterDiffblueTest {
-  @Test(timeout=10000)
-  public void formatSourceTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new NopJavaFormatter()).formatSource("foo"));
-  }
-}
+/**
+ * Unit tests for com.gs.dmn.transformation.formatter.NopJavaFormatter
+ *
+ * @author Diffblue JCover
+ */
 
+public class NopJavaFormatterDiffblueTest {
+
+    @Test(timeout=10000)
+    public void formatSource() {
+        assertThat(new NopJavaFormatter().formatSource("yyyy-MM-dd"), is("yyyy-MM-dd"));
+    }
+}

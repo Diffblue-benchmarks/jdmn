@@ -1,81 +1,55 @@
 package com.gs.dmn.runtime.listener;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import com.gs.dmn.runtime.annotation.DRGElementKind;
 import com.gs.dmn.runtime.annotation.ExpressionKind;
 import com.gs.dmn.runtime.annotation.HitPolicy;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.listener.DRGElement
+ *
+ * @author Diffblue JCover
+ */
+
 public class DRGElementDiffblueTest {
-  @Test(timeout=10000)
-  public void getHitPolicyTest() {
-    // Arrange, Act and Assert
-    assertEquals(HitPolicy.UNIQUE, (new DRGElement("foo", "name", "foo", DRGElementKind.DECISION,
-        ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 3)).getHitPolicy());
-  }
 
-  @Test(timeout=10000)
-  public void getExpressionKindTest() {
-    // Arrange, Act and Assert
-    assertEquals(ExpressionKind.FUNCTION_DEFINITION, (new DRGElement("foo", "name", "foo", DRGElementKind.DECISION,
-        ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 3)).getExpressionKind());
-  }
+    @Test(timeout=10000)
+    public void getElementKindReturnsDECISION() {
+        assertThat(new DRGElement("foo", "/bin/bash", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 1).getElementKind(), is(DRGElementKind.DECISION));
+    }
 
-  @Test(timeout=10000)
-  public void getLabelTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new DRGElement("foo", "name", "foo", DRGElementKind.DECISION,
-        ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 3)).getLabel());
-  }
+    @Test(timeout=10000)
+    public void getExpressionKindReturnsFUNCTION_DEFINITION() {
+        assertThat(new DRGElement("foo", "/bin/bash", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 1).getExpressionKind(), is(ExpressionKind.FUNCTION_DEFINITION));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    DRGElement actualDrgElement = new DRGElement("foo", "name", "foo", DRGElementKind.DECISION,
-        ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 3);
+    @Test(timeout=10000)
+    public void getHitPolicyReturnsUNIQUE() {
+        assertThat(new DRGElement("foo", "/bin/bash", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 1).getHitPolicy(), is(HitPolicy.UNIQUE));
+    }
 
-    // Assert
-    String actualNamespace = actualDrgElement.getNamespace();
-    int actualRulesCount = actualDrgElement.getRulesCount();
-    String actualName = actualDrgElement.getName();
-    DRGElementKind actualElementKind = actualDrgElement.getElementKind();
-    String actualLabel = actualDrgElement.getLabel();
-    ExpressionKind actualExpressionKind = actualDrgElement.getExpressionKind();
-    assertEquals("foo", actualNamespace);
-    assertEquals(HitPolicy.UNIQUE, actualDrgElement.getHitPolicy());
-    assertEquals(ExpressionKind.FUNCTION_DEFINITION, actualExpressionKind);
-    assertEquals("foo", actualLabel);
-    assertEquals(DRGElementKind.DECISION, actualElementKind);
-    assertEquals("name", actualName);
-    assertEquals(3, actualRulesCount);
-  }
+    @Test(timeout=10000)
+    public void getLabelReturnsFoo() {
+        assertThat(new DRGElement("foo", "/bin/bash", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 1).getLabel(), is("foo"));
+    }
 
-  @Test(timeout=10000)
-  public void getElementKindTest() {
-    // Arrange, Act and Assert
-    assertEquals(DRGElementKind.DECISION, (new DRGElement("foo", "name", "foo", DRGElementKind.DECISION,
-        ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 3)).getElementKind());
-  }
+    @Test(timeout=10000)
+    public void getName() {
+        assertThat(new DRGElement("foo", "/bin/bash", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 1).getName(), is("/bin/bash"));
+    }
 
-  @Test(timeout=10000)
-  public void getNameTest() {
-    // Arrange, Act and Assert
-    assertEquals("name", (new DRGElement("foo", "name", "foo", DRGElementKind.DECISION,
-        ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 3)).getName());
-  }
+    @Test(timeout=10000)
+    public void getNamespaceReturnsFoo() {
+        assertThat(new DRGElement("foo", "/bin/bash", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 1).getNamespace(), is("foo"));
+    }
 
-  @Test(timeout=10000)
-  public void getRulesCountTest() {
-    // Arrange, Act and Assert
-    assertEquals(3, (new DRGElement("foo", "name", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION,
-        HitPolicy.UNIQUE, 3)).getRulesCount());
-  }
-
-  @Test(timeout=10000)
-  public void getNamespaceTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new DRGElement("foo", "name", "foo", DRGElementKind.DECISION,
-        ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 3)).getNamespace());
-  }
+    @Test(timeout=10000)
+    public void getRulesCount() {
+        assertThat(new DRGElement("foo", "bar", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 1).getRulesCount(), is(1));
+        assertThat(new DRGElement("foo", "/bin/bash", "foo", DRGElementKind.DECISION, ExpressionKind.FUNCTION_DEFINITION, HitPolicy.UNIQUE, 0).getRulesCount(), is(0));
+    }
 }
-

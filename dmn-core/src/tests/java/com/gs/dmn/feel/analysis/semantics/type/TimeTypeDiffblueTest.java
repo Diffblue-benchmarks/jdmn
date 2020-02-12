@@ -1,35 +1,28 @@
 package com.gs.dmn.feel.analysis.semantics.type;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.mockito.Mockito.mock;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.semantics.type.TimeType
+ *
+ * @author Diffblue JCover
+ */
+
 public class TimeTypeDiffblueTest {
-  @Test(timeout=10000)
-  public void equivalentToTest() {
-    // Arrange
-    TimeType timeType = new TimeType();
 
-    // Act and Assert
-    assertFalse(timeType.equivalentTo(new AnyType()));
-  }
+    @Test(timeout=10000)
+    public void equivalentToReturnsFalse() {
+        Type other = mock(Type.class);
+        assertThat(new TimeType().equivalentTo(other), is(false));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    TimeType actualTimeType = new TimeType();
-
-    // Assert
-    String actualName = actualTimeType.getName();
-    assertEquals("time", actualName);
-    assertEquals("time", actualTimeType.getConversionFunction());
-  }
-
-  @Test(timeout=10000)
-  public void getMemberTypeTest() {
-    // Arrange, Act and Assert
-    assertNull(TimeType.getMemberType("foo"));
-  }
+    @Test(timeout=10000)
+    public void getMemberTypeMemberIsGifReturnsNull() {
+        assertThat(TimeType.getMemberType("gif"), is(nullValue()));
+    }
 }
-

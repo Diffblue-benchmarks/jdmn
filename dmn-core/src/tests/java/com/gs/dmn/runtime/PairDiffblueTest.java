@@ -1,44 +1,35 @@
 package com.gs.dmn.runtime;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsSame.sameInstance;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.Pair
+ *
+ * @author Diffblue JCover
+ */
+
 public class PairDiffblueTest {
-  @Test(timeout=10000)
-  public void equalsTest() {
-    // Arrange, Act and Assert
-    assertFalse((new Pair<Object, Object>("foo", "foo")).equals("foo"));
-  }
 
-  @Test(timeout=10000)
-  public void getRightTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new Pair<Object, Object>("foo", "foo")).getRight());
-  }
+    @Test(timeout=10000)
+    public void getLeft() {
+        Object left = new Object();
+        assertThat(new Pair<Object, Object>(left, new Object()).getLeft(), sameInstance(left));
+    }
 
-  @Test(timeout=10000)
-  public void getLeftTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new Pair<Object, Object>("foo", "foo")).getLeft());
-  }
+    @Test(timeout=10000)
+    public void getRight() {
+        Object right = new Object();
+        assertThat(new Pair<Object, Object>(new Object(), right).getRight(), sameInstance(right));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange, Act and Assert
-    assertEquals("Pair(foo, foo)", (new Pair<Object, Object>("foo", "foo")).toString());
-  }
-
-  @Test(timeout=10000)
-  public void hashCodeTest() {
-    // Arrange, Act and Assert
-    assertEquals(3251329, (new Pair<Object, Object>("foo", "foo")).hashCode());
-  }
-
-  @Test(timeout=10000)
-  public void toStringTest() {
-    // Arrange, Act and Assert
-    assertEquals("Pair(foo, foo)", (new Pair<Object, Object>("foo", "foo")).toString());
-  }
+    @Test(timeout=10000)
+    public void testequals() {
+        assertThat(new Pair<Object, Object>("bar", "foo").equals(new Object()), is(false));
+        assertThat(new Pair<Object, Object>("foo", new Object()).equals(new Pair("foo", new Object())), is(false));
+        assertThat(new Pair<Object, Object>("bar", "foo").equals(new Pair(new Object(), new Object())), is(false));
+    }
 }
-

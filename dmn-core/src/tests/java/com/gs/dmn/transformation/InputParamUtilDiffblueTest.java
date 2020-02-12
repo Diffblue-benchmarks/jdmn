@@ -1,30 +1,45 @@
 package com.gs.dmn.transformation;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import com.gs.dmn.runtime.DMNRuntimeException;
-import org.junit.Rule;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+/**
+ * Unit tests for com.gs.dmn.transformation.InputParamUtil
+ *
+ * @author Diffblue JCover
+ */
 
 public class InputParamUtilDiffblueTest {
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
-  @Test(timeout=10000)
-  public void getOptionalParamTest() {
-    // Arrange, Act and Assert
-    assertNull(InputParamUtil.getOptionalParam(null, "foo"));
-  }
-  @Test(timeout=10000)
-  public void getOptionalBooleanParamTest() {
-    // Arrange, Act and Assert
-    assertFalse(InputParamUtil.getOptionalBooleanParam(null, "foo"));
-  }
-  @Test(timeout=10000)
-  public void getRequiredParamTest() {
-    // Arrange, Act and Assert
-    thrown.expect(DMNRuntimeException.class);
-    InputParamUtil.getRequiredParam(null, "foo");
-  }
-}
 
+    @Test(timeout=10000)
+    public void getOptionalBooleanParam() {
+        assertThat(InputParamUtil.getOptionalBooleanParam(new HashMap<String, String>(), "name"), is(false));
+        assertThat(InputParamUtil.getOptionalBooleanParam(null, "name"), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void getOptionalBooleanParamParamKeyIsBarAndParametersIsFoo() {
+        Map<String, String> parameters = new HashMap<String, String>();
+        ((HashMap<String, String>)parameters).put("bar", "foo");
+        assertThat(InputParamUtil.getOptionalBooleanParam(parameters, "bar"), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void getOptionalBooleanParamParamKeyIsFooAndParametersIsEmpty() {
+        Map<String, String> parameters = new HashMap<String, String>();
+        ((HashMap<String, String>)parameters).put("foo", "");
+        assertThat(InputParamUtil.getOptionalBooleanParam(parameters, "foo"), is(false));
+    }
+
+    @Test(timeout=10000)
+    public void getRequiredParamParameterKeyIsFooAndParametersIsBarReturnsBar() {
+        Map<String, String> parameters = new HashMap<String, String>();
+        ((HashMap<String, String>)parameters).put("foo", "bar");
+        assertThat(InputParamUtil.getRequiredParam(parameters, "foo"), is("bar"));
+    }
+}

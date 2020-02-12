@@ -1,50 +1,75 @@
 package com.gs.dmn.feel.analysis.syntax.ast.expression.function;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsSame.sameInstance;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+
+import com.gs.dmn.feel.analysis.semantics.type.Type;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.syntax.ast.expression.function.PositionalParameterTypes
+ *
+ * @author Diffblue JCover
+ */
+
 public class PositionalParameterTypesDiffblueTest {
-  @Test(timeout=10000)
-  public void equalsTest() {
-    // Arrange, Act and Assert
-    assertFalse((new PositionalParameterTypes(null)).equals("foo"));
-  }
 
-  @Test(timeout=10000)
-  public void sizeTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new PositionalParameterTypes(null)).size());
-  }
+    @Test(timeout=10000)
+    public void candidates1() {
+        assertTrue(new PositionalParameterTypes(new ArrayList<com.gs.dmn.feel.analysis.semantics.type.Type>()).candidates().isEmpty());
+    }
 
-  @Test(timeout=10000)
-  public void getTypesTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new PositionalParameterTypes(null)).getTypes().size());
-  }
+    @Test(timeout=10000)
+    public void candidates2() {
+        List<Type> types = new ArrayList<Type>();
+        Type type = mock(Type.class);
+        ((ArrayList<Type>)types).add(type);
+        assertTrue(new PositionalParameterTypes(types).candidates().isEmpty());
+    }
 
-  @Test(timeout=10000)
-  public void candidatesTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new PositionalParameterTypes(null)).candidates().size());
-  }
+    @Test(timeout=10000)
+    public void compatibleReturnsFalse() {
+        List<Type> types = new ArrayList<Type>();
+        Type type1 = mock(Type.class);
+        ((ArrayList<Type>)types).add(type1);
+        assertThat(new PositionalParameterTypes(types).compatible(new ArrayList<FormalParameter>()), is(false));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange, Act and Assert
-    assertEquals("PositionalParameterTypes()", (new PositionalParameterTypes(null)).toString());
-  }
+    @Test(timeout=10000)
+    public void compatibleReturnsTrue() {
+        assertThat(new PositionalParameterTypes(new ArrayList<Type>()).compatible(new ArrayList<FormalParameter>()), is(true));
+    }
 
-  @Test(timeout=10000)
-  public void hashCodeTest() {
-    // Arrange, Act and Assert
-    assertEquals(32, (new PositionalParameterTypes(null)).hashCode());
-  }
+    @Test(timeout=10000)
+    public void getTypes() {
+        List<Type> types = new ArrayList<Type>();
+        assertThat(new PositionalParameterTypes(types).getTypes(), sameInstance(types));
+    }
 
-  @Test(timeout=10000)
-  public void toStringTest() {
-    // Arrange, Act and Assert
-    assertEquals("PositionalParameterTypes()", (new PositionalParameterTypes(null)).toString());
-  }
+    @Test(timeout=10000)
+    public void size() {
+        assertThat(new PositionalParameterTypes(new ArrayList<Type>()).size(), is(0));
+        assertThat(new PositionalParameterTypes(null).size(), is(0));
+    }
+
+    @Test(timeout=10000)
+    public void sizeReturnsOne() {
+        List<Type> types = new ArrayList<Type>();
+        Type type = mock(Type.class);
+        ((ArrayList<Type>)types).add(type);
+        assertThat(new PositionalParameterTypes(types).size(), is(1));
+    }
+
+    @Test(timeout=10000)
+    public void testequals() {
+        assertThat(new PositionalParameterTypes(new ArrayList<Type>()).equals("foo"), is(false));
+        assertThat(new PositionalParameterTypes(new ArrayList<Type>()).equals(null), is(false));
+    }
 }
-

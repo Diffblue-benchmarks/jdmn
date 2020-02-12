@@ -1,44 +1,35 @@
 package com.gs.dmn.feel.analysis.semantics.type;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.mockito.Mockito.mock;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.semantics.type.DurationType
+ *
+ * @author Diffblue JCover
+ */
+
 public class DurationTypeDiffblueTest {
-  @Test(timeout=10000)
-  public void equivalentToTest() {
-    // Arrange
-    DurationType durationType = new DurationType("name");
 
-    // Act and Assert
-    assertFalse(durationType.equivalentTo(new AnyType()));
-  }
+    @Test(timeout=10000)
+    public void conformsToReturnsFalse() {
+        Type other = mock(Type.class);
+        assertThat(new DurationType("int").conformsTo(other), is(false));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    DurationType actualDurationType = new DurationType("name");
+    @Test(timeout=10000)
+    public void equivalentToReturnsFalse() {
+        Type other = mock(Type.class);
+        assertThat(new DurationType("int").equivalentTo(other), is(false));
+    }
 
-    // Assert
-    String actualName = actualDurationType.getName();
-    assertEquals("name", actualName);
-    assertEquals("duration", actualDurationType.getConversionFunction());
-  }
-
-  @Test(timeout=10000)
-  public void conformsToTest() {
-    // Arrange
-    DurationType durationType = new DurationType("name");
-
-    // Act and Assert
-    assertFalse(durationType.conformsTo(new AnyType()));
-  }
-
-  @Test(timeout=10000)
-  public void getMemberTypeTest() {
-    // Arrange, Act and Assert
-    assertNull(DurationType.getMemberType(new AnyType(), "foo"));
-  }
+    @Test(timeout=10000)
+    public void getMemberTypeMemberIsGifReturnsNull() {
+        Type sourceType = mock(Type.class);
+        assertThat(DurationType.getMemberType(sourceType, "gif"), is(nullValue()));
+    }
 }
-

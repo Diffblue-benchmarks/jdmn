@@ -1,91 +1,53 @@
 package com.gs.dmn.feel.analysis.semantics.environment;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.Expression;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.ExpressionList;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.function.NamedParameterTypes;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+
+import com.gs.dmn.feel.analysis.semantics.type.Type;
+import com.gs.dmn.feel.analysis.syntax.ast.expression.function.ParameterTypes;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.semantics.environment.Environment
+ *
+ * @author Diffblue JCover
+ */
+
 public class EnvironmentDiffblueTest {
-  @Test(timeout=10000)
-  public void getParentTest() {
-    // Arrange, Act and Assert
-    assertNull((new Environment()).getParent());
-  }
 
-  @Test(timeout=10000)
-  public void constructorTest3() {
-    // Arrange
-    Environment environment = new Environment();
+    @Test(timeout=10000)
+    public void getInputExpressionReturnsNull() {
+        assertThat(new Environment().getInputExpression(), is(nullValue()));
+    }
 
-    // Act
-    Environment actualEnvironment = new Environment(environment);
+    @Test(timeout=10000)
+    public void getInputExpressionTypeReturnsNull() {
+        assertThat(new Environment().getInputExpressionType(), is(nullValue()));
+    }
 
-    // Assert
-    Expression actualInputExpression = actualEnvironment.getInputExpression();
-    assertNull(actualInputExpression);
-    assertSame(environment, actualEnvironment.getParent());
-  }
+    @Test(timeout=10000)
+    public void lookupFunctionDeclarationReturnsEmpty() {
+        assertTrue(new Environment().lookupFunctionDeclaration("bar").isEmpty());
+    }
 
-  @Test(timeout=10000)
-  public void lookupFunctionDeclarationTest2() {
-    // Arrange
-    Environment environment = new Environment();
+    @Test(timeout=10000)
+    public void lookupFunctionDeclarationReturnsNull() {
+        ParameterTypes parameterTypes = mock(ParameterTypes.class);
+        assertThat(new Environment().lookupFunctionDeclaration("bar", parameterTypes), is(nullValue()));
+    }
 
-    // Act and Assert
-    assertNull(environment.lookupFunctionDeclaration("name", new NamedParameterTypes(null)));
-  }
+    @Test(timeout=10000)
+    public void lookupVariableDeclarationNameIsBarReturnsNull() {
+        assertThat(new Environment().lookupVariableDeclaration("bar"), is(nullValue()));
+    }
 
-  @Test(timeout=10000)
-  public void lookupFunctionDeclarationTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new Environment()).lookupFunctionDeclaration("name").size());
-  }
-
-  @Test(timeout=10000)
-  public void getInputExpressionTypeTest() {
-    // Arrange, Act and Assert
-    assertNull((new Environment()).getInputExpressionType());
-  }
-
-  @Test(timeout=10000)
-  public void lookupVariableDeclarationTest() {
-    // Arrange, Act and Assert
-    assertNull((new Environment()).lookupVariableDeclaration("name"));
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest2() {
-    // Arrange and Act
-    Environment actualEnvironment = new Environment();
-
-    // Assert
-    Expression actualInputExpression = actualEnvironment.getInputExpression();
-    assertNull(actualInputExpression);
-    assertNull(actualEnvironment.getParent());
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange
-    Environment environment = new Environment();
-    ExpressionList expressionList = new ExpressionList();
-
-    // Act
-    Environment actualEnvironment = new Environment(environment, expressionList);
-
-    // Assert
-    Expression actualInputExpression = actualEnvironment.getInputExpression();
-    assertSame(expressionList, actualInputExpression);
-    assertSame(environment, actualEnvironment.getParent());
-  }
-
-  @Test(timeout=10000)
-  public void getInputExpressionTest() {
-    // Arrange, Act and Assert
-    assertNull((new Environment()).getInputExpression());
-  }
+    @Test(timeout=10000)
+    public void updateVariableDeclarationNameIsBar() {
+        Type type = mock(Type.class);
+        new Environment().updateVariableDeclaration("bar", type);
+    }
 }
-

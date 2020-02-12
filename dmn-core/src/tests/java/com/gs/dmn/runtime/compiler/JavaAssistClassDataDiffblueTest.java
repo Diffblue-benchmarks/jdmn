@@ -1,34 +1,25 @@
 package com.gs.dmn.runtime.compiler;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.compiler.JavaAssistClassData
+ *
+ * @author Diffblue JCover
+ */
+
 public class JavaAssistClassDataDiffblueTest {
-  @Test(timeout=10000)
-  public void getMethodTextTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new JavaAssistClassData("name", "name", "foo", "foo")).getMethodText());
-  }
 
-  @Test(timeout=10000)
-  public void getBridgeMethodTextTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new JavaAssistClassData("name", "name", "foo", "foo")).getBridgeMethodText());
-  }
+    @Test(timeout=10000)
+    public void getBridgeMethodTextReturnsSomething() {
+        assertThat(new JavaAssistClassData("/bin/bash", "/bin/bash", "something", "something").getBridgeMethodText(), is("something"));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    JavaAssistClassData actualJavaAssistClassData = new JavaAssistClassData("name", "name", "foo", "foo");
-
-    // Assert
-    String actualClassName = actualJavaAssistClassData.getClassName();
-    String actualPackageName = actualJavaAssistClassData.getPackageName();
-    String actualBridgeMethodText = actualJavaAssistClassData.getBridgeMethodText();
-    assertEquals("name", actualClassName);
-    assertEquals("foo", actualJavaAssistClassData.getMethodText());
-    assertEquals("foo", actualBridgeMethodText);
-    assertEquals("name", actualPackageName);
-  }
+    @Test(timeout=10000)
+    public void getMethodTextReturnsSomething() {
+        assertThat(new JavaAssistClassData("/bin/bash", "/bin/bash", "something", "something").getMethodText(), is("something"));
+    }
 }
-

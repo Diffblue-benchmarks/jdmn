@@ -1,33 +1,31 @@
 package com.gs.dmn.transformation;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import com.gs.dmn.log.NopBuildLogger;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.mock;
+
+import com.gs.dmn.log.BuildLogger;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.transformation.ToSimpleNameTransformer
+ *
+ * @author Diffblue JCover
+ */
+
 public class ToSimpleNameTransformerDiffblueTest {
-  @Test(timeout=10000)
-  public void constructorTest2() {
-    // Arrange, Act and Assert
-    assertTrue((new ToSimpleNameTransformer(new NopBuildLogger())).logger instanceof NopBuildLogger);
-  }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange, Act and Assert
-    assertTrue((new ToSimpleNameTransformer()).logger instanceof com.gs.dmn.log.Slf4jBuildLogger);
-  }
+    @Test(timeout=10000)
+    public void transformName() {
+        assertThat(new ToSimpleNameTransformer().transformName("bar"), is("bar"));
+        assertThat(new ToSimpleNameTransformer().transformName(""), is(""));
+        assertThat(new ToSimpleNameTransformer().transformName("/bin/bash"), is("BinBash"));
+    }
 
-  @Test(timeout=10000)
-  public void transformNameTest2() {
-    // Arrange, Act and Assert
-    assertEquals("", (new ToSimpleNameTransformer()).transformName(""));
-  }
-
-  @Test(timeout=10000)
-  public void transformNameTest() {
-    // Arrange, Act and Assert
-    assertEquals("name", (new ToSimpleNameTransformer()).transformName("name"));
-  }
+    @Test(timeout=10000)
+    public void transformNameOldNameIsBarReturnsBar() {
+        BuildLogger logger = mock(BuildLogger.class);
+        assertThat(new ToSimpleNameTransformer(logger).transformName("bar"), is("bar"));
+    }
 }
-

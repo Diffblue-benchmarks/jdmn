@@ -1,25 +1,26 @@
 package com.gs.dmn.runtime.interpreter.environment;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.interpreter.environment.RuntimeEnvironmentFactory
+ *
+ * @author Diffblue JCover
+ */
+
 public class RuntimeEnvironmentFactoryDiffblueTest {
-  @Test(timeout=10000)
-  public void makeEnvironmentTest2() {
-    // Arrange, Act and Assert
-    assertNull((new RuntimeEnvironmentFactory()).makeEnvironment().getParent());
-  }
 
-  @Test(timeout=10000)
-  public void makeEnvironmentTest() {
-    // Arrange
-    RuntimeEnvironmentFactory runtimeEnvironmentFactory = new RuntimeEnvironmentFactory();
-    RuntimeEnvironment runtimeEnvironment = new RuntimeEnvironment(
-        new Environment<String, Object>(new Environment<String, Object>(new Environment<String, Object>(null))));
+    @Test(timeout=10000)
+    public void instance() {
+        // pojo RuntimeEnvironmentFactory
+    }
 
-    // Act and Assert
-    assertSame(runtimeEnvironment, runtimeEnvironmentFactory.makeEnvironment(runtimeEnvironment).getParent());
-  }
+    @Test(timeout=10000)
+    public void makeEnvironment() {
+        assertThat((Environment<String, Object>)new RuntimeEnvironmentFactory().makeEnvironment().getParent(), is(nullValue()));
+    }
 }
-

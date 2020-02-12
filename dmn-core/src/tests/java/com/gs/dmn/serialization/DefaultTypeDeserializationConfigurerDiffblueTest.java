@@ -1,13 +1,20 @@
 package com.gs.dmn.serialization;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import org.junit.Test;
 
-public class DefaultTypeDeserializationConfigurerDiffblueTest {
-  @Test(timeout=10000)
-  public void deserializeTypeAsTest() {
-    // Arrange, Act and Assert
-    assertEquals("nameImpl", (new DefaultTypeDeserializationConfigurer()).deserializeTypeAs("name"));
-  }
-}
+/**
+ * Unit tests for com.gs.dmn.serialization.DefaultTypeDeserializationConfigurer
+ *
+ * @author Diffblue JCover
+ */
 
+public class DefaultTypeDeserializationConfigurerDiffblueTest {
+
+    @Test(timeout=10000)
+    public void deserializeTypeAsQualifiedInterfaceNameIsIntReturnsIntImpl() {
+        assertThat(new DefaultTypeDeserializationConfigurer().deserializeTypeAs("int"), is("intImpl"));
+    }
+}

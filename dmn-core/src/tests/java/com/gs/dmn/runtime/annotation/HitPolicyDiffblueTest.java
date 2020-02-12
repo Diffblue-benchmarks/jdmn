@@ -1,23 +1,25 @@
 package com.gs.dmn.runtime.annotation;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.annotation.HitPolicy
+ *
+ * @author Diffblue JCover
+ */
+
 public class HitPolicyDiffblueTest {
-  @Test(timeout=10000)
-  public void valueTest() {
-    // Arrange, Act and Assert
-    assertEquals("UNIQUE", HitPolicy.UNIQUE.value());
-  }
 
-  @Test(timeout=10000)
-  public void fromValueTest() {
-    // Arrange
-    HitPolicy actualFromValueResult = HitPolicy.fromValue("foo");
+    @Test(timeout=10000)
+    public void fromValueVIsGermanyReturnsUNKNOWN() {
+        assertThat(HitPolicy.fromValue("Germany"), is(HitPolicy.UNKNOWN));
+    }
 
-    // Act and Assert
-    assertEquals(HitPolicy.UNKNOWN, actualFromValueResult);
-    assertEquals(HitPolicy.UNIQUE, HitPolicy.fromValue("UNIQUE"));
-  }
+    @Test(timeout=10000)
+    public void valueReturnsUNIQUE() {
+        assertThat(HitPolicy.UNIQUE.value(), is("UNIQUE"));
+    }
 }
-

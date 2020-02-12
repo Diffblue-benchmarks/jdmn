@@ -1,777 +1,412 @@
 package com.gs.dmn.feel.analysis.syntax.ast;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsSame.sameInstance;
 import static org.junit.Assert.assertTrue;
-import com.gs.dmn.feel.analysis.semantics.type.AnyType;
-import com.gs.dmn.feel.analysis.semantics.type.Type;
+import static org.mockito.Mockito.mock;
+
 import com.gs.dmn.feel.analysis.syntax.ast.expression.Expression;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.ExpressionIteratorDomain;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.ExpressionList;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.Iterator;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.PathExpression;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic.Addition;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic.Exponentiation;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic.Multiplication;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.comparison.InExpression;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.comparison.Relational;
+import com.gs.dmn.feel.analysis.syntax.ast.expression.IteratorDomain;
+import com.gs.dmn.feel.analysis.syntax.ast.expression.function.ContextEntry;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.function.ContextEntryKey;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.function.FormalParameter;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.function.FunctionDefinition;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.function.FunctionInvocation;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.function.NamedParameters;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.function.Parameters;
+import com.gs.dmn.feel.analysis.syntax.ast.expression.function.PositionalParameters;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.literal.BooleanLiteral;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.literal.DateTimeLiteral;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.literal.ListLiteral;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.literal.NumericLiteral;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.literal.StringLiteral;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.logic.Conjunction;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.logic.Disjunction;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.textual.ForExpression;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.textual.IfExpression;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.textual.QuantifiedExpression;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.type.ContextTypeExpression;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.type.FunctionTypeExpression;
-import com.gs.dmn.feel.analysis.syntax.ast.expression.type.NamedTypeExpression;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.type.TypeExpression;
 import com.gs.dmn.feel.analysis.syntax.ast.test.ExpressionTest;
 import com.gs.dmn.feel.analysis.syntax.ast.test.ListTest;
-import com.gs.dmn.feel.analysis.syntax.ast.test.OperatorTest;
-import com.gs.dmn.feel.analysis.syntax.ast.test.PositiveUnaryTest;
 import com.gs.dmn.feel.analysis.syntax.ast.test.PositiveUnaryTests;
 import com.gs.dmn.feel.analysis.syntax.ast.test.RangeTest;
 import com.gs.dmn.feel.analysis.syntax.ast.test.SimplePositiveUnaryTests;
-import com.gs.dmn.feel.analysis.syntax.ast.test.SimpleUnaryTests;
-import com.gs.dmn.feel.analysis.syntax.ast.test.UnaryTests;
-import com.gs.dmn.runtime.DMNRuntimeException;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import org.junit.Rule;
+import java.util.Map;
+
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.syntax.ast.ASTFactory
+ *
+ * @author Diffblue JCover
+ */
 
 public class ASTFactoryDiffblueTest {
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
-
-  @Test(timeout=10000)
-  public void toDateTimeLiteralTest2() {
-    // Arrange and Act
-    Expression actualToDateTimeLiteralResult = (new ASTFactory()).toDateTimeLiteral("foo", "foo");
-
-    // Assert
-    Type type = actualToDateTimeLiteralResult.getType();
-    String actualLexeme = ((DateTimeLiteral) actualToDateTimeLiteralResult).getLexeme();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("foo", ((DateTimeLiteral) actualToDateTimeLiteralResult).getConversionFunction());
-    assertEquals("foo", actualLexeme);
-  }
-
-  @Test(timeout=10000)
-  public void toFunctionTypeExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    NamedTypeExpression namedTypeExpression = new NamedTypeExpression("name");
-
-    // Act
-    TypeExpression actualToFunctionTypeExpressionResult = astFactory.toFunctionTypeExpression(null,
-        namedTypeExpression);
-
-    // Assert
-    Type type = actualToFunctionTypeExpressionResult.getType();
-    TypeExpression actualReturnType = ((FunctionTypeExpression) actualToFunctionTypeExpressionResult).getReturnType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertNull(((FunctionTypeExpression) actualToFunctionTypeExpressionResult).getParameters());
-    assertSame(namedTypeExpression, actualReturnType);
-  }
-
-  @Test(timeout=10000)
-  public void toExponentiationTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList leftOperand = new ExpressionList();
-
-    // Act
-    Expression actualToExponentiationResult = astFactory.toExponentiation(leftOperand, new ExpressionList());
-
-    // Assert
-    Type type = actualToExponentiationResult.getType();
-    String actualToStringResult = actualToExponentiationResult.toString();
-    assertEquals("**", ((Exponentiation) actualToExponentiationResult).getOperator());
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("Exponentiation(ExpressionList(),ExpressionList())", actualToStringResult);
-  }
-
-  @Test(timeout=10000)
-  public void toListTestTest2() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    ListTest actualToListTestResult = astFactory.toListTest(new ListLiteral(null));
-
-    // Assert
-    Type type = actualToListTestResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("ListTest(ListLiteral())", actualToListTestResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toExpressionTestTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    ExpressionTest actualToExpressionTestResult = astFactory.toExpressionTest(new ExpressionList());
-
-    // Assert
-    Type type = actualToExpressionTestResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("ExpressionTest(ExpressionList())", actualToExpressionTestResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toDateTimeLiteralTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    Expression actualToDateTimeLiteralResult = astFactory.toDateTimeLiteral("foo", new ExpressionList());
-
-    // Assert
-    Expression function = ((FunctionInvocation) actualToDateTimeLiteralResult).getFunction();
-    Type type = actualToDateTimeLiteralResult.getType();
-    String actualToStringResult = actualToDateTimeLiteralResult.toString();
-    Parameters parameters = ((FunctionInvocation) actualToDateTimeLiteralResult).getParameters();
-    Type actualType = function.getType();
-    String actualToStringResult1 = function.toString();
-    assertTrue(type instanceof AnyType);
-    assertEquals("FunctionInvocation(Name(foo) -> PositionalParameters" + "(ExpressionList()))", actualToStringResult);
-    assertFalse(parameters.isEmpty());
-    assertEquals("Name(foo)", actualToStringResult1);
-    assertSame(type, actualType);
-  }
-
-  @Test(timeout=10000)
-  public void toComparisonTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList leftOperand = new ExpressionList();
-
-    // Act
-    Expression actualToComparisonResult = astFactory.toComparison("foo", leftOperand, new ExpressionList());
-
-    // Assert
-    Type type = actualToComparisonResult.getType();
-    String actualToStringResult = actualToComparisonResult.toString();
-    assertEquals("foo", ((Relational) actualToComparisonResult).getOperator());
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("Relational(foo,ExpressionList(),ExpressionList())", actualToStringResult);
-  }
-
-  @Test(timeout=10000)
-  public void toIteratorTest2() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    Iterator actualToIteratorResult = astFactory.toIterator("name", new ExpressionList());
-
-    // Assert
-    String actualName = actualToIteratorResult.getName();
-    String actualToStringResult = actualToIteratorResult.toString();
-    assertEquals("name", actualName);
-    assertEquals("Iterator(name in ExpressionIteratorDomain(ExpressionList" + "()))", actualToStringResult);
-    assertEquals("ExpressionIteratorDomain(ExpressionList())", actualToIteratorResult.getDomain().toString());
-  }
-
-  @Test(timeout=10000)
-  public void toBooleanLiteralTest() {
-    // Arrange and Act
-    BooleanLiteral actualToBooleanLiteralResult = (new ASTFactory()).toBooleanLiteral("foo");
-
-    // Assert
-    Type type = actualToBooleanLiteralResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("foo", actualToBooleanLiteralResult.getLexeme());
-  }
-
-  @Test(timeout=10000)
-  public void toContextTest() {
-    // Arrange and Act
-    Expression actualToContextResult = (new ASTFactory()).toContext(null);
-
-    // Assert
-    Type type = actualToContextResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("Context()", actualToContextResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toListTestTest() {
-    // Arrange and Act
-    ListTest actualToListTestResult = (new ASTFactory()).toListTest((List<Expression>) null);
-
-    // Assert
-    Type type = actualToListTestResult.getType();
-    String actualToStringResult = actualToListTestResult.toString();
-    ListLiteral listLiteral = actualToListTestResult.getListLiteral();
-    assertTrue(type instanceof AnyType);
-    Type actualType = listLiteral.getType();
-    assertEquals("ListTest(ListLiteral())", actualToStringResult);
-    assertEquals("ListLiteral()", listLiteral.toString());
-    assertSame(type, actualType);
-  }
-
-  @Test(timeout=10000)
-  public void toFunctionDefinitionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList expressionList = new ExpressionList();
-
-    // Act
-    Expression actualToFunctionDefinitionResult = astFactory.toFunctionDefinition(null, expressionList, true);
-
-    // Assert
-    Type type = actualToFunctionDefinitionResult.getType();
-    Expression actualBody = ((FunctionDefinition) actualToFunctionDefinitionResult).getBody();
-    boolean actualIsExternalResult = ((FunctionDefinition) actualToFunctionDefinitionResult).isExternal();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertNull(((FunctionDefinition) actualToFunctionDefinitionResult).getFormalParameters());
-    assertTrue(actualIsExternalResult);
-    assertSame(expressionList, actualBody);
-  }
-
-  @Test(timeout=10000)
-  public void toContextEntryTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ContextEntryKey key = new ContextEntryKey("foo");
-
-    // Act and Assert
-    assertEquals("ContextEntry(ContextEntryKey(foo) =" + " ExpressionList())",
-        astFactory.toContextEntry(key, new ExpressionList()).toString());
-  }
-
-  @Test(timeout=10000)
-  public void toNamedParametersTest() {
-    // Arrange, Act and Assert
-    assertTrue((new ASTFactory()).toNamedParameters(null).isEmpty());
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    ASTFactory actualAstFactory = new ASTFactory();
-
-    // Assert
-    Expression toNullLiteralResult = actualAstFactory.toNullLiteral();
-    assertTrue(toNullLiteralResult instanceof com.gs.dmn.feel.analysis.syntax.ast.expression.literal.NullLiteral);
-    assertTrue(actualAstFactory.toAny() instanceof com.gs.dmn.feel.analysis.syntax.ast.test.Any);
-  }
-
-  @Test(timeout=10000)
-  public void toFilterExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList value = new ExpressionList();
-
-    // Act
-    Expression actualToFilterExpressionResult = astFactory.toFilterExpression(value, new ExpressionList());
-
-    // Assert
-    Type type = actualToFilterExpressionResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("FilterExpression(ExpressionList()," + " ExpressionList())",
-        actualToFilterExpressionResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toNumericLiteralTest() {
-    // Arrange and Act
-    NumericLiteral actualToNumericLiteralResult = (new ASTFactory()).toNumericLiteral("foo");
-
-    // Assert
-    Type type = actualToNumericLiteralResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("foo", actualToNumericLiteralResult.getLexeme());
-  }
-
-  @Test(timeout=10000)
-  public void toFunctionInvocationTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList function = new ExpressionList();
-
-    // Act
-    Expression actualToFunctionInvocationResult = astFactory.toFunctionInvocation(function, new NamedParameters(null));
-
-    // Assert
-    Type type = actualToFunctionInvocationResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("FunctionInvocation(ExpressionList() ->" + " NamedParameters())",
-        actualToFunctionInvocationResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toQuantifiedExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList expressionList = new ExpressionList();
-
-    // Act
-    Expression actualToQuantifiedExpressionResult = astFactory.toQuantifiedExpression("foo", null, expressionList);
-
-    // Assert
-    Type type = actualToQuantifiedExpressionResult.getType();
-    String actualPredicate = ((QuantifiedExpression) actualToQuantifiedExpressionResult).getPredicate();
-    Expression actualBody = ((QuantifiedExpression) actualToQuantifiedExpressionResult).getBody();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertNull(((QuantifiedExpression) actualToQuantifiedExpressionResult).getIterators());
-    assertSame(expressionList, actualBody);
-    assertEquals("foo", actualPredicate);
-  }
-
-  @Test(timeout=10000)
-  public void toQualifiedNameTest() {
-    // Arrange and Act
-    Expression actualToQualifiedNameResult = (new ASTFactory()).toQualifiedName("foo", "foo", "foo");
-
-    // Assert
-    Type type = actualToQualifiedNameResult.getType();
-    String actualToStringResult = actualToQualifiedNameResult.toString();
-    String actualMember = ((PathExpression) actualToQualifiedNameResult).getMember();
-    Expression source = ((PathExpression) actualToQualifiedNameResult).getSource();
-    assertTrue(type instanceof AnyType);
-    Type actualType = source.getType();
-    String actualPath = ((PathExpression) source).getPath();
-    String actualMember1 = ((PathExpression) source).getMember();
-    Expression source1 = ((PathExpression) source).getSource();
-    assertEquals("PathExpression(PathExpression(Name(foo)," + " foo), foo)", actualToStringResult);
-    assertEquals("foo", actualMember);
-    assertEquals("foo", actualMember1);
-    assertEquals("foo.foo", actualPath);
-    assertSame(type, actualType);
-    Type actualType1 = source1.getType();
-    assertSame(type, actualType1);
-    assertEquals("Name(foo)", source1.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toNameTest() {
-    // Arrange and Act
-    Expression actualToNameResult = (new ASTFactory()).toName("name");
-
-    // Assert
-    Type type = actualToNameResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("Name(name)", actualToNameResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toNullPositiveUnaryTestTest() {
-    // Arrange, Act and Assert
-    assertTrue((new ASTFactory()).toNullPositiveUnaryTest()
-        .getType() instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-  }
-
-  @Test(timeout=10000)
-  public void toStringLiteralTest() {
-    // Arrange and Act
-    StringLiteral actualToStringLiteralResult = (new ASTFactory()).toStringLiteral("foo");
-
-    // Assert
-    Type type = actualToStringLiteralResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("foo", actualToStringLiteralResult.getLexeme());
-  }
-
-  @Test(timeout=10000)
-  public void toDisjunctionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList left = new ExpressionList();
-
-    // Act
-    Expression actualToDisjunctionResult = astFactory.toDisjunction(left, new ExpressionList());
-
-    // Assert
-    Type type = actualToDisjunctionResult.getType();
-    String actualToStringResult = actualToDisjunctionResult.toString();
-    assertEquals("or", ((Disjunction) actualToDisjunctionResult).getOperator());
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("Disjunction(ExpressionList(),ExpressionList())", actualToStringResult);
-  }
-
-  @Test(timeout=10000)
-  public void toIntervalTestTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    RangeTest actualToIntervalTestResult = astFactory.toIntervalTest("foo", new ExpressionList(), "foo",
-        new ExpressionList());
-
-    // Assert
-    Type type = actualToIntervalTestResult.getType();
-    String actualToStringResult = actualToIntervalTestResult.toString();
-    boolean actualIsOpenStartResult = actualToIntervalTestResult.isOpenStart();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertTrue(actualToIntervalTestResult.isOpenEnd());
-    assertEquals("IntervalTest(true,ExpressionList(),true,ExpressionList" + "())", actualToStringResult);
-    assertTrue(actualIsOpenStartResult);
-  }
-
-  @Test(timeout=10000)
-  public void toContextTypeExpressionTest() {
-    // Arrange and Act
-    TypeExpression actualToContextTypeExpressionResult = (new ASTFactory()).toContextTypeExpression(null);
-
-    // Assert
-    Type type = actualToContextTypeExpressionResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertNull(((ContextTypeExpression) actualToContextTypeExpressionResult).getMembers());
-  }
-
-  @Test(timeout=10000)
-  public void toNullLiteralTest() {
-    // Arrange, Act and Assert
-    assertTrue((new ASTFactory()).toNullLiteral().getType() instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-  }
-
-  @Test(timeout=10000)
-  public void toForExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList expressionList = new ExpressionList();
-
-    // Act
-    Expression actualToForExpressionResult = astFactory.toForExpression(null, expressionList);
-
-    // Assert
-    Type type = actualToForExpressionResult.getType();
-    Expression actualBody = ((ForExpression) actualToForExpressionResult).getBody();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertNull(((ForExpression) actualToForExpressionResult).getIterators());
-    assertSame(expressionList, actualBody);
-  }
-
-  @Test(timeout=10000)
-  public void toPositiveUnaryTestTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    PositiveUnaryTest actualToPositiveUnaryTestResult = astFactory.toPositiveUnaryTest(new ExpressionList());
-
-    // Assert
-    Type type = actualToPositiveUnaryTestResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("ExpressionTest(ExpressionList())", actualToPositiveUnaryTestResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toMultiplicationTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList leftOperand = new ExpressionList();
-
-    // Act
-    Expression actualToMultiplicationResult = astFactory.toMultiplication("foo", leftOperand, new ExpressionList());
-
-    // Assert
-    Type type = actualToMultiplicationResult.getType();
-    String actualToStringResult = actualToMultiplicationResult.toString();
-    assertEquals("foo", ((Multiplication) actualToMultiplicationResult).getOperator());
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("Multiplication(foo,ExpressionList(),ExpressionList" + "())", actualToStringResult);
-  }
-
-  @Test(timeout=10000)
-  public void toPathExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    Expression actualToPathExpressionResult = astFactory.toPathExpression(new ExpressionList(), "foo");
-
-    // Assert
-    Type type = actualToPathExpressionResult.getType();
-    String actualToStringResult = actualToPathExpressionResult.toString();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("PathExpression(ExpressionList(), foo)", actualToStringResult);
-    assertEquals("foo", ((PathExpression) actualToPathExpressionResult).getMember());
-  }
-
-  @Test(timeout=10000)
-  public void toNegatedUnaryTestsTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    UnaryTests actualToNegatedUnaryTestsResult = astFactory.toNegatedUnaryTests(new PositiveUnaryTests(null));
-
-    // Assert
-    Type type = actualToNegatedUnaryTestsResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("NegatedUnaryTests(PositiveUnaryTests())", actualToNegatedUnaryTestsResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toAnyTest() {
-    // Arrange, Act and Assert
-    assertTrue((new ASTFactory()).toAny().getType() instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-  }
-
-  @Test(timeout=10000)
-  public void toFormalParameterTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    NamedTypeExpression namedTypeExpression = new NamedTypeExpression("name");
-
-    // Act
-    FormalParameter actualToFormalParameterResult = astFactory.toFormalParameter("name", namedTypeExpression);
-
-    // Assert
-    String actualName = actualToFormalParameterResult.getName();
-    assertSame(namedTypeExpression, actualToFormalParameterResult.getTypeExpression());
-    assertEquals("name", actualName);
-  }
-
-  @Test(timeout=10000)
-  public void toInExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList value = new ExpressionList();
-
-    // Act
-    Expression actualToInExpressionResult = astFactory.toInExpression(value, new ExpressionList());
-
-    // Assert
-    Type type = actualToInExpressionResult.getType();
-    String actualToStringResult = actualToInExpressionResult.toString();
-    PositiveUnaryTest getResult = ((InExpression) actualToInExpressionResult).getTests().get(0);
-    assertTrue(type instanceof AnyType);
-    assertEquals("InExpression(ExpressionList(), OperatorTest(null" + ",ExpressionList()))", actualToStringResult);
-    Type actualType = getResult.getType();
-    String actualToStringResult1 = getResult.toString();
-    assertNull(((OperatorTest) getResult).getOperator());
-    assertEquals("OperatorTest(null,ExpressionList())", actualToStringResult1);
-    assertSame(type, actualType);
-  }
-
-  @Test(timeout=10000)
-  public void toIteratorDomainTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList start = new ExpressionList();
-
-    // Act and Assert
-    assertEquals("RangeIteratorDomain(ExpressionList()," + " ExpressionList())",
-        astFactory.toIteratorDomain(start, new ExpressionList()).toString());
-  }
-
-  @Test(timeout=10000)
-  public void toBetweenExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList value = new ExpressionList();
-    ExpressionList leftEndpoint = new ExpressionList();
-
-    // Act
-    Expression actualToBetweenExpressionResult = astFactory.toBetweenExpression(value, leftEndpoint,
-        new ExpressionList());
-
-    // Assert
-    Type type = actualToBetweenExpressionResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("BetweenExpression(ExpressionList(), ExpressionList()," + " ExpressionList())",
-        actualToBetweenExpressionResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toIteratorTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    Iterator actualToIteratorResult = astFactory.toIterator("name", new ExpressionIteratorDomain(new ExpressionList()));
-
-    // Assert
-    String actualName = actualToIteratorResult.getName();
-    assertEquals("name", actualName);
-    assertEquals("Iterator(name in ExpressionIteratorDomain(ExpressionList" + "()))",
-        actualToIteratorResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toPositionalParametersTest() {
-    // Arrange, Act and Assert
-    assertTrue((new ASTFactory()).toPositionalParameters(null).isEmpty());
-  }
-
-  @Test(timeout=10000)
-  public void toOperatorTestTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    OperatorTest actualToOperatorTestResult = astFactory.toOperatorTest("foo", new ExpressionList());
-
-    // Assert
-    Type type = actualToOperatorTestResult.getType();
-    String actualToStringResult = actualToOperatorTestResult.toString();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("foo", actualToOperatorTestResult.getOperator());
-    assertEquals("OperatorTest(foo,ExpressionList())", actualToStringResult);
-  }
-
-  @Test(timeout=10000)
-  public void toContextEntryKeyTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new ASTFactory()).toContextEntryKey("foo").getKey());
-  }
-
-  @Test(timeout=10000)
-  public void toListTypeExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    TypeExpression actualToListTypeExpressionResult = astFactory.toListTypeExpression(new NamedTypeExpression("name"));
-
-    // Assert
-    Type type = actualToListTypeExpressionResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("ListTypeExpression(NamedTypeExpression(name))", actualToListTypeExpressionResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toListLiteralTest() {
-    // Arrange and Act
-    Expression actualToListLiteralResult = (new ASTFactory()).toListLiteral(null);
-
-    // Assert
-    Type type = actualToListLiteralResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("ListLiteral()", actualToListLiteralResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toConjunctionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList left = new ExpressionList();
-
-    // Act
-    Expression actualToConjunctionResult = astFactory.toConjunction(left, new ExpressionList());
-
-    // Assert
-    Type type = actualToConjunctionResult.getType();
-    String actualToStringResult = actualToConjunctionResult.toString();
-    assertEquals("and", ((Conjunction) actualToConjunctionResult).getOperator());
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("Conjunction(ExpressionList(),ExpressionList())", actualToStringResult);
-  }
-
-  @Test(timeout=10000)
-  public void toAdditionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList leftOperand = new ExpressionList();
-
-    // Act
-    Expression actualToAdditionResult = astFactory.toAddition("foo", leftOperand, new ExpressionList());
-
-    // Assert
-    Type type = actualToAdditionResult.getType();
-    String actualToStringResult = actualToAdditionResult.toString();
-    assertEquals("foo", ((Addition) actualToAdditionResult).getOperator());
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("Addition(foo,ExpressionList(),ExpressionList())", actualToStringResult);
-  }
-
-  @Test(timeout=10000)
-  public void toNegationTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act and Assert
-    thrown.expect(DMNRuntimeException.class);
-    astFactory.toNegation("foo", new ExpressionList());
-  }
-
-  @Test(timeout=10000)
-  public void toNamedTypeExpressionTest2() {
-    // Arrange and Act
-    TypeExpression actualToNamedTypeExpressionResult = (new ASTFactory()).toNamedTypeExpression("name");
-
-    // Assert
-    String actualQualifiedName = ((NamedTypeExpression) actualToNamedTypeExpressionResult).getQualifiedName();
-    assertEquals("name", actualQualifiedName);
-    assertTrue(actualToNamedTypeExpressionResult.getType() instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-  }
-
-  @Test(timeout=10000)
-  public void toIfExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList condition = new ExpressionList();
-    ExpressionList thenExpression = new ExpressionList();
-
-    // Act
-    IfExpression actualToIfExpressionResult = astFactory.toIfExpression(condition, thenExpression,
-        new ExpressionList());
-
-    // Assert
-    Type type = actualToIfExpressionResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("IfExpression(ExpressionList(), ExpressionList()," + " ExpressionList())",
-        actualToIfExpressionResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toNamedTypeExpressionTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act and Assert
-    thrown.expect(UnsupportedOperationException.class);
-    astFactory.toNamedTypeExpression(new ExpressionList());
-  }
-
-  @Test(timeout=10000)
-  public void toInstanceOfTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-    ExpressionList expression = new ExpressionList();
-
-    // Act
-    Expression actualToInstanceOfResult = astFactory.toInstanceOf(expression, new NamedTypeExpression("name"));
-
-    // Assert
-    Type type = actualToInstanceOfResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("InstanceOfExpression(ExpressionList(), NamedTypeExpression" + "(name))",
-        actualToInstanceOfResult.toString());
-  }
-
-  @Test(timeout=10000)
-  public void toNegatedSimpleUnaryTestsTest() {
-    // Arrange
-    ASTFactory astFactory = new ASTFactory();
-
-    // Act
-    SimpleUnaryTests actualToNegatedSimpleUnaryTestsResult = astFactory
-        .toNegatedSimpleUnaryTests(new SimplePositiveUnaryTests(null));
-
-    // Assert
-    Type type = actualToNegatedSimpleUnaryTestsResult.getType();
-    assertTrue(type instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
-    assertEquals("NegatedSimpleUnaryTests(SimplePositiveUnaryTests" + "())",
-        actualToNegatedSimpleUnaryTestsResult.toString());
-  }
+
+    @Test(timeout=10000)
+    public void isValid() {
+        assertThat(new ASTFactory().toAny().getType().isValid(), is(true));
+        assertThat(new ASTFactory().toContext(new ArrayList<com.gs.dmn.feel.analysis.syntax.ast.expression.function.ContextEntry>()).getType().isValid(), is(true));
+        assertThat(new ASTFactory().toContextTypeExpression(new ArrayList<com.gs.dmn.runtime.Pair<String, com.gs.dmn.feel.analysis.syntax.ast.expression.type.TypeExpression>>()).getType().isValid(), is(true));
+        assertThat(new ASTFactory().toDateTimeLiteral("1999-12-31", "1999-12-31").getType().isValid(), is(true));
+        assertThat(new ASTFactory().toExpressionList(new ArrayList<com.gs.dmn.feel.analysis.syntax.ast.expression.Expression>()).getType().isValid(), is(true));
+        assertThat(new ASTFactory().toListLiteral(new ArrayList<com.gs.dmn.feel.analysis.syntax.ast.expression.Expression>()).getType().isValid(), is(true));
+        assertThat(new ASTFactory().toNamedTypeExpression("int").getType().isValid(), is(true));
+        assertThat(new ASTFactory().toName("Smith").getType().isValid(), is(true));
+        assertThat(new ASTFactory().toNegatedSimpleUnaryTests(new SimplePositiveUnaryTests(new ArrayList<com.gs.dmn.feel.analysis.syntax.ast.test.SimplePositiveUnaryTest>())).getType().isValid(), is(true));
+        assertThat(new ASTFactory().toNegatedUnaryTests(new PositiveUnaryTests(new ArrayList<com.gs.dmn.feel.analysis.syntax.ast.test.PositiveUnaryTest>())).getType().isValid(), is(true));
+        assertThat(new ASTFactory().toNullLiteral().getType().isValid(), is(true));
+        assertThat(new ASTFactory().toNullPositiveUnaryTest().getType().isValid(), is(true));
+        assertThat(new ASTFactory().toQualifiedName(new String[] { "Smith" }).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toAddition() {
+        Expression leftOperand = mock(Expression.class);
+        Expression rightOperand = mock(Expression.class);
+        assertThat(new ASTFactory().toAddition("+", leftOperand, rightOperand).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toBetweenExpression() {
+        Expression value = mock(Expression.class);
+        Expression leftEndpoint = mock(Expression.class);
+        Expression rightEndpoint = mock(Expression.class);
+        assertThat(new ASTFactory().toBetweenExpression(value, leftEndpoint, rightEndpoint).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toBooleanLiteralLexemeIsSmith() {
+        BooleanLiteral result = new ASTFactory().toBooleanLiteral("Smith");
+        assertThat(result.getLexeme(), is("Smith"));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toComparison() {
+        Expression leftOperand = mock(Expression.class);
+        Expression rightOperand = mock(Expression.class);
+        assertThat(new ASTFactory().toComparison("+", leftOperand, rightOperand).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toConjunction() {
+        Expression left = mock(Expression.class);
+        Expression right = mock(Expression.class);
+        assertThat(new ASTFactory().toConjunction(left, right).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toContextEntry() {
+        ContextEntryKey key = new ContextEntryKey("Smith");
+        Expression expression = mock(Expression.class);
+        ContextEntry result = new ASTFactory().toContextEntry(key, expression);
+        assertThat(result.getExpression(), sameInstance(expression));
+        assertThat(result.getKey(), sameInstance(key));
+    }
+
+    @Test(timeout=10000)
+    public void toContextEntryKeyTextIsHtml() {
+        assertThat(new ASTFactory().toContextEntryKey("html").getKey(), is("html"));
+    }
+
+    @Test(timeout=10000)
+    public void toDateTimeLiteralKindIsBar() {
+        Expression stringLiteral = mock(Expression.class);
+        assertThat(new ASTFactory().toDateTimeLiteral("bar", stringLiteral).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toDisjunction() {
+        Expression left = mock(Expression.class);
+        Expression right = mock(Expression.class);
+        assertThat(new ASTFactory().toDisjunction(left, right).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toExponentiation() {
+        Expression leftOperand = mock(Expression.class);
+        Expression rightOperand = mock(Expression.class);
+        assertThat(new ASTFactory().toExponentiation(leftOperand, rightOperand).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toExpressionList() {
+        List<Expression> expressionList = new ArrayList<Expression>();
+        Expression expression = mock(Expression.class);
+        ((ArrayList<Expression>)expressionList).add(expression);
+        assertThat(new ASTFactory().toExpressionList(expressionList), sameInstance(expression));
+    }
+
+    @Test(timeout=10000)
+    public void toExpressionTest() {
+        Expression expression = mock(Expression.class);
+        ExpressionTest result = new ASTFactory().toExpressionTest(expression);
+        assertThat(result.getExpression(), sameInstance(expression));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toFilterExpression() {
+        Expression value = mock(Expression.class);
+        Expression filter = mock(Expression.class);
+        assertThat(new ASTFactory().toFilterExpression(value, filter).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toForExpressionIteratorsIsEmpty() {
+        Expression body = mock(Expression.class);
+        assertThat(new ASTFactory().toForExpression(new ArrayList<com.gs.dmn.feel.analysis.syntax.ast.expression.Iterator>(), body).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toFormalParameterParameterNameIsName() {
+        TypeExpression typeExpression = mock(TypeExpression.class);
+        FormalParameter result = new ASTFactory().toFormalParameter("name", typeExpression);
+        assertThat(result.getName(), is("name"));
+        assertThat(result.getType(), is(nullValue()));
+        assertThat(result.getTypeExpression(), sameInstance(typeExpression));
+    }
+
+    @Test(timeout=10000)
+    public void toFunctionDefinitionExternalIsFalseAndFormalParametersIsEmpty() {
+        Expression body = mock(Expression.class);
+        assertThat(new ASTFactory().toFunctionDefinition(new ArrayList<FormalParameter>(), body, false).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toFunctionInvocation() {
+        Expression function = mock(Expression.class);
+        Parameters parameters = mock(Parameters.class);
+        assertThat(new ASTFactory().toFunctionInvocation(function, parameters).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toFunctionTypeExpressionParametersIsEmpty() {
+        TypeExpression returnType = mock(TypeExpression.class);
+        assertThat(new ASTFactory().toFunctionTypeExpression(new ArrayList<TypeExpression>(), returnType).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toIfExpression() {
+        Expression condition = mock(Expression.class);
+        Expression thenExpression = mock(Expression.class);
+        Expression elseExpression = mock(Expression.class);
+        IfExpression result = new ASTFactory().toIfExpression(condition, thenExpression, elseExpression);
+        assertThat(result.getCondition(), sameInstance(condition));
+        assertThat(result.getElseExpression(), sameInstance(elseExpression));
+        assertThat(result.getThenExpression(), sameInstance(thenExpression));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toInExpression() {
+        Expression value = mock(Expression.class);
+        Expression expression = mock(Expression.class);
+        assertThat(new ASTFactory().toInExpression(value, expression).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toInstanceOf() {
+        Expression expression = mock(Expression.class);
+        TypeExpression typeExpresion = mock(TypeExpression.class);
+        assertThat(new ASTFactory().toInstanceOf(expression, typeExpresion).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toIntervalTest() {
+        Expression start = mock(Expression.class);
+        Expression end = mock(Expression.class);
+        RangeTest result = new ASTFactory().toIntervalTest("[", start, "Smith", end);
+        assertThat(result.getEnd(), sameInstance(end));
+        assertThat(result.getStart(), sameInstance(start));
+        assertThat(result.isOpenEnd(), is(true));
+        assertThat(result.isOpenStart(), is(false));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toIntervalTestLeftParIsBar() {
+        Expression start = mock(Expression.class);
+        Expression end = mock(Expression.class);
+        RangeTest result = new ASTFactory().toIntervalTest("bar", start, "Smith", end);
+        assertThat(result.getEnd(), sameInstance(end));
+        assertThat(result.getStart(), sameInstance(start));
+        assertThat(result.isOpenEnd(), is(true));
+        assertThat(result.isOpenStart(), is(true));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toIntervalTestLeftParIsSmith() {
+        Expression start = mock(Expression.class);
+        Expression end = mock(Expression.class);
+        RangeTest result = new ASTFactory().toIntervalTest("Smith", start, "]", end);
+        assertThat(result.getEnd(), sameInstance(end));
+        assertThat(result.getStart(), sameInstance(start));
+        assertThat(result.isOpenEnd(), is(false));
+        assertThat(result.isOpenStart(), is(true));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toIterator1() {
+        Expression domain = mock(Expression.class);
+        Iterator result = new ASTFactory().toIterator("Smith", domain);
+        assertThat(result.getDomain().getType(), is(nullValue()));
+        assertThat(result.getName(), is("Smith"));
+    }
+
+    @Test(timeout=10000)
+    public void toIterator2() {
+        IteratorDomain domain = mock(IteratorDomain.class);
+        Iterator result = new ASTFactory().toIterator("Smith", domain);
+        assertThat(result.getDomain(), sameInstance(domain));
+        assertThat(result.getName(), is("Smith"));
+    }
+
+    @Test(timeout=10000)
+    public void toIteratorDomain() {
+        Expression start = mock(Expression.class);
+        Expression end = mock(Expression.class);
+        assertThat(new ASTFactory().toIteratorDomain(start, end).getType(), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void toListTest() {
+        ListLiteral expression2 = new ListLiteral(new ArrayList<Expression>());
+        ListTest result = new ASTFactory().toListTest(expression2);
+        assertThat(result.getListLiteral(), sameInstance(expression2));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toListTestExpressionsIsEmpty() {
+        ListTest result = new ASTFactory().toListTest(new ArrayList<Expression>());
+        assertTrue(result.getListLiteral().getExpressionList().isEmpty());
+        assertThat(result.getListLiteral().getType().isValid(), is(true));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toListTypeExpression() {
+        TypeExpression elementType = mock(TypeExpression.class);
+        assertThat(new ASTFactory().toListTypeExpression(elementType).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toMultiplication() {
+        Expression leftOperand = mock(Expression.class);
+        Expression rightOperand = mock(Expression.class);
+        assertThat(new ASTFactory().toMultiplication("+", leftOperand, rightOperand).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toNamedParametersParamsIsEmptyReturnsEmpty() {
+        Map<String, Expression> params = new HashMap<String, Expression>();
+        NamedParameters result = new ASTFactory().toNamedParameters(params);
+        assertThat(result.getConvertedArguments(), is(nullValue()));
+        assertThat(result.getConvertedParameterTypes(), is(nullValue()));
+        assertThat(result.getOriginalArguments(), is(nullValue()));
+        assertThat(result.getParameterConversions(), is(nullValue()));
+        assertThat(result.getParameters(), sameInstance(params));
+        // pojo com.gs.dmn.feel.analysis.syntax.ast.expression.function.ParameterTypes
+        assertThat(result.isEmpty(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toNegation() {
+        Expression operand = mock(Expression.class);
+        assertThat(new ASTFactory().toNegation("-", operand).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toNegationKindIsNot() {
+        Expression operand = mock(Expression.class);
+        assertThat(new ASTFactory().toNegation("not", operand).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toNegationKindListIsEmpty() {
+        Expression operand = mock(Expression.class);
+        assertThat(new ASTFactory().toNegation(new ArrayList<String>(), operand), sameInstance(operand));
+    }
+
+    @Test(timeout=10000)
+    public void toNegationKindListIsNot() {
+        List<String> kindList = new ArrayList<String>();
+        ((ArrayList<String>)kindList).add("not");
+        Expression operand = mock(Expression.class);
+        assertThat(new ASTFactory().toNegation(kindList, operand).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toNumericLiteralLexemeIsSmith() {
+        NumericLiteral result = new ASTFactory().toNumericLiteral("Smith");
+        assertThat(result.getLexeme(), is("Smith"));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toPathExpression() {
+        Expression source = mock(Expression.class);
+        assertThat(new ASTFactory().toPathExpression(source, "1").getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toPositionalParametersParamsIsEmptyReturnsEmpty() {
+        List<Expression> params = new ArrayList<Expression>();
+        PositionalParameters result = new ASTFactory().toPositionalParameters(params);
+        assertThat(result.getConvertedArguments(), is(nullValue()));
+        assertThat(result.getConvertedParameterTypes(), is(nullValue()));
+        assertThat(result.getOriginalArguments(), is(nullValue()));
+        assertThat(result.getParameterConversions(), is(nullValue()));
+        assertThat(result.getParameters(), sameInstance(params));
+        // pojo com.gs.dmn.feel.analysis.syntax.ast.expression.function.ParameterTypes
+        assertThat(result.isEmpty(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toPositiveUnaryTest() {
+        Expression expression = mock(Expression.class);
+        assertThat(new ASTFactory().toPositiveUnaryTest(expression).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toPositiveUnaryTests() {
+        List<Expression> expressions = new ArrayList<Expression>();
+        Expression expression = mock(Expression.class);
+        ((ArrayList<Expression>)expressions).add(expression);
+        PositiveUnaryTests result = new ASTFactory().toPositiveUnaryTests(expressions);
+        assertThat(result.getPositiveUnaryTests().size(), is(1));
+        assertThat(result.getPositiveUnaryTests().get(0).getType().isValid(), is(true));
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toPositiveUnaryTestsExpressionsIsEmpty() {
+        PositiveUnaryTests result = new ASTFactory().toPositiveUnaryTests(new ArrayList<Expression>());
+        assertTrue(result.getPositiveUnaryTests().isEmpty());
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toQuantifiedExpressionIteratorsIsEmptyAndPredicateIsSmith() {
+        Expression body = mock(Expression.class);
+        assertThat(new ASTFactory().toQuantifiedExpression("Smith", new ArrayList<Iterator>(), body).getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toSimplePositiveUnaryTestsExpressionsIsEmpty() {
+        SimplePositiveUnaryTests result = new ASTFactory().toSimplePositiveUnaryTests(new ArrayList<Expression>());
+        assertTrue(result.getSimplePositiveUnaryTests().isEmpty());
+        assertThat(result.getType().isValid(), is(true));
+    }
+
+    @Test(timeout=10000)
+    public void toStringLiteralLexemeIsSmith() {
+        StringLiteral result = new ASTFactory().toStringLiteral("Smith");
+        assertThat(result.getLexeme(), is("Smith"));
+        assertThat(result.getType().isValid(), is(true));
+    }
 }
-

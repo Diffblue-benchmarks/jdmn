@@ -1,44 +1,33 @@
 package com.gs.dmn.feel.analysis.semantics.type;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.mockito.Mockito.mock;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.semantics.type.NullType
+ *
+ * @author Diffblue JCover
+ */
+
 public class NullTypeDiffblueTest {
-  @Test(timeout=10000)
-  public void isValidTest() {
-    // Arrange, Act and Assert
-    assertTrue((new NullType()).isValid());
-  }
 
-  @Test(timeout=10000)
-  public void equivalentToTest() {
-    // Arrange
-    NullType nullType = new NullType();
+    @Test(timeout=10000)
+    public void conformsToReturnsTrue() {
+        Type other = mock(Type.class);
+        assertThat(new NullType().conformsTo(other), is(true));
+    }
 
-    // Act and Assert
-    assertFalse(nullType.equivalentTo(new AnyType()));
-  }
+    @Test(timeout=10000)
+    public void equivalentToReturnsFalse() {
+        Type other = mock(Type.class);
+        assertThat(new NullType().equivalentTo(other), is(false));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    NullType actualNullType = new NullType();
-
-    // Assert
-    String actualToStringResult = actualNullType.toString();
-    assertEquals("NullType", actualToStringResult);
-    assertTrue(actualNullType.isValid());
-  }
-
-  @Test(timeout=10000)
-  public void conformsToTest() {
-    // Arrange
-    NullType nullType = new NullType();
-
-    // Act and Assert
-    assertTrue(nullType.conformsTo(new AnyType()));
-  }
+    @Test(timeout=10000)
+    public void isValidReturnsTrue() {
+        assertThat(new NullType().isValid(), is(true));
+    }
 }
-

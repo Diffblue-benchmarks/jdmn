@@ -1,55 +1,55 @@
 package com.gs.dmn.transformation.template;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.transformation.template.TreeTemplateProvider
+ *
+ * @author Diffblue JCover
+ */
+
 public class TreeTemplateProviderDiffblueTest {
-  @Test(timeout=10000)
-  public void testBaseTemplatePathTest() {
-    // Arrange, Act and Assert
-    assertEquals("/templates/tck", (new TreeTemplateProvider()).testBaseTemplatePath());
-  }
 
-  @Test(timeout=10000)
-  public void itemDefinitionClassTemplateTest() {
-    // Arrange, Act and Assert
-    assertEquals("common/itemDefinitionClass.ftl", (new TreeTemplateProvider()).itemDefinitionClassTemplate());
-  }
+    @Test(timeout=10000)
+    public void baseTemplatePath() {
+        assertThat(new TreeTemplateProvider().baseTemplatePath(), is("/templates/dmn2java"));
+    }
 
-  @Test(timeout=10000)
-  public void decisionTemplateNameTest() {
-    // Arrange, Act and Assert
-    assertEquals("tree/decision.ftl", (new TreeTemplateProvider()).decisionTemplateName());
-  }
+    @Test(timeout=10000)
+    public void bkmTemplateName() {
+        assertThat(new TreeTemplateProvider().bkmTemplateName(), is("tree/bkm.ftl"));
+    }
 
-  @Test(timeout=10000)
-  public void decisionTableRuleOutputTemplateTest() {
-    // Arrange, Act and Assert
-    assertEquals("tree/decisionTableRuleOutput.ftl", (new TreeTemplateProvider()).decisionTableRuleOutputTemplate());
-  }
+    @Test(timeout=10000)
+    public void decisionTableRuleOutputTemplate() {
+        assertThat(new TreeTemplateProvider().decisionTableRuleOutputTemplate(), is("tree/decisionTableRuleOutput.ftl"));
+    }
 
-  @Test(timeout=10000)
-  public void baseTemplatePathTest() {
-    // Arrange, Act and Assert
-    assertEquals("/templates/dmn2java", (new TreeTemplateProvider()).baseTemplatePath());
-  }
+    @Test(timeout=10000)
+    public void decisionTemplateName() {
+        assertThat(new TreeTemplateProvider().decisionTemplateName(), is("tree/decision.ftl"));
+    }
 
-  @Test(timeout=10000)
-  public void testTemplateNameTest() {
-    // Arrange, Act and Assert
-    assertEquals("common/junit.ftl", (new TreeTemplateProvider()).testTemplateName());
-  }
+    @Test(timeout=10000)
+    public void itemDefinitionClassTemplate() {
+        assertThat(new TreeTemplateProvider().itemDefinitionClassTemplate(), is("common/itemDefinitionClass.ftl"));
+    }
 
-  @Test(timeout=10000)
-  public void bkmTemplateNameTest() {
-    // Arrange, Act and Assert
-    assertEquals("tree/bkm.ftl", (new TreeTemplateProvider()).bkmTemplateName());
-  }
+    @Test(timeout=10000)
+    public void itemDefinitionInterfaceTemplate() {
+        assertThat(new TreeTemplateProvider().itemDefinitionInterfaceTemplate(), is("common/itemDefinitionInterface.ftl"));
+    }
 
-  @Test(timeout=10000)
-  public void itemDefinitionInterfaceTemplateTest() {
-    // Arrange, Act and Assert
-    assertEquals("common/itemDefinitionInterface.ftl", (new TreeTemplateProvider()).itemDefinitionInterfaceTemplate());
-  }
+    @Test(timeout=10000)
+    public void testBaseTemplatePath() {
+        assertThat(new TreeTemplateProvider().testBaseTemplatePath(), is("/templates/tck"));
+    }
+
+    @Test(timeout=10000)
+    public void testTemplateName() {
+        assertThat(new TreeTemplateProvider().testTemplateName(), is("common/junit.ftl"));
+    }
 }
-

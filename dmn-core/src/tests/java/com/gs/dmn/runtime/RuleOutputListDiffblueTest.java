@@ -1,49 +1,86 @@
 package com.gs.dmn.runtime;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsSame.sameInstance;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import com.gs.dmn.runtime.annotation.HitPolicy;
+
 import java.util.List;
-import org.junit.Rule;
+
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+/**
+ * Unit tests for com.gs.dmn.runtime.RuleOutputList
+ *
+ * @author Diffblue JCover
+ */
 
 public class RuleOutputListDiffblueTest {
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
 
-  @Test(timeout=10000)
-  public void getMatchedRuleResultsTest() {
-    // Arrange, Act and Assert
-    assertEquals(0, (new RuleOutputList()).getMatchedRuleResults().size());
-  }
+    @Test(timeout=10000)
+    public void add1() {
+        new RuleOutputList().add(null);
+    }
 
-  @Test(timeout=10000)
-  public void applySingleTest() {
-    // Arrange, Act and Assert
-    assertNull((new RuleOutputList()).applySingle(HitPolicy.UNIQUE));
-  }
+    @Test(timeout=10000)
+    public void add2() {
+        RuleOutput result = mock(RuleOutput.class);
+        when(result.isMatched())
+            .thenReturn(false);
+        new RuleOutputList().add(result);
+    }
 
-  @Test(timeout=10000)
-  public void applyMultipleTest() {
-    // Arrange, Act and Assert
-    thrown.expect(UnsupportedOperationException.class);
-    (new RuleOutputList()).applyMultiple(HitPolicy.UNIQUE);
-  }
+    @Test(timeout=10000)
+    public void add3() {
+        RuleOutputList ruleOutputList = new RuleOutputList();
+        RuleOutput result = mock(RuleOutput.class);
+        when(result.isMatched())
+            .thenReturn(true);
+        ruleOutputList.add(result);
+        assertThat(ruleOutputList.getMatchedRuleResults().size(), is(1));
+        assertThat(ruleOutputList.getMatchedRuleResults().get(0), sameInstance(result));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange, Act and Assert
-    List<RuleOutput> matchedRuleResults = (new RuleOutputList()).getMatchedRuleResults();
-    assertTrue(matchedRuleResults instanceof java.util.ArrayList);
-    assertEquals(0, matchedRuleResults.size());
-  }
+    @Test(timeout=10000)
+    public void applyMultipleHitPolicyIsCOLLECT() {
+        RuleOutputList ruleOutputList = new RuleOutputList();
+        List<? extends RuleOutput> result = ruleOutputList.applyMultiple(HitPolicy.COLLECT);
+        assertTrue(result.isEmpty());
+        assertThat((List<? extends RuleOutput>)ruleOutputList.getMatchedRuleResults(), sameInstance(result));
+    }
 
-  @Test(timeout=10000)
-  public void noMatchedRulesTest() {
-    // Arrange, Act and Assert
-    assertTrue((new RuleOutputList()).noMatchedRules());
-  }
+    @Test(timeout=10000)
+    public void applyMultipleHitPolicyIsOUTPUT_ORDER() {
+        RuleOutputList ruleOutputList = new RuleOutputList();
+        List<? extends RuleOutput> result = ruleOutputList.applyMultiple(HitPolicy.OUTPUT_ORDER);
+        assertTrue(result.isEmpty());
+        assertThat((List<? extends RuleOutput>)ruleOutputList.getMatchedRuleResults(), sameInstance(result));
+    }
+
+    @Test(timeout=10000)
+    public void applyMultipleHitPolicyIsRULE_ORDER() {
+        RuleOutputList ruleOutputList = new RuleOutputList();
+        List<? extends RuleOutput> result = ruleOutputList.applyMultiple(HitPolicy.RULE_ORDER);
+        assertTrue(result.isEmpty());
+        assertThat((List<? extends RuleOutput>)ruleOutputList.getMatchedRuleResults(), sameInstance(result));
+    }
+
+    @Test(timeout=10000)
+    public void applySingle() {
+        assertThat(new RuleOutputList().applySingle(HitPolicy.ANY), is(nullValue()));
+        assertThat(new RuleOutputList().applySingle(HitPolicy.FIRST), is(nullValue()));
+        assertThat(new RuleOutputList().applySingle(HitPolicy.PRIORITY), is(nullValue()));
+        assertThat(new RuleOutputList().applySingle(HitPolicy.RULE_ORDER), is(nullValue()));
+        assertThat(new RuleOutputList().applySingle(HitPolicy.UNIQUE), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void noMatchedRulesReturnsTrue() {
+        assertThat(new RuleOutputList().noMatchedRules(), is(true));
+    }
 }
-

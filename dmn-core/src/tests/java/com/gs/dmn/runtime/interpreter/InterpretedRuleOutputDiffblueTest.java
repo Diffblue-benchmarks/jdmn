@@ -1,51 +1,45 @@
 package com.gs.dmn.runtime.interpreter;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsSame.sameInstance;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.interpreter.InterpretedRuleOutput
+ *
+ * @author Diffblue JCover
+ */
+
 public class InterpretedRuleOutputDiffblueTest {
-  @Test(timeout=10000)
-  public void getResultTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new InterpretedRuleOutput(true, "foo")).getResult());
-  }
 
-  @Test(timeout=10000)
-  public void equalsTest() {
-    // Arrange, Act and Assert
-    assertFalse((new InterpretedRuleOutput(true, "foo")).equals("foo"));
-  }
+    @Test(timeout=10000)
+    public void getResult() {
+        Object result = new Object();
+        assertThat(new InterpretedRuleOutput(false, result).getResult(), sameInstance(result));
+    }
 
-  @Test(timeout=10000)
-  public void hashCodeTest() {
-    // Arrange, Act and Assert
-    assertEquals(140696, (new InterpretedRuleOutput(true, "foo")).hashCode());
-  }
+    @Test(timeout=10000)
+    public void sortMatchedResultsIsEmpty() {
+        List<com.gs.dmn.runtime.RuleOutput> matchedResults = new ArrayList<com.gs.dmn.runtime.RuleOutput>();
+        assertThat(new InterpretedRuleOutput(false, "foo").sort(matchedResults), sameInstance(matchedResults));
+    }
 
-  @Test(timeout=10000)
-  public void sortTest() {
-    // Arrange, Act and Assert
-    assertNull((new InterpretedRuleOutput(true, "foo")).sort(null));
-  }
+    @Test(timeout=10000)
+    public void sortMatchedResultsIsNullReturnsNull() {
+        assertThat(new InterpretedRuleOutput(false, new Object()).sort(null), is(nullValue()));
+    }
 
-  @Test(timeout=10000)
-  public void toStringTest() {
-    // Arrange, Act and Assert
-    assertEquals("(matched=true, result='foo')", (new InterpretedRuleOutput(true, "foo")).toString());
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    InterpretedRuleOutput actualInterpretedRuleOutput = new InterpretedRuleOutput(true, "foo");
-
-    // Assert
-    String actualToStringResult = actualInterpretedRuleOutput.toString();
-    assertEquals("(matched=true, result='foo')", actualToStringResult);
-    assertTrue(actualInterpretedRuleOutput.isMatched());
-  }
+    @Test(timeout=10000)
+    public void testequals() {
+        assertThat(new InterpretedRuleOutput(false, "bar").equals(new InterpretedRuleOutput(false, "foo")), is(false));
+        assertThat(new InterpretedRuleOutput(true, "bar").equals(new InterpretedRuleOutput(false, "foo")), is(false));
+        assertThat(new InterpretedRuleOutput(false, "bar").equals("foo"), is(false));
+        assertThat(new InterpretedRuleOutput(false, "foo").equals(new InterpretedRuleOutput(false, "foo")), is(true));
+    }
 }
-

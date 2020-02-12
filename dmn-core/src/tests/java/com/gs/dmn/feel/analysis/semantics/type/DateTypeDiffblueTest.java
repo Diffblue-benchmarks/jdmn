@@ -1,44 +1,34 @@
 package com.gs.dmn.feel.analysis.semantics.type;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+import static org.mockito.Mockito.mock;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.semantics.type.DateType
+ *
+ * @author Diffblue JCover
+ */
+
 public class DateTypeDiffblueTest {
-  @Test(timeout=10000)
-  public void equivalentToTest() {
-    // Arrange
-    DateType dateType = new DateType();
 
-    // Act and Assert
-    assertFalse(dateType.equivalentTo(new AnyType()));
-  }
+    @Test(timeout=10000)
+    public void conformsToReturnsFalse() {
+        Type other = mock(Type.class);
+        assertThat(new DateType().conformsTo(other), is(false));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    DateType actualDateType = new DateType();
+    @Test(timeout=10000)
+    public void equivalentToReturnsFalse() {
+        Type other = mock(Type.class);
+        assertThat(new DateType().equivalentTo(other), is(false));
+    }
 
-    // Assert
-    String actualName = actualDateType.getName();
-    assertEquals("date", actualName);
-    assertEquals("date", actualDateType.getConversionFunction());
-  }
-
-  @Test(timeout=10000)
-  public void conformsToTest() {
-    // Arrange
-    DateType dateType = new DateType();
-
-    // Act and Assert
-    assertFalse(dateType.conformsTo(new AnyType()));
-  }
-
-  @Test(timeout=10000)
-  public void getMemberTypeTest() {
-    // Arrange, Act and Assert
-    assertNull(DateType.getMemberType("foo"));
-  }
+    @Test(timeout=10000)
+    public void getMemberTypeMemberIsGifReturnsNull() {
+        assertThat(DateType.getMemberType("gif"), is(nullValue()));
+    }
 }
-

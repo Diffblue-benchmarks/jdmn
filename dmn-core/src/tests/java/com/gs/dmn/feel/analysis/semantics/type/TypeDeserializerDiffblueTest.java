@@ -1,17 +1,21 @@
 package com.gs.dmn.feel.analysis.semantics.type;
 
-import org.junit.Rule;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+/**
+ * Unit tests for com.gs.dmn.feel.analysis.semantics.type.TypeDeserializer
+ *
+ * @author Diffblue JCover
+ */
 
 public class TypeDeserializerDiffblueTest {
-  @Rule
-  public ExpectedException thrown = ExpectedException.none();
-  @Test(timeout=10000)
-  public void deserializeTest() {
-    // Arrange, Act and Assert
-    thrown.expect(ClassCastException.class);
-    (new TypeDeserializer()).deserialize("foo");
-  }
-}
 
+    @Test(timeout=10000)
+    public void isValid() {
+        assertThat(new TypeDeserializer().deserialize("enumeration").isValid(), is(true));
+        assertThat(TypeDeserializer.instance().deserialize("enumeration").isValid(), is(true));
+    }
+}

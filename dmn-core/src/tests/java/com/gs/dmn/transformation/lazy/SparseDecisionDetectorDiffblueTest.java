@@ -1,40 +1,29 @@
 package com.gs.dmn.transformation.lazy;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertTrue;
-import com.gs.dmn.log.NopBuildLogger;
+
+import com.gs.dmn.DMNModelRepository;
+
 import org.junit.Test;
 import org.omg.spec.dmn._20180521.model.TDecisionTable;
 
+/**
+ * Unit tests for com.gs.dmn.transformation.lazy.SparseDecisionDetector
+ *
+ * @author Diffblue JCover
+ */
+
 public class SparseDecisionDetectorDiffblueTest {
-  @Test(timeout=10000)
-  public void isSparseDecisionTableTest() {
-    // Arrange
-    SparseDecisionDetector sparseDecisionDetector = new SparseDecisionDetector();
 
-    // Act and Assert
-    assertFalse(sparseDecisionDetector.isSparseDecisionTable(new TDecisionTable(), 10.0));
-  }
+    @Test(timeout=10000)
+    public void detect() {
+        assertTrue(new SparseDecisionDetector().detect(new DMNModelRepository()).getLazyEvaluatedDecisions().isEmpty());
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest2() {
-    // Arrange and Act
-    SparseDecisionDetector actualSparseDecisionDetector = new SparseDecisionDetector();
-
-    // Assert
-    assertTrue(actualSparseDecisionDetector.logger instanceof com.gs.dmn.log.Slf4jBuildLogger);
-    assertNull(actualSparseDecisionDetector.inputParameters);
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    SparseDecisionDetector actualSparseDecisionDetector = new SparseDecisionDetector(null, new NopBuildLogger());
-
-    // Assert
-    assertTrue(actualSparseDecisionDetector.logger instanceof NopBuildLogger);
-    assertNull(actualSparseDecisionDetector.inputParameters);
-  }
+    @Test(timeout=10000)
+    public void isSparseDecisionTableSparsityThresholdIsOneReturnsFalse() {
+        assertThat(new SparseDecisionDetector().isSparseDecisionTable(new TDecisionTable(), 1.0), is(false));
+    }
 }
-

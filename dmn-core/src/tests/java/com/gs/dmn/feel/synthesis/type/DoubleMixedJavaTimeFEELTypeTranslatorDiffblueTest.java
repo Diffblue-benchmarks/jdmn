@@ -1,19 +1,26 @@
 package com.gs.dmn.feel.synthesis.type;
 
-import static org.junit.Assert.assertNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.feel.synthesis.type.DoubleMixedJavaTimeFEELTypeTranslator
+ *
+ * @author Diffblue JCover
+ */
+
 public class DoubleMixedJavaTimeFEELTypeTranslatorDiffblueTest {
-  @Test(timeout=10000)
-  public void toQualifiedJavaTypeTest() {
-    // Arrange, Act and Assert
-    assertNull((new DoubleMixedJavaTimeFEELTypeTranslator()).toQualifiedJavaType("foo"));
-  }
 
-  @Test(timeout=10000)
-  public void toJavaTypeTest() {
-    // Arrange, Act and Assert
-    assertNull((new DoubleMixedJavaTimeFEELTypeTranslator()).toJavaType("foo"));
-  }
+    @Test(timeout=10000)
+    public void toJavaTypeFeelTypeIsGifReturnsNull() {
+        assertThat(new DoubleMixedJavaTimeFEELTypeTranslator().toJavaType("gif"), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void toQualifiedJavaTypeFeelTypeIsGifReturnsNull() {
+        assertThat(new DoubleMixedJavaTimeFEELTypeTranslator().toQualifiedJavaType("gif"), is(nullValue()));
+    }
 }
-

@@ -1,30 +1,46 @@
 package com.gs.dmn.serialization;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import java.util.Map;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.nullValue;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.serialization.PrefixNamespaceMappings
+ *
+ * @author Diffblue JCover
+ */
+
 public class PrefixNamespaceMappingsDiffblueTest {
-  @Test(timeout=10000)
-  public void getPrefixTest() {
-    // Arrange, Act and Assert
-    assertNull((new PrefixNamespaceMappings()).getPrefix("foo"));
-  }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange, Act and Assert
-    Map<String, String> stringStringMap = (new PrefixNamespaceMappings()).mappings;
-    assertTrue(stringStringMap instanceof java.util.LinkedHashMap);
-    assertEquals(0, stringStringMap.size());
-  }
+    @Test(timeout=10000)
+    public void getPrefixIsFooReturnsNull() {
+        assertThat(new PrefixNamespaceMappings().get("foo"), is(nullValue()));
+    }
 
-  @Test(timeout=10000)
-  public void getTest() {
-    // Arrange, Act and Assert
-    assertNull((new PrefixNamespaceMappings()).get("foo"));
-  }
+    @Test(timeout=10000)
+    public void getPrefixNamespaceIsFooReturnsNull() {
+        assertThat(new PrefixNamespaceMappings().getPrefix("foo"), is(nullValue()));
+    }
+
+    @Test(timeout=10000)
+    public void merge() {
+        new PrefixNamespaceMappings().merge(new PrefixNamespaceMappings());
+    }
+
+    @Test(timeout=10000)
+    public void mergeOtherIsNull() {
+        new PrefixNamespaceMappings().merge(null);
+    }
+
+    @Test(timeout=10000)
+    public void putNamespaceIsFooAndPrefixIsFoo() {
+        new PrefixNamespaceMappings().put("foo", "foo");
+    }
+
+    @Test(timeout=10000)
+    public void renameKeyNewKeyIsFooAndOldKeyIsBar() {
+        new PrefixNamespaceMappings().renameKey("bar", "foo");
+    }
 }
-

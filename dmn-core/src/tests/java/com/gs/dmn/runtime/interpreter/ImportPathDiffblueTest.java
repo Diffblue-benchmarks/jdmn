@@ -1,68 +1,44 @@
 package com.gs.dmn.runtime.interpreter;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsSame.sameInstance;
+
 import java.util.List;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.interpreter.ImportPath
+ *
+ * @author Diffblue JCover
+ */
+
 public class ImportPathDiffblueTest {
-  @Test(timeout=10000)
-  public void isEmptyTest4() {
-    // Arrange, Act and Assert
-    assertFalse(ImportPath.isEmpty("name"));
-  }
 
-  @Test(timeout=10000)
-  public void isEmptyTest3() {
-    // Arrange, Act and Assert
-    assertTrue(ImportPath.isEmpty(new ImportPath("")));
-  }
+    @Test(timeout=10000)
+    public void asString() {
+        assertThat(new ImportPath(".").asString(), is("."));
+        assertThat(new ImportPath("").asString(), is(""));
+    }
 
-  @Test(timeout=10000)
-  public void isEmptyTest2() {
-    // Arrange, Act and Assert
-    assertFalse(ImportPath.isEmpty(new ImportPath("foo")));
-  }
+    @Test(timeout=10000)
+    public void getPathElementsReturnsBar() {
+        ImportPath importPath = new ImportPath("bar");
+        List<String> result = importPath.getPathElements();
+        assertThat(result.size(), is(1));
+        assertThat(result.get(0), is("bar"));
+        assertThat(importPath.getPathElements(), sameInstance(result));
+    }
 
-  @Test(timeout=10000)
-  public void isEmptyTest() {
-    // Arrange, Act and Assert
-    assertFalse((new ImportPath("foo")).isEmpty());
-  }
-
-  @Test(timeout=10000)
-  public void asStringTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new ImportPath("foo")).asString());
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest2() {
-    // Arrange, Act and Assert
-    assertEquals("foo.foo", (new ImportPath(new ImportPath("foo"), "foo")).toString());
-  }
-
-  @Test(timeout=10000)
-  public void getPathElementsTest() {
-    // Arrange and Act
-    List<String> actualPathElements = (new ImportPath("foo")).getPathElements();
-
-    // Assert
-    assertEquals(1, actualPathElements.size());
-    assertEquals("foo", actualPathElements.get(0));
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new ImportPath("foo")).toString());
-  }
-
-  @Test(timeout=10000)
-  public void toStringTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new ImportPath("foo")).toString());
-  }
+    @Test(timeout=10000)
+    public void isEmpty() {
+        assertThat(new ImportPath("").isEmpty(), is(true));
+        assertThat(ImportPath.isEmpty("bar"), is(false));
+        assertThat(ImportPath.isEmpty(""), is(true));
+        assertThat(ImportPath.isEmpty(new ImportPath("")), is(true));
+        assertThat(ImportPath.isEmpty((ImportPath)null), is(true));
+        assertThat(ImportPath.isEmpty(new ImportPath("bar")), is(false));
+        assertThat(new ImportPath("bar").isEmpty(), is(false));
+    }
 }
-

@@ -1,26 +1,22 @@
 package com.gs.dmn;
 
-import static org.junit.Assert.assertSame;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsSame.sameInstance;
+
 import org.junit.Test;
 import org.omg.spec.dmn._20180521.model.TDecision;
 
+/**
+ * Unit tests for com.gs.dmn.StartMarker
+ *
+ * @author Diffblue JCover
+ */
+
 public class StartMarkerDiffblueTest {
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange
-    TDecision tDecision = new TDecision();
 
-    // Act and Assert
-    assertSame(tDecision, (new StartMarker(tDecision)).getDecision());
-  }
-
-  @Test(timeout=10000)
-  public void getDecisionTest() {
-    // Arrange
-    TDecision tDecision = new TDecision();
-
-    // Act and Assert
-    assertSame(tDecision, (new StartMarker(tDecision)).getDecision());
-  }
+    @Test(timeout=10000)
+    public void getDecision() {
+        TDecision decision = new TDecision();
+        assertThat(new StartMarker(decision).getDecision(), sameInstance(decision));
+    }
 }
-

@@ -1,30 +1,26 @@
 package com.gs.dmn.runtime.listener;
 
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.runtime.listener.Rule
+ *
+ * @author Diffblue JCover
+ */
+
 public class RuleDiffblueTest {
-  @Test(timeout=10000)
-  public void getIndexTest() {
-    // Arrange, Act and Assert
-    assertEquals(1, (new Rule(1, "foo")).getIndex());
-  }
 
-  @Test(timeout=10000)
-  public void getAnnotationTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new Rule(1, "foo")).getAnnotation());
-  }
+    @Test(timeout=10000)
+    public void getAnnotationReturnsGermany() {
+        assertThat(new Rule(1, "Germany").getAnnotation(), is("Germany"));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    Rule actualRule = new Rule(1, "foo");
-
-    // Assert
-    String actualAnnotation = actualRule.getAnnotation();
-    assertEquals("foo", actualAnnotation);
-    assertEquals(1, actualRule.getIndex());
-  }
+    @Test(timeout=10000)
+    public void getIndex() {
+        assertThat(new Rule(1, "Germany").getIndex(), is(1));
+        assertThat(new Rule(0, "Germany").getIndex(), is(0));
+    }
 }
-

@@ -1,81 +1,58 @@
 package com.gs.dmn.serialization;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsSame.sameInstance;
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
 
+/**
+ * Unit tests for com.gs.dmn.serialization.DMNNamespacePrefixMapper
+ *
+ * @author Diffblue JCover
+ */
+
 public class DMNNamespacePrefixMapperDiffblueTest {
-  @Test(timeout=10000)
-  public void getPreferredPrefixTest() {
-    // Arrange, Act and Assert
-    assertEquals("foo", (new DMNNamespacePrefixMapper()).getPreferredPrefix("foo", "foo", true));
-  }
 
-  @Test(timeout=10000)
-  public void getVersionTest() {
-    // Arrange and Act
-    DMNVersion actualVersion = (new DMNNamespacePrefixMapper()).getVersion();
+    @Test(timeout=10000)
+    public void getPreDeclaredNamespaceUris() {
+        assertArrayEquals(new String[] { "http://www.w3.org/2001/XMLSchema", "http://www.omg.org/spec/DMN/20180521/MODEL/", "http://www.omg.org/spec/DMN/20180521/DC/", "http://www.omg.org/spec/DMN/20180521/DMNDI/", "http://www.omg.org/spec/DMN/20180521/DI/", "http://www.omg.org/spec/DMN/20180521/FEEL/" }, new DMNNamespacePrefixMapper().getPreDeclaredNamespaceUris());
+    }
 
-    // Assert
-    assertSame(actualVersion.DMN_12, actualVersion);
-  }
+    @Test(timeout=10000)
+    public void getPreferredPrefix() {
+        assertThat(new DMNNamespacePrefixMapper("bar", "foo").getPreferredPrefix("foo", "foo", false), is("foo"));
+        assertThat(new DMNNamespacePrefixMapper("foo", "").getPreferredPrefix("foo", "foo", false), is("foo"));
+        assertThat(new DMNNamespacePrefixMapper().getPreferredPrefix("bar", "foo", false), is("foo"));
+    }
 
-  @Test(timeout=10000)
-  public void constructorTest3() {
-    // Arrange and Act
-    DMNNamespacePrefixMapper actualDmnNamespacePrefixMapper = new DMNNamespacePrefixMapper();
+    @Test(timeout=10000)
+    public void getUserNamespaceReturnsBar() {
+        assertThat(new DMNNamespacePrefixMapper("bar", "foo").getUserNamespace(), is("bar"));
+    }
 
-    // Assert
-    String actualUserPrefix = actualDmnNamespacePrefixMapper.getUserPrefix();
-    String[] preDeclaredNamespaceUris = actualDmnNamespacePrefixMapper.getPreDeclaredNamespaceUris();
-    assertNull(actualUserPrefix);
-    assertNull(actualDmnNamespacePrefixMapper.getUserNamespace());
-    assertEquals(6, preDeclaredNamespaceUris.length);
-  }
+    @Test(timeout=10000)
+    public void getUserPrefixReturnsFoo() {
+        assertThat(new DMNNamespacePrefixMapper("bar", "foo").getUserPrefix(), is("foo"));
+    }
 
-  @Test(timeout=10000)
-  public void getUserNamespaceTest() {
-    // Arrange, Act and Assert
-    assertNull((new DMNNamespacePrefixMapper()).getUserNamespace());
-  }
-
-  @Test(timeout=10000)
-  public void getPreDeclaredNamespaceUrisTest() {
-    // Arrange, Act and Assert
-    assertEquals(6, (new DMNNamespacePrefixMapper()).getPreDeclaredNamespaceUris().length);
-  }
-
-  @Test(timeout=10000)
-  public void getUserPrefixTest() {
-    // Arrange, Act and Assert
-    assertNull((new DMNNamespacePrefixMapper()).getUserPrefix());
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest2() {
-    // Arrange and Act
-    DMNNamespacePrefixMapper actualDmnNamespacePrefixMapper = new DMNNamespacePrefixMapper("", "foo");
-
-    // Assert
-    String actualUserPrefix = actualDmnNamespacePrefixMapper.getUserPrefix();
-    String[] preDeclaredNamespaceUris = actualDmnNamespacePrefixMapper.getPreDeclaredNamespaceUris();
-    assertEquals("foo", actualUserPrefix);
-    assertEquals("", actualDmnNamespacePrefixMapper.getUserNamespace());
-    assertEquals(6, preDeclaredNamespaceUris.length);
-  }
-
-  @Test(timeout=10000)
-  public void constructorTest() {
-    // Arrange and Act
-    DMNNamespacePrefixMapper actualDmnNamespacePrefixMapper = new DMNNamespacePrefixMapper("foo", "foo");
-
-    // Assert
-    String actualUserPrefix = actualDmnNamespacePrefixMapper.getUserPrefix();
-    String[] preDeclaredNamespaceUris = actualDmnNamespacePrefixMapper.getPreDeclaredNamespaceUris();
-    assertEquals("foo", actualUserPrefix);
-    assertEquals("foo", actualDmnNamespacePrefixMapper.getUserNamespace());
-    assertEquals(7, preDeclaredNamespaceUris.length);
-  }
+    @Test(timeout=10000)
+    public void getVersion() {
+        DMNNamespacePrefixMapper obj = new DMNNamespacePrefixMapper();
+        DMNVersion result = obj.getVersion();
+        assertThat(result.getFeelNamespace(), is("http://www.omg.org/spec/DMN/20180521/FEEL/"));
+        assertThat(result.getFeelPrefix(), is("feel"));
+        assertThat(result.getJavaPackage(), is("org.omg.spec.dmn._20180521.model"));
+        assertThat(result.getNamespace(), is("http://www.omg.org/spec/DMN/20180521/MODEL/"));
+        assertThat(result.getNamespaceMap().get("http://www.omg.org/spec/DMN/20180521/DC/"), is("dc"));
+        assertThat(result.getNamespaceMap().get("http://www.omg.org/spec/DMN/20180521/DI/"), is("di"));
+        assertThat(result.getNamespaceMap().get("http://www.omg.org/spec/DMN/20180521/DMNDI/"), is("dmndi"));
+        assertThat(result.getNamespaceMap().get("http://www.omg.org/spec/DMN/20180521/FEEL/"), is("feel"));
+        assertThat(result.getNamespaceMap().get("http://www.omg.org/spec/DMN/20180521/MODEL/"), is("dmn"));
+        assertThat(result.getPrefix(), is("dmn"));
+        assertThat(result.getSchemaLocation(), is("dmn/1.2/dmn.xsd"));
+        assertThat(result.getVersion(), is("1.2"));
+        assertThat(obj.getVersion(), sameInstance(result));
+    }
 }
-
