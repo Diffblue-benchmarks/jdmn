@@ -39,13 +39,11 @@ public class StringEscapeUtilDiffblueTest {
     // Arrange
     String actualUnescapeFEELResult = StringEscapeUtil.unescapeFEEL("\\");
     String actualUnescapeFEELResult1 = StringEscapeUtil.unescapeFEEL("\\X");
-    String actualUnescapeFEELResult2 = StringEscapeUtil.unescapeFEEL("\\\\X");
 
     // Act and Assert
     assertEquals("\\", actualUnescapeFEELResult);
     assertEquals("\\X", actualUnescapeFEELResult1);
-    assertEquals("\\X", actualUnescapeFEELResult2);
-    assertEquals("", StringEscapeUtil.unescapeFEEL(""));
+    assertEquals("\\X", StringEscapeUtil.unescapeFEEL("\\\\X"));
   }
 }
 

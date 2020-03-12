@@ -149,6 +149,20 @@ public class ASTFactoryDiffblueTest {
   }
 
   @Test
+  public void toContextEntryTest() {
+    // Arrange
+    ASTFactory astFactory = new ASTFactory();
+    ExpressionList expressionList = new ExpressionList();
+
+    // Act
+    ContextEntry actualToContextEntryResult = astFactory.toContextEntry(null, expressionList);
+
+    // Assert
+    assertNull(actualToContextEntryResult.getKey());
+    assertSame(expressionList, actualToContextEntryResult.getExpression());
+  }
+
+  @Test
   public void toContextTest() {
     // Arrange
     ASTFactory astFactory = new ASTFactory();

@@ -29,6 +29,21 @@ public class QuantifiedExpressionDiffblueTest {
   }
 
   @Test
+  public void deriveTypeTest() {
+    // Arrange
+    ArrayList<Iterator> iteratorList = new ArrayList<Iterator>();
+    iteratorList.add(new Iterator("predicate", new ExpressionIteratorDomain(null)));
+    QuantifiedExpression quantifiedExpression = new QuantifiedExpression("predicate", iteratorList,
+        new ExpressionList());
+
+    // Act
+    quantifiedExpression.deriveType(null);
+
+    // Assert
+    assertTrue(quantifiedExpression.getType() instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
+  }
+
+  @Test
   public void toForExpressionTest() {
     // Arrange
     ArrayList<Iterator> iteratorList = new ArrayList<Iterator>();

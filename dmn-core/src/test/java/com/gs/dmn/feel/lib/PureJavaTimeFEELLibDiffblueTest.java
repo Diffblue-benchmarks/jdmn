@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.temporal.Temporal;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Rule;
@@ -92,6 +94,16 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test
+  public void appendTest2() {
+    // Arrange
+    PureJavaTimeFEELLib pureJavaTimeFEELLib = new PureJavaTimeFEELLib();
+    (new ArrayList<Object>()).add("foo");
+
+    // Act and Assert
+    assertEquals(3, pureJavaTimeFEELLib.append(null, "foo", "foo", "foo").size());
+  }
+
+  @Test
   public void ceilingTest() {
     // Arrange
     BigDecimal number = BigDecimal.valueOf(1L);
@@ -154,7 +166,7 @@ public class PureJavaTimeFEELLibDiffblueTest {
   @Test
   public void dateAndTimeTest() {
     // Arrange, Act and Assert
-    assertNull((new PureJavaTimeFEELLib()).dateAndTime(""));
+    assertNull((new PureJavaTimeFEELLib()).dateAndTime(null, null));
   }
 
   @Test
@@ -164,9 +176,39 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test
+  public void dateAndTimeTest3() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).dateAndTime(""));
+  }
+
+  @Test
   public void dateTest() {
     // Arrange, Act and Assert
     assertNull((new PureJavaTimeFEELLib()).date(","));
+  }
+
+  @Test
+  public void dateTest2() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).date((Temporal) null));
+  }
+
+  @Test
+  public void dayTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).day((LocalDate) null));
+  }
+
+  @Test
+  public void dayTest2() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).day((Temporal) null));
+  }
+
+  @Test
+  public void daysTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).days(null));
   }
 
   @Test
@@ -219,7 +261,7 @@ public class PureJavaTimeFEELLibDiffblueTest {
   @Test
   public void expTest() {
     // Arrange
-    BigDecimal number = BigDecimal.valueOf(2628L);
+    BigDecimal number = BigDecimal.valueOf(2630L);
 
     // Act and Assert
     assertNull((new PureJavaTimeFEELLib()).exp(number));
@@ -256,6 +298,18 @@ public class PureJavaTimeFEELLibDiffblueTest {
     // Assert
     assertSame(actualFloorResult.ONE, actualFloorResult);
     assertEquals("1", actualFloorResult.toString());
+  }
+
+  @Test
+  public void hourTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).hour(null));
+  }
+
+  @Test
+  public void hoursTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).hours(null));
   }
 
   @Test
@@ -303,7 +357,7 @@ public class PureJavaTimeFEELLibDiffblueTest {
     objectList.add("foo");
 
     // Act and Assert
-    assertEquals(1, pureJavaTimeFEELLib.insertBefore(objectList, BigDecimal.valueOf(2628L), ",").size());
+    assertEquals(1, pureJavaTimeFEELLib.insertBefore(objectList, BigDecimal.valueOf(2630L), ",").size());
   }
 
   @Test
@@ -446,6 +500,18 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test
+  public void minuteTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).minute(null));
+  }
+
+  @Test
+  public void minutesTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).minutes(null));
+  }
+
+  @Test
   public void modeTest() {
     // Arrange, Act and Assert
     assertNull((new PureJavaTimeFEELLib()).mode("foo", "foo", "foo"));
@@ -482,6 +548,24 @@ public class PureJavaTimeFEELLibDiffblueTest {
 
     // Act and Assert
     assertNull((new PureJavaTimeFEELLib()).modulo(dividend, dividend));
+  }
+
+  @Test
+  public void monthTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).month((LocalDate) null));
+  }
+
+  @Test
+  public void monthTest2() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).month((Temporal) null));
+  }
+
+  @Test
+  public void monthsTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).months(null));
   }
 
   @Test
@@ -623,6 +707,18 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test
+  public void secondTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).second(null));
+  }
+
+  @Test
+  public void secondsTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).seconds(null));
+  }
+
+  @Test
   public void splitTest() {
     // Arrange, Act and Assert
     assertEquals(2, (new PureJavaTimeFEELLib()).split(",", ",").size());
@@ -694,7 +790,7 @@ public class PureJavaTimeFEELLibDiffblueTest {
 
     // Act and Assert
     assertEquals(0,
-        pureJavaTimeFEELLib.sublist(objectList, BigDecimal.valueOf(2628L), BigDecimal.valueOf(2628L)).size());
+        pureJavaTimeFEELLib.sublist(objectList, BigDecimal.valueOf(2630L), BigDecimal.valueOf(2630L)).size());
   }
 
   @Test
@@ -705,7 +801,7 @@ public class PureJavaTimeFEELLibDiffblueTest {
     objectList.add("foo");
 
     // Act and Assert
-    assertEquals(0, pureJavaTimeFEELLib.sublist(objectList, BigDecimal.valueOf(-1L), BigDecimal.valueOf(-1L)).size());
+    assertEquals(0, pureJavaTimeFEELLib.sublist(objectList, BigDecimal.valueOf(0L), BigDecimal.valueOf(0L)).size());
   }
 
   @Test
@@ -727,11 +823,33 @@ public class PureJavaTimeFEELLibDiffblueTest {
     objectList.add("foo");
 
     // Act and Assert
-    assertEquals(1, pureJavaTimeFEELLib.sublist(objectList, BigDecimal.valueOf(1L)).size());
+    assertEquals(0, pureJavaTimeFEELLib.sublist(objectList, BigDecimal.valueOf(-1L), BigDecimal.valueOf(-1L)).size());
   }
 
   @Test
   public void sublistTest5() {
+    // Arrange
+    PureJavaTimeFEELLib pureJavaTimeFEELLib = new PureJavaTimeFEELLib();
+    ArrayList<Object> objectList = new ArrayList<Object>();
+    objectList.add("foo");
+
+    // Act and Assert
+    assertEquals(1, pureJavaTimeFEELLib.sublist(objectList, BigDecimal.valueOf(1L)).size());
+  }
+
+  @Test
+  public void sublistTest6() {
+    // Arrange
+    PureJavaTimeFEELLib pureJavaTimeFEELLib = new PureJavaTimeFEELLib();
+    ArrayList<Object> objectList = new ArrayList<Object>();
+    objectList.add("foo");
+
+    // Act and Assert
+    assertEquals(0, pureJavaTimeFEELLib.sublist(objectList, BigDecimal.valueOf(2630L)).size());
+  }
+
+  @Test
+  public void sublistTest7() {
     // Arrange
     PureJavaTimeFEELLib pureJavaTimeFEELLib = new PureJavaTimeFEELLib();
     ArrayList<Object> objectList = new ArrayList<Object>();
@@ -789,9 +907,36 @@ public class PureJavaTimeFEELLibDiffblueTest {
   }
 
   @Test
+  public void timeOffsetTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).timeOffset(null));
+  }
+
+  @Test
   public void timeTest() {
+    // Arrange
+    PureJavaTimeFEELLib pureJavaTimeFEELLib = new PureJavaTimeFEELLib();
+
+    // Act and Assert
+    assertNull(pureJavaTimeFEELLib.time(BigDecimal.valueOf(1L), BigDecimal.valueOf(1L), BigDecimal.valueOf(1L), null));
+  }
+
+  @Test
+  public void timeTest2() {
     // Arrange, Act and Assert
     assertNull((new PureJavaTimeFEELLib()).time(","));
+  }
+
+  @Test
+  public void timeTest3() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).time((Temporal) null));
+  }
+
+  @Test
+  public void timezoneTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).timezone(null));
   }
 
   @Test
@@ -817,6 +962,42 @@ public class PureJavaTimeFEELLibDiffblueTest {
   public void upperCaseTest() {
     // Arrange, Act and Assert
     assertEquals(",", (new PureJavaTimeFEELLib()).upperCase(","));
+  }
+
+  @Test
+  public void weekdayTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).weekday((Temporal) null));
+  }
+
+  @Test
+  public void weekdayTest2() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).weekday((LocalDate) null));
+  }
+
+  @Test
+  public void yearTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).year((LocalDate) null));
+  }
+
+  @Test
+  public void yearTest2() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).year((Temporal) null));
+  }
+
+  @Test
+  public void yearsAndMonthsDurationTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).yearsAndMonthsDuration(null, null));
+  }
+
+  @Test
+  public void yearsTest() {
+    // Arrange, Act and Assert
+    assertNull((new PureJavaTimeFEELLib()).years(null));
   }
 }
 

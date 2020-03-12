@@ -2,8 +2,11 @@ package com.gs.dmn.feel.analysis.syntax.ast.expression.function;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import com.gs.dmn.feel.analysis.semantics.type.AnyType;
 import com.gs.dmn.feel.analysis.semantics.type.Type;
+import com.gs.dmn.feel.analysis.syntax.ast.CloneVisitor;
+import com.gs.dmn.feel.analysis.syntax.ast.FEELContext;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.Expression;
 import com.gs.dmn.feel.analysis.syntax.ast.expression.ExpressionList;
 import com.gs.dmn.runtime.interpreter.NamedArguments;
@@ -16,6 +19,22 @@ import org.junit.rules.ExpectedException;
 public class PositionalParametersDiffblueTest {
   @Rule
   public ExpectedException thrown = ExpectedException.none();
+
+  @Test
+  public void acceptTest() {
+    // Arrange
+    ArrayList<Expression> expressionList = new ArrayList<Expression>();
+    expressionList.add(new ExpressionList());
+    PositionalParameters positionalParameters = new PositionalParameters(expressionList);
+    FEELContext params = FEELContext.makeContext(null);
+
+    // Act and Assert
+    assertFalse(((PositionalParameters) positionalParameters.accept(new CloneVisitor(), params)).isEmpty());
+    Expression getResult = ((PositionalParameters) positionalParameters.accept(new CloneVisitor(), params))
+        .getParameters().get(0);
+    assertEquals("ExpressionList()", getResult.toString());
+    assertTrue(getResult.getType() instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
+  }
 
   @Test
   public void constructorTest() {

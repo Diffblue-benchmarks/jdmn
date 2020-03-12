@@ -2,9 +2,25 @@ package com.gs.dmn.feel.analysis.syntax.ast.expression;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import com.gs.dmn.feel.analysis.syntax.ast.CloneVisitor;
+import com.gs.dmn.feel.analysis.syntax.ast.FEELContext;
 import org.junit.Test;
 
 public class NameDiffblueTest {
+  @Test
+  public void acceptTest() {
+    // Arrange
+    Name name = new Name("name");
+    FEELContext params = FEELContext.makeContext(null);
+
+    // Act
+    Object actualAcceptResult = name.accept(new CloneVisitor(), params);
+
+    // Assert
+    assertTrue(((Name) actualAcceptResult).getType() instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
+    assertEquals("Name(name)", actualAcceptResult.toString());
+  }
+
   @Test
   public void constructorTest() {
     // Arrange and Act

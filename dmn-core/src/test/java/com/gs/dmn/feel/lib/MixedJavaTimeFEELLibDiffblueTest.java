@@ -6,6 +6,9 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.OffsetTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Rule;
@@ -84,6 +87,16 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   public void appendTest() {
     // Arrange
     MixedJavaTimeFEELLib mixedJavaTimeFEELLib = new MixedJavaTimeFEELLib();
+    (new ArrayList<Object>()).add("foo");
+
+    // Act and Assert
+    assertEquals(3, mixedJavaTimeFEELLib.append(null, "foo", "foo", "foo").size());
+  }
+
+  @Test
+  public void appendTest2() {
+    // Arrange
+    MixedJavaTimeFEELLib mixedJavaTimeFEELLib = new MixedJavaTimeFEELLib();
     ArrayList<Object> objectList = new ArrayList<Object>();
     objectList.add("foo");
 
@@ -154,19 +167,55 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   @Test
   public void dateAndTimeTest() {
     // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).dateAndTime((LocalDate) null, null));
+  }
+
+  @Test
+  public void dateAndTimeTest2() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).dateAndTime("2020-03-01", null));
+  }
+
+  @Test
+  public void dateAndTimeTest3() {
+    // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).dateAndTime(","));
   }
 
   @Test
   public void dateTest() {
     // Arrange, Act and Assert
-    assertNull((new MixedJavaTimeFEELLib()).date(""));
+    assertNull((new MixedJavaTimeFEELLib()).date((ZonedDateTime) null));
   }
 
   @Test
   public void dateTest2() {
     // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).date((LocalDate) null));
+  }
+
+  @Test
+  public void dateTest3() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).date(""));
+  }
+
+  @Test
+  public void dateTest4() {
+    // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).date(","));
+  }
+
+  @Test
+  public void dayTest() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).day((LocalDate) null));
+  }
+
+  @Test
+  public void dayTest2() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).day((ZonedDateTime) null));
   }
 
   @Test
@@ -482,6 +531,18 @@ public class MixedJavaTimeFEELLibDiffblueTest {
     // Assert
     assertSame(actualModuloResult.ZERO, actualModuloResult);
     assertEquals("0", actualModuloResult.toString());
+  }
+
+  @Test
+  public void monthTest() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).month((LocalDate) null));
+  }
+
+  @Test
+  public void monthTest2() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).month((ZonedDateTime) null));
   }
 
   @Test
@@ -813,7 +874,25 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   @Test
   public void timeTest() {
     // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).time((LocalDate) null));
+  }
+
+  @Test
+  public void timeTest2() {
+    // Arrange, Act and Assert
     assertNull((new MixedJavaTimeFEELLib()).time(","));
+  }
+
+  @Test
+  public void timeTest3() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).time((OffsetTime) null));
+  }
+
+  @Test
+  public void timeTest4() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).time((ZonedDateTime) null));
   }
 
   @Test
@@ -841,6 +920,54 @@ public class MixedJavaTimeFEELLibDiffblueTest {
   public void upperCaseTest() {
     // Arrange, Act and Assert
     assertEquals(",", (new MixedJavaTimeFEELLib()).upperCase(","));
+  }
+
+  @Test
+  public void weekdayTest() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).weekday((ZonedDateTime) null));
+  }
+
+  @Test
+  public void weekdayTest2() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).weekday((LocalDate) null));
+  }
+
+  @Test
+  public void yearTest() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).year((LocalDate) null));
+  }
+
+  @Test
+  public void yearTest2() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).year((ZonedDateTime) null));
+  }
+
+  @Test
+  public void yearsAndMonthsDurationTest() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).yearsAndMonthsDuration((ZonedDateTime) null, (ZonedDateTime) null));
+  }
+
+  @Test
+  public void yearsAndMonthsDurationTest2() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).yearsAndMonthsDuration((LocalDate) null, (ZonedDateTime) null));
+  }
+
+  @Test
+  public void yearsAndMonthsDurationTest3() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).yearsAndMonthsDuration((ZonedDateTime) null, (LocalDate) null));
+  }
+
+  @Test
+  public void yearsAndMonthsDurationTest4() {
+    // Arrange, Act and Assert
+    assertNull((new MixedJavaTimeFEELLib()).yearsAndMonthsDuration((LocalDate) null, (LocalDate) null));
   }
 }
 

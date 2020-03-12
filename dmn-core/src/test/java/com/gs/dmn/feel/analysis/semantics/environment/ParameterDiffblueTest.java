@@ -16,6 +16,18 @@ public class ParameterDiffblueTest {
   @Test
   public void constructorTest() {
     // Arrange and Act
+    Parameter actualParameter = new Parameter("name", new AnyType(), false, true);
+
+    // Assert
+    assertFalse(actualParameter.isOptional());
+    assertTrue(actualParameter.isVarArg());
+    assertEquals("name -> Any, false, true)", actualParameter.toString());
+    assertEquals("name", actualParameter.getName());
+  }
+
+  @Test
+  public void constructorTest2() {
+    // Arrange and Act
     Parameter actualParameter = new Parameter("name", new AnyType(), true, false);
 
     // Assert
@@ -26,14 +38,14 @@ public class ParameterDiffblueTest {
   }
 
   @Test
-  public void constructorTest2() {
+  public void constructorTest3() {
     // Arrange, Act and Assert
     thrown.expect(DMNRuntimeException.class);
     new Parameter("name", new AnyType(), true, true);
   }
 
   @Test
-  public void constructorTest3() {
+  public void constructorTest4() {
     // Arrange and Act
     Parameter actualParameter = new Parameter("name", new AnyType());
 

@@ -94,6 +94,16 @@ public class DefaultFEELLibDiffblueTest {
   }
 
   @Test
+  public void appendTest2() {
+    // Arrange
+    DefaultFEELLib defaultFEELLib = new DefaultFEELLib();
+    (new ArrayList<Object>()).add("foo");
+
+    // Act and Assert
+    assertEquals(3, defaultFEELLib.append(null, "foo", "foo", "foo").size());
+  }
+
+  @Test
   public void ceilingTest() {
     // Arrange
     BigDecimal number = BigDecimal.valueOf(1L);

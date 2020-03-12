@@ -23,11 +23,5 @@ public class ToQuotedNameTransformerDiffblueTest {
     // Arrange, Act and Assert
     assertEquals("name", (new ToQuotedNameTransformer()).transformName("name"));
   }
-
-  @Test
-  public void transformNameTest2() {
-    // Arrange, Act and Assert
-    assertEquals("", (new ToQuotedNameTransformer()).transformName(""));
-  }
 }
 

@@ -2,7 +2,6 @@ package com.gs.dmn.transformation.lazy;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import com.gs.dmn.log.NopBuildLogger;
 import java.util.HashMap;
@@ -15,14 +14,9 @@ public class SparseDecisionDetectorDiffblueTest {
     // Arrange
     HashMap<String, String> stringStringMap = new HashMap<String, String>();
     stringStringMap.put("foo", "foo");
-    NopBuildLogger nopBuildLogger = new NopBuildLogger();
 
-    // Act
-    SparseDecisionDetector actualSparseDecisionDetector = new SparseDecisionDetector(stringStringMap, nopBuildLogger);
-
-    // Assert
-    assertSame(nopBuildLogger, actualSparseDecisionDetector.logger);
-    assertSame(stringStringMap, actualSparseDecisionDetector.inputParameters);
+    // Act and Assert
+    assertTrue((new SparseDecisionDetector(stringStringMap, new NopBuildLogger())).logger instanceof NopBuildLogger);
   }
 
   @Test

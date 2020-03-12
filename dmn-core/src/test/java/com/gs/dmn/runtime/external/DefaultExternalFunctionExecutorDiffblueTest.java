@@ -17,7 +17,7 @@ public class DefaultExternalFunctionExecutorDiffblueTest {
   @Test
   public void executeTest2() {
     // Arrange
-    Object[] objectArray = new Object[1478];
+    Object[] objectArray = new Object[1485];
     objectArray[0] = "foo";
     objectArray[1] = "foo";
     objectArray[2] = "foo";

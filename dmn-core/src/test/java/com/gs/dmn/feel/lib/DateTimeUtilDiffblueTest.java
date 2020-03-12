@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import com.gs.dmn.feel.lib.type.time.xml.FEELXMLGregorianCalendar;
-import java.time.LocalDate;
 import java.time.OffsetTime;
 import java.time.format.DateTimeParseException;
 import org.junit.Rule;
@@ -87,18 +86,13 @@ public class DateTimeUtilDiffblueTest {
         -2147483648L, -64800, 1, -64800, -64800);
     boolean actualIsValidDateTimeResult3 = DateTimeUtil.isValidDateTime(252L, 252L, -2147483648L, -64800, 1, -64800,
         -64800);
-    boolean actualIsValidDateTimeResult4 = DateTimeUtil.isValidDateTime(252L, 1L, -2147483648L, -64800, 1, -64800,
-        -64800);
-    boolean actualIsValidDateTimeResult5 = DateTimeUtil.isValidDateTime(252L, 1L, 252L, -64800, 1, -64800, -64800);
 
     // Act and Assert
     assertFalse(actualIsValidDateTimeResult);
     assertFalse(actualIsValidDateTimeResult1);
     assertFalse(actualIsValidDateTimeResult2);
     assertFalse(actualIsValidDateTimeResult3);
-    assertFalse(actualIsValidDateTimeResult4);
-    assertFalse(actualIsValidDateTimeResult5);
-    assertFalse(DateTimeUtil.isValidDateTime(252L, 1L, 1L, -64800, 1, -64800, -64800));
+    assertFalse(DateTimeUtil.isValidDateTime(252L, 1L, -2147483648L, -64800, 1, -64800, -64800));
   }
   @Test
   public void isValidTimeTest() {
@@ -189,12 +183,8 @@ public class DateTimeUtilDiffblueTest {
   }
   @Test
   public void makeLocalDateTest2() {
-    // Arrange
-    LocalDate actualMakeLocalDateResult = DateTimeUtil.makeLocalDate("T");
-
-    // Act and Assert
-    assertNull(actualMakeLocalDateResult);
-    assertNull(DateTimeUtil.makeLocalDate(""));
+    // Arrange, Act and Assert
+    assertNull(DateTimeUtil.makeLocalDate("T"));
   }
   @Test
   public void makeOffsetTimeTest() {

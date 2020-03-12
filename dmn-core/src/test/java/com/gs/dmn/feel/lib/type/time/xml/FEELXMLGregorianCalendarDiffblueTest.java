@@ -130,13 +130,6 @@ public class FEELXMLGregorianCalendarDiffblueTest {
   }
 
   @Test
-  public void getXMLSchemaTypeTest2() {
-    // Arrange, Act and Assert
-    thrown.expect(IllegalStateException.class);
-    (new FEELXMLGregorianCalendar()).getXMLSchemaType();
-  }
-
-  @Test
   public void hashCodeTest() {
     // Arrange, Act and Assert
     assertEquals(0, (new FEELXMLGregorianCalendar()).hashCode());
@@ -168,13 +161,6 @@ public class FEELXMLGregorianCalendarDiffblueTest {
     assertEquals(-2147483648, actualMakeDateResult.getSecond());
     assertEquals(-2147483648, actualMakeDateResult.getHour());
     assertEquals("1", actualToStringResult);
-  }
-
-  @Test
-  public void makeDateTest10() {
-    // Arrange, Act and Assert
-    thrown.expect(IllegalArgumentException.class);
-    FEELXMLGregorianCalendar.makeDate(BigInteger.valueOf(1L), -2147483648, 235);
   }
 
   @Test
@@ -232,18 +218,11 @@ public class FEELXMLGregorianCalendarDiffblueTest {
   public void makeDateTest5() {
     // Arrange, Act and Assert
     thrown.expect(NullPointerException.class);
-    FEELXMLGregorianCalendar.makeDate(BigInteger.valueOf(0L), 2, -2147483648);
-  }
-
-  @Test
-  public void makeDateTest6() {
-    // Arrange, Act and Assert
-    thrown.expect(NullPointerException.class);
     FEELXMLGregorianCalendar.makeDate(BigInteger.valueOf(0L), -2147483648, -2147483648);
   }
 
   @Test
-  public void makeDateTest7() {
+  public void makeDateTest6() {
     // Arrange and Act
     XMLGregorianCalendar actualMakeDateResult = FEELXMLGregorianCalendar.makeDate(BigInteger.valueOf(-2147483648L), 2,
         -2147483648);
@@ -266,7 +245,7 @@ public class FEELXMLGregorianCalendarDiffblueTest {
   }
 
   @Test
-  public void makeDateTest8() {
+  public void makeDateTest7() {
     // Arrange and Act
     XMLGregorianCalendar actualMakeDateResult = FEELXMLGregorianCalendar.makeDate(BigInteger.valueOf(1L), -2147483648,
         1);
@@ -288,7 +267,7 @@ public class FEELXMLGregorianCalendarDiffblueTest {
   }
 
   @Test
-  public void makeDateTest9() {
+  public void makeDateTest8() {
     // Arrange and Act
     XMLGregorianCalendar actualMakeDateResult = FEELXMLGregorianCalendar.makeDate(BigInteger.valueOf(-2147483648L),
         -2147483648, -2147483648);
@@ -308,6 +287,13 @@ public class FEELXMLGregorianCalendarDiffblueTest {
     assertNull(actualZoneID);
     assertEquals("-2147483648", actualToStringResult1);
     assertEquals("-2000000000", actualToStringResult);
+  }
+
+  @Test
+  public void makeDateTest9() {
+    // Arrange, Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    FEELXMLGregorianCalendar.makeDate(BigInteger.valueOf(1L), -2147483648, 235);
   }
 
   @Test
@@ -381,6 +367,30 @@ public class FEELXMLGregorianCalendarDiffblueTest {
     // Assert
     assertSame(actualSanitizeResult.ONE, actualSanitizeResult);
     assertEquals("1", actualSanitizeResult.toString());
+  }
+
+  @Test
+  public void sanitizeTest3() {
+    // Arrange, Act and Assert
+    thrown.expect(ClassCastException.class);
+    FEELXMLGregorianCalendar.sanitize(new Integer(1), 10);
+  }
+
+  @Test
+  public void sanitizeTest4() {
+    // Arrange and Act
+    BigInteger actualSanitizeResult = FEELXMLGregorianCalendar.sanitize((Number) null, 10);
+
+    // Assert
+    assertSame(actualSanitizeResult.ZERO, actualSanitizeResult);
+    assertEquals("0", actualSanitizeResult.toString());
+  }
+
+  @Test
+  public void sanitizeTest5() {
+    // Arrange, Act and Assert
+    thrown.expect(ClassCastException.class);
+    FEELXMLGregorianCalendar.sanitize(new Integer(1), -2147483648);
   }
 
   @Test
@@ -542,6 +552,16 @@ public class FEELXMLGregorianCalendarDiffblueTest {
   @Test
   public void setTimeTest11() {
     // Arrange
+    BigDecimal fractional = BigDecimal.valueOf(1L);
+
+    // Act and Assert
+    thrown.expect(IllegalArgumentException.class);
+    (new FEELXMLGregorianCalendar()).setTime(0, 1, 60, fractional);
+  }
+
+  @Test
+  public void setTimeTest12() {
+    // Arrange
     FEELXMLGregorianCalendar feelxmlGregorianCalendar = new FEELXMLGregorianCalendar();
 
     // Act
@@ -552,21 +572,6 @@ public class FEELXMLGregorianCalendarDiffblueTest {
     assertEquals(1, feelxmlGregorianCalendar.getMinute());
     assertEquals(-2147483648, feelxmlGregorianCalendar.getSecond());
     assertEquals(-2147483648, feelxmlGregorianCalendar.getHour());
-  }
-
-  @Test
-  public void setTimeTest12() {
-    // Arrange
-    FEELXMLGregorianCalendar feelxmlGregorianCalendar = new FEELXMLGregorianCalendar();
-
-    // Act
-    feelxmlGregorianCalendar.setTime(23, 59, 60, -2147483648);
-
-    // Assert
-    assertEquals(23, feelxmlGregorianCalendar.getHour());
-    assertEquals(60, feelxmlGregorianCalendar.getSecond());
-    assertNull(feelxmlGregorianCalendar.getFractionalSecond());
-    assertEquals(59, feelxmlGregorianCalendar.getMinute());
   }
 
   @Test
@@ -588,36 +593,7 @@ public class FEELXMLGregorianCalendarDiffblueTest {
   public void setTimeTest14() {
     // Arrange, Act and Assert
     thrown.expect(IllegalArgumentException.class);
-    (new FEELXMLGregorianCalendar()).setTime(23, 1, 60, -2147483648);
-  }
-
-  @Test
-  public void setTimeTest15() {
-    // Arrange
-    FEELXMLGregorianCalendar feelxmlGregorianCalendar = new FEELXMLGregorianCalendar();
-
-    // Act
-    feelxmlGregorianCalendar.setTime(0, 0, 60, -2147483648);
-
-    // Assert
-    assertEquals(0, feelxmlGregorianCalendar.getHour());
-    assertEquals(60, feelxmlGregorianCalendar.getSecond());
-    assertNull(feelxmlGregorianCalendar.getFractionalSecond());
-    assertEquals(0, feelxmlGregorianCalendar.getMinute());
-  }
-
-  @Test
-  public void setTimeTest16() {
-    // Arrange, Act and Assert
-    thrown.expect(IllegalArgumentException.class);
     (new FEELXMLGregorianCalendar()).setTime(-2147483648, 1, 60, -2147483648);
-  }
-
-  @Test
-  public void setTimeTest17() {
-    // Arrange, Act and Assert
-    thrown.expect(IllegalArgumentException.class);
-    (new FEELXMLGregorianCalendar()).setTime(0, 1, 60, -2147483648);
   }
 
   @Test
@@ -659,11 +635,11 @@ public class FEELXMLGregorianCalendarDiffblueTest {
   @Test
   public void setTimeTest5() {
     // Arrange
-    BigDecimal fractional = BigDecimal.valueOf(1L);
+    BigDecimal fractional = BigDecimal.valueOf(-2147483648L);
 
     // Act and Assert
     thrown.expect(IllegalArgumentException.class);
-    (new FEELXMLGregorianCalendar()).setTime(0, 1, 60, fractional);
+    (new FEELXMLGregorianCalendar()).setTime(-2147483648, 1, -2147483648, fractional);
   }
 
   @Test
@@ -754,15 +730,14 @@ public class FEELXMLGregorianCalendarDiffblueTest {
   @Test
   public void setYearTest3() {
     // Arrange
+    BigInteger year = BigInteger.valueOf(9223372036854775807L);
     FEELXMLGregorianCalendar feelxmlGregorianCalendar = new FEELXMLGregorianCalendar();
 
     // Act
-    feelxmlGregorianCalendar.setYear(1000000000);
+    feelxmlGregorianCalendar.setYear(year);
 
     // Assert
-    assertEquals(0, feelxmlGregorianCalendar.getYear());
-    BigInteger actualEonAndYear = feelxmlGregorianCalendar.getEonAndYear();
-    assertSame(feelxmlGregorianCalendar.getEon(), actualEonAndYear);
+    assertEquals(854775807, feelxmlGregorianCalendar.getYear());
   }
 
   @Test

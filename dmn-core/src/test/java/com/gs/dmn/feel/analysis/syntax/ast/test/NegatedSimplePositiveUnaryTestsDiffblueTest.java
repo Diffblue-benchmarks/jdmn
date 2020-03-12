@@ -25,6 +25,22 @@ public class NegatedSimplePositiveUnaryTestsDiffblueTest {
   }
 
   @Test
+  public void deriveTypeTest() {
+    // Arrange
+    ListTest param0 = new ListTest(null);
+    ArrayList<SimplePositiveUnaryTest> simplePositiveUnaryTestList = new ArrayList<SimplePositiveUnaryTest>();
+    simplePositiveUnaryTestList.add(param0);
+    NegatedSimplePositiveUnaryTests negatedSimplePositiveUnaryTests = new NegatedSimplePositiveUnaryTests(
+        new SimplePositiveUnaryTests(simplePositiveUnaryTestList));
+
+    // Act
+    negatedSimplePositiveUnaryTests.deriveType(null);
+
+    // Assert
+    assertTrue(negatedSimplePositiveUnaryTests.getType() instanceof com.gs.dmn.feel.analysis.semantics.type.AnyType);
+  }
+
+  @Test
   public void toStringTest() {
     // Arrange
     ListTest param0 = new ListTest(null);

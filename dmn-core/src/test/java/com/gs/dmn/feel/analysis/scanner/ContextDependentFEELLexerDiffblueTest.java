@@ -9,12 +9,12 @@ public class ContextDependentFEELLexerDiffblueTest {
   public void isNamePartCharTest() {
     // Arrange
     boolean actualIsNamePartCharResult = ContextDependentFEELLexer.isNamePartChar(-1);
-    boolean actualIsNamePartCharResult1 = ContextDependentFEELLexer.isNamePartChar(1489);
-    boolean actualIsNamePartCharResult2 = ContextDependentFEELLexer.isNamePartChar(63);
-    boolean actualIsNamePartCharResult3 = ContextDependentFEELLexer.isNamePartChar(65);
-    boolean actualIsNamePartCharResult4 = ContextDependentFEELLexer.isNamePartChar(95);
-    boolean actualIsNamePartCharResult5 = ContextDependentFEELLexer.isNamePartChar(97);
-    boolean actualIsNamePartCharResult6 = ContextDependentFEELLexer.isNamePartChar(216);
+    boolean actualIsNamePartCharResult1 = ContextDependentFEELLexer.isNamePartChar(1496);
+    boolean actualIsNamePartCharResult2 = ContextDependentFEELLexer.isNamePartChar(110817);
+    boolean actualIsNamePartCharResult3 = ContextDependentFEELLexer.isNamePartChar(63);
+    boolean actualIsNamePartCharResult4 = ContextDependentFEELLexer.isNamePartChar(65);
+    boolean actualIsNamePartCharResult5 = ContextDependentFEELLexer.isNamePartChar(95);
+    boolean actualIsNamePartCharResult6 = ContextDependentFEELLexer.isNamePartChar(97);
     boolean actualIsNamePartCharResult7 = ContextDependentFEELLexer.isNamePartChar(248);
     boolean actualIsNamePartCharResult8 = ContextDependentFEELLexer.isNamePartChar(880);
     boolean actualIsNamePartCharResult9 = ContextDependentFEELLexer.isNamePartChar(8204);
@@ -25,11 +25,12 @@ public class ContextDependentFEELLexerDiffblueTest {
     boolean actualIsNamePartCharResult14 = ContextDependentFEELLexer.isNamePartChar(65008);
     boolean actualIsNamePartCharResult15 = ContextDependentFEELLexer.isNamePartChar(48);
     boolean actualIsNamePartCharResult16 = ContextDependentFEELLexer.isNamePartChar(183);
+    boolean actualIsNamePartCharResult17 = ContextDependentFEELLexer.isNamePartChar(768);
 
     // Act and Assert
     assertFalse(actualIsNamePartCharResult);
     assertTrue(actualIsNamePartCharResult1);
-    assertTrue(actualIsNamePartCharResult2);
+    assertFalse(actualIsNamePartCharResult2);
     assertTrue(actualIsNamePartCharResult3);
     assertTrue(actualIsNamePartCharResult4);
     assertTrue(actualIsNamePartCharResult5);
@@ -44,7 +45,8 @@ public class ContextDependentFEELLexerDiffblueTest {
     assertTrue(actualIsNamePartCharResult14);
     assertTrue(actualIsNamePartCharResult15);
     assertTrue(actualIsNamePartCharResult16);
-    assertTrue(ContextDependentFEELLexer.isNamePartChar(768));
+    assertTrue(actualIsNamePartCharResult17);
+    assertTrue(ContextDependentFEELLexer.isNamePartChar(8255));
   }
 
   @Test

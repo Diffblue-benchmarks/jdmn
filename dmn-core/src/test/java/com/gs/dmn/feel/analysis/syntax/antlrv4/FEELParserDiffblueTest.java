@@ -891,7 +891,8 @@ public class FEELParserDiffblueTest {
   @Test
   public void arithmeticNegationTest3() throws RecognitionException {
     // Arrange
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
+    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -901,7 +902,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualArithmeticNegationResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualArithmeticNegationResult.getParent());
-    Token expectedStart = actualArithmeticNegationResult.start;
+    Token expectedStart = feelLexer._token;
     Token start = actualArithmeticNegationResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualArithmeticNegationResult.getStop());
@@ -1729,7 +1730,8 @@ public class FEELParserDiffblueTest {
   @Test
   public void contextTest() throws RecognitionException {
     // Arrange
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
+    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -1739,7 +1741,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualContextResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualContextResult.getParent());
-    Token expectedStart = actualContextResult.start;
+    Token expectedStart = feelLexer._token;
     Token start = actualContextResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualContextResult.getStop());
@@ -1783,7 +1785,8 @@ public class FEELParserDiffblueTest {
   @Test
   public void dateTimeLiteralTest2() throws RecognitionException {
     // Arrange
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
+    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -1794,7 +1797,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualDateTimeLiteralResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualDateTimeLiteralResult.getParent());
-    Token expectedStart = actualDateTimeLiteralResult.start;
+    Token expectedStart = feelLexer._token;
     Token start = actualDateTimeLiteralResult.getStart();
     assertSame(expectedStart, start);
     assertEquals(1, actualDateTimeLiteralResult.getChildCount());
@@ -1904,14 +1907,17 @@ public class FEELParserDiffblueTest {
 
   @Test
   public void exponentiationTest3() throws RecognitionException {
-    // Arrange and Act
-    FEELParser.ExponentiationContext actualExponentiationResult = (new FEELParser(
-        new BufferedTokenStream(new FEELLexer(new ANTLRInputStream())))).exponentiation();
+    // Arrange
+    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
+
+    // Act
+    FEELParser.ExponentiationContext actualExponentiationResult = (new FEELParser(new BufferedTokenStream(feelLexer)))
+        .exponentiation();
 
     // Assert
     FEELParser.ArithmeticNegationContext arithmeticNegationContext = actualExponentiationResult.left;
     assertNull(actualExponentiationResult.getParent());
-    Token expectedStart = actualExponentiationResult.start;
+    Token expectedStart = feelLexer._token;
     Token start = actualExponentiationResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualExponentiationResult.ast);
@@ -2117,7 +2123,8 @@ public class FEELParserDiffblueTest {
   @Test
   public void forExpressionTest() throws RecognitionException {
     // Arrange
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
+    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -2127,7 +2134,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualForExpressionResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualForExpressionResult.getParent());
-    Token expectedStart = actualForExpressionResult.start;
+    Token expectedStart = feelLexer._token;
     Token start = actualForExpressionResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualForExpressionResult.getStop());
@@ -2989,7 +2996,8 @@ public class FEELParserDiffblueTest {
   @Test
   public void listTest() throws RecognitionException {
     // Arrange
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
+    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -2999,7 +3007,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualListResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualListResult.getParent());
-    Token expectedStart = actualListResult.start;
+    Token expectedStart = feelLexer._token;
     Token start = actualListResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualListResult.getStop());
@@ -3154,7 +3162,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualNamedParametersResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualNamedParametersResult.getParent());
-    Token expectedStart = feelLexer._token;
+    Token expectedStart = actualNamedParametersResult.start;
     Token start = actualNamedParametersResult.getStart();
     assertSame(expectedStart, start);
     FEELParser.ParameterNameContext parameterNameContext = actualNamedParametersResult.name;
@@ -3272,18 +3280,15 @@ public class FEELParserDiffblueTest {
 
   @Test
   public void postfixExpressionTest2() throws RecognitionException {
-    // Arrange
-    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
-
-    // Act
+    // Arrange and Act
     FEELParser.PostfixExpressionContext actualPostfixExpressionResult = (new FEELParser(
-        new BufferedTokenStream(feelLexer))).postfixExpression();
+        new BufferedTokenStream(new FEELLexer(new ANTLRInputStream())))).postfixExpression();
 
     // Assert
     FEELParser.PrimaryExpressionContext primaryExpressionContext = actualPostfixExpressionResult.primaryExpression;
     RecognitionException recognitionException = primaryExpressionContext.exception;
     assertNull(actualPostfixExpressionResult.getParent());
-    Token expectedStart = feelLexer._token;
+    Token expectedStart = actualPostfixExpressionResult.start;
     Token start = actualPostfixExpressionResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualPostfixExpressionResult.getStop());
@@ -3321,7 +3326,8 @@ public class FEELParserDiffblueTest {
   @Test
   public void primaryExpressionTest2() throws RecognitionException {
     // Arrange
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
+    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -3331,7 +3337,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualPrimaryExpressionResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualPrimaryExpressionResult.getParent());
-    Token expectedStart = actualPrimaryExpressionResult.start;
+    Token expectedStart = feelLexer._token;
     Token start = actualPrimaryExpressionResult.getStart();
     assertSame(expectedStart, start);
     assertEquals(-1, actualPrimaryExpressionResult.invokingState);
@@ -3430,8 +3436,7 @@ public class FEELParserDiffblueTest {
   @Test
   public void simpleExpressionTest3() throws RecognitionException {
     // Arrange
-    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -3441,7 +3446,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualSimpleExpressionResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualSimpleExpressionResult.getParent());
-    Token expectedStart = feelLexer._token;
+    Token expectedStart = actualSimpleExpressionResult.start;
     Token start = actualSimpleExpressionResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualSimpleExpressionResult.getStop());
@@ -3553,8 +3558,7 @@ public class FEELParserDiffblueTest {
   @Test
   public void simplePositiveUnaryTestTest4() throws RecognitionException {
     // Arrange
-    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -3566,7 +3570,7 @@ public class FEELParserDiffblueTest {
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertEquals(1, actualSimplePositiveUnaryTestResult.depth());
     assertEquals(-1, actualSimplePositiveUnaryTestResult.invokingState);
-    Token expectedStart = feelLexer._token;
+    Token expectedStart = actualSimplePositiveUnaryTestResult.start;
     Token start = actualSimplePositiveUnaryTestResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualSimplePositiveUnaryTestResult.getStop());
@@ -3659,7 +3663,8 @@ public class FEELParserDiffblueTest {
   @Test
   public void simpleValueTest3() throws RecognitionException {
     // Arrange
-    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(new FEELLexer(new ANTLRInputStream()));
+    FEELLexer feelLexer = new FEELLexer(new ANTLRInputStream());
+    BufferedTokenStream bufferedTokenStream = new BufferedTokenStream(feelLexer);
     FEELParser feelParser = new FEELParser(bufferedTokenStream);
 
     // Act
@@ -3669,7 +3674,7 @@ public class FEELParserDiffblueTest {
     RecognitionException recognitionException = actualSimpleValueResult.exception;
     assertTrue(recognitionException instanceof org.antlr.v4.runtime.InputMismatchException);
     assertNull(actualSimpleValueResult.getParent());
-    Token expectedStart = actualSimpleValueResult.start;
+    Token expectedStart = feelLexer._token;
     Token start = actualSimpleValueResult.getStart();
     assertSame(expectedStart, start);
     assertNull(actualSimpleValueResult.getStop());

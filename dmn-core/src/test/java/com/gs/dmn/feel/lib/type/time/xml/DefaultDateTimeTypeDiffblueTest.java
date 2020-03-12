@@ -5,11 +5,17 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import com.sun.org.apache.xerces.internal.jaxp.datatype.DatatypeFactoryImpl;
 import java.util.LinkedList;
+import net.sf.saxon.value.SaxonDuration;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.slf4j.event.SubstituteLoggingEvent;
 import org.slf4j.helpers.SubstituteLogger;
 
 public class DefaultDateTimeTypeDiffblueTest {
+  @Rule
+  public ExpectedException thrown = ExpectedException.none();
+
   @Test
   public void constructorTest() {
     // Arrange
@@ -20,6 +26,20 @@ public class DefaultDateTimeTypeDiffblueTest {
 
     // Act and Assert
     assertSame(datatypeFactoryImpl, (new DefaultDateTimeType(logger, datatypeFactoryImpl)).datatypeFactory);
+  }
+
+  @Test
+  public void dateTimeAddDurationTest() {
+    // Arrange
+    LinkedList<SubstituteLoggingEvent> substituteLoggingEventList = new LinkedList<SubstituteLoggingEvent>();
+    substituteLoggingEventList.add(new SubstituteLoggingEvent());
+    SubstituteLogger logger = new SubstituteLogger("log", substituteLoggingEventList, true);
+    DefaultDateTimeType defaultDateTimeType = new DefaultDateTimeType(logger, new DatatypeFactoryImpl());
+    SaxonDuration duration = new SaxonDuration(null);
+
+    // Act and Assert
+    thrown.expect(IllegalStateException.class);
+    defaultDateTimeType.dateTimeAddDuration(new FEELXMLGregorianCalendar(), duration);
   }
 
   @Test
@@ -95,6 +115,20 @@ public class DefaultDateTimeTypeDiffblueTest {
 
     // Act and Assert
     assertFalse(defaultDateTimeType.dateTimeNotEqual(new FEELXMLGregorianCalendar(), new FEELXMLGregorianCalendar()));
+  }
+
+  @Test
+  public void dateTimeSubtractDurationTest() {
+    // Arrange
+    LinkedList<SubstituteLoggingEvent> substituteLoggingEventList = new LinkedList<SubstituteLoggingEvent>();
+    substituteLoggingEventList.add(new SubstituteLoggingEvent());
+    SubstituteLogger logger = new SubstituteLogger("log", substituteLoggingEventList, true);
+    DefaultDateTimeType defaultDateTimeType = new DefaultDateTimeType(logger, new DatatypeFactoryImpl());
+    SaxonDuration duration = new SaxonDuration(null);
+
+    // Act and Assert
+    thrown.expect(IllegalStateException.class);
+    defaultDateTimeType.dateTimeSubtractDuration(new FEELXMLGregorianCalendar(), duration);
   }
 }
 

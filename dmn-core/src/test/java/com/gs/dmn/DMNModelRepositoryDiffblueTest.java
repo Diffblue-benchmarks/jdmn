@@ -126,15 +126,16 @@ public class DMNModelRepositoryDiffblueTest {
   public void constructorTest2() {
     // Arrange
     TDefinitions rootDefinitions = new TDefinitions();
-    PrefixNamespaceMappings prefixNamespaceMappings = new PrefixNamespaceMappings();
 
     // Act
-    DMNModelRepository actualDmnModelRepository = new DMNModelRepository(rootDefinitions, prefixNamespaceMappings);
+    DMNModelRepository actualDmnModelRepository = new DMNModelRepository(rootDefinitions,
+        new PrefixNamespaceMappings());
 
     // Assert
     List<TDefinitions> expectedAllDefinitions = actualDmnModelRepository.allDefinitions;
     assertSame(expectedAllDefinitions, actualDmnModelRepository.getAllDefinitions());
-    assertSame(prefixNamespaceMappings, actualDmnModelRepository.getPrefixNamespaceMappings());
+    PrefixNamespaceMappings expectedPrefixNamespaceMappings = actualDmnModelRepository.prefixNamespaceMappings;
+    assertSame(expectedPrefixNamespaceMappings, actualDmnModelRepository.getPrefixNamespaceMappings());
     TDefinitions expectedRootDefinitions = actualDmnModelRepository.rootDefinitions;
     assertSame(expectedRootDefinitions, actualDmnModelRepository.getRootDefinitions());
   }
@@ -157,16 +158,16 @@ public class DMNModelRepositoryDiffblueTest {
   public void constructorTest4() {
     // Arrange
     TDefinitions left = new TDefinitions();
+    PrefixNamespaceMappings prefixNamespaceMappings = new PrefixNamespaceMappings();
 
     // Act
     DMNModelRepository actualDmnModelRepository = new DMNModelRepository(
-        new Pair<TDefinitions, PrefixNamespaceMappings>(left, new PrefixNamespaceMappings()));
+        new Pair<TDefinitions, PrefixNamespaceMappings>(left, prefixNamespaceMappings));
 
     // Assert
     List<TDefinitions> expectedAllDefinitions = actualDmnModelRepository.allDefinitions;
     assertSame(expectedAllDefinitions, actualDmnModelRepository.getAllDefinitions());
-    PrefixNamespaceMappings expectedPrefixNamespaceMappings = actualDmnModelRepository.prefixNamespaceMappings;
-    assertSame(expectedPrefixNamespaceMappings, actualDmnModelRepository.getPrefixNamespaceMappings());
+    assertSame(prefixNamespaceMappings, actualDmnModelRepository.getPrefixNamespaceMappings());
     TDefinitions expectedRootDefinitions = actualDmnModelRepository.rootDefinitions;
     assertSame(expectedRootDefinitions, actualDmnModelRepository.getRootDefinitions());
   }

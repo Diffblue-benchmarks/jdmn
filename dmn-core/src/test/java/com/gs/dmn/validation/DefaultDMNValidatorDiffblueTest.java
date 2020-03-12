@@ -1,6 +1,7 @@
 package com.gs.dmn.validation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import com.gs.dmn.DMNModelRepository;
 import com.gs.dmn.log.NopBuildLogger;
@@ -15,8 +16,11 @@ public class DefaultDMNValidatorDiffblueTest {
 
   @Test
   public void constructorTest2() {
-    // Arrange, Act and Assert
-    assertTrue((new DefaultDMNValidator(new NopBuildLogger())).logger instanceof NopBuildLogger);
+    // Arrange
+    NopBuildLogger nopBuildLogger = new NopBuildLogger();
+
+    // Act and Assert
+    assertSame(nopBuildLogger, (new DefaultDMNValidator(nopBuildLogger)).logger);
   }
 
   @Test
