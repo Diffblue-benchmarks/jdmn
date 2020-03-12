@@ -1,0 +1,110 @@
+{
+  "console": {
+    "batch": false,
+    "verbose": false
+  },
+  "workingDirectory": ".",
+  "input": {
+    "classpath": "/home/diffblue/maria.svorenova/diffblue/jdmn/dmn-core/target/classes:/home/diffblue/maria.svorenova/.m2/repository/org/freemarker/freemarker/2.3.23/freemarker-2.3.23.jar:/home/diffblue/maria.svorenova/.m2/repository/org/antlr/antlr4/4.7.2/antlr4-4.7.2.jar:/home/diffblue/maria.svorenova/.m2/repository/org/antlr/antlr4-runtime/4.7.2/antlr4-runtime-4.7.2.jar:/home/diffblue/maria.svorenova/.m2/repository/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar:/home/diffblue/maria.svorenova/.m2/repository/org/antlr/ST4/4.1/ST4-4.1.jar:/home/diffblue/maria.svorenova/.m2/repository/org/abego/treelayout/org.abego.treelayout.core/1.0.3/org.abego.treelayout.core-1.0.3.jar:/home/diffblue/maria.svorenova/.m2/repository/org/glassfish/javax.json/1.0.4/javax.json-1.0.4.jar:/home/diffblue/maria.svorenova/.m2/repository/com/ibm/icu/icu4j/61.1/icu4j-61.1.jar:/home/diffblue/maria.svorenova/.m2/repository/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar:/home/diffblue/maria.svorenova/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar:/home/diffblue/maria.svorenova/.m2/repository/org/slf4j/slf4j-api/1.7.22/slf4j-api-1.7.22.jar:/home/diffblue/maria.svorenova/.m2/repository/org/reflections/reflections/0.9.11/reflections-0.9.11.jar:/home/diffblue/maria.svorenova/.m2/repository/com/google/guava/guava/20.0/guava-20.0.jar:/home/diffblue/maria.svorenova/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.9.7/jackson-annotations-2.9.7.jar:/home/diffblue/maria.svorenova/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.9.7/jackson-core-2.9.7.jar:/home/diffblue/maria.svorenova/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.9.7/jackson-databind-2.9.7.jar:/home/diffblue/maria.svorenova/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.9.7/jackson-datatype-jsr310-2.9.7.jar:/home/diffblue/maria.svorenova/.m2/repository/net/sf/saxon/Saxon-HE/9.7.0-8/Saxon-HE-9.7.0-8.jar:/home/diffblue/maria.svorenova/.m2/repository/org/skyscreamer/jsonassert/1.5.0/jsonassert-1.5.0.jar:/home/diffblue/maria.svorenova/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar:/home/diffblue/maria.svorenova/.m2/repository/org/fitnesse/fitnesse/20190428/fitnesse-20190428.jar:/home/diffblue/maria.svorenova/.m2/repository/org/htmlparser/htmlparser/2.1/htmlparser-2.1.jar:/home/diffblue/maria.svorenova/.m2/repository/org/htmlparser/htmllexer/2.1/htmllexer-2.1.jar:/home/diffblue/maria.svorenova/.m2/repository/org/apache/velocity/velocity-engine-core/2.0/velocity-engine-core-2.0.jar:/home/diffblue/maria.svorenova/.m2/repository/org/slf4j/slf4j-jdk14/1.7.25/slf4j-jdk14-1.7.25.jar:/home/diffblue/maria.svorenova/.m2/repository/org/json/json/20180813/json-20180813.jar:/home/diffblue/maria.svorenova/.m2/repository/com/googlecode/java-diff-utils/diffutils/1.3.0/diffutils-1.3.0.jar:/home/diffblue/maria.svorenova/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar:/home/diffblue/maria.svorenova/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar:/home/diffblue/maria.svorenova/.m2/repository/org/javassist/javassist/3.25.0-GA/javassist-3.25.0-GA.jar:/home/diffblue/maria.svorenova/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/diffblue/maria.svorenova/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/diffblue/maria.svorenova/.m2/repository/com/google/googlejavaformat/google-java-format/1.5/google-java-format-1.5.jar:/home/diffblue/maria.svorenova/.m2/repository/com/google/errorprone/javac-shaded/9-dev-r4023-3/javac-shaded-9-dev-r4023-3.jar:/home/diffblue/maria.svorenova/.m2/repository/javax/xml/bind/jaxb-api/2.3.0/jaxb-api-2.3.0.jar:/home/diffblue/maria.svorenova/.m2/repository/com/sun/xml/bind/jaxb-core/2.3.0/jaxb-core-2.3.0.jar:/home/diffblue/maria.svorenova/.m2/repository/com/sun/xml/bind/jaxb-impl/2.3.0/jaxb-impl-2.3.0.jar:/home/diffblue/maria.svorenova/.m2/repository/javax/activation/activation/1.1.1/activation-1.1.1.jar:/home/diffblue/maria.svorenova/.m2/repository/ch/qos/logback/logback-core/1.2.1/logback-core-1.2.1.jar:/home/diffblue/maria.svorenova/.m2/repository/ch/qos/logback/logback-classic/1.2.1/logback-classic-1.2.1.jar",
+    "entryPoints": {
+      "include": [
+        "com.gs.dmn",
+        "com.gs.dmn.dialect",
+        "com.gs.dmn.feel",
+        "com.gs.dmn.feel.analysis",
+        "com.gs.dmn.feel.analysis.scanner",
+        "com.gs.dmn.feel.analysis.semantics",
+        "com.gs.dmn.feel.analysis.semantics.environment",
+        "com.gs.dmn.feel.analysis.semantics.type",
+        "com.gs.dmn.feel.analysis.syntax",
+        "com.gs.dmn.feel.analysis.syntax.ast",
+        "com.gs.dmn.feel.analysis.syntax.ast.expression",
+        "com.gs.dmn.feel.analysis.syntax.ast.expression.arithmetic",
+        "com.gs.dmn.feel.analysis.syntax.ast.expression.comparison",
+        "com.gs.dmn.feel.analysis.syntax.ast.expression.function",
+        "com.gs.dmn.feel.analysis.syntax.ast.expression.literal",
+        "com.gs.dmn.feel.analysis.syntax.ast.expression.logic",
+        "com.gs.dmn.feel.analysis.syntax.ast.expression.textual",
+        "com.gs.dmn.feel.analysis.syntax.ast.expression.type",
+        "com.gs.dmn.feel.analysis.syntax.ast.test",
+        "com.gs.dmn.feel.interpreter",
+        "com.gs.dmn.feel.lib",
+        "com.gs.dmn.feel.lib.type",
+        "com.gs.dmn.feel.lib.type.context",
+        "com.gs.dmn.feel.lib.type.list",
+        "com.gs.dmn.feel.lib.type.logic",
+        "com.gs.dmn.feel.lib.type.numeric",
+        "com.gs.dmn.feel.lib.type.string",
+        "com.gs.dmn.feel.lib.type.time",
+        "com.gs.dmn.feel.lib.type.time.mixed",
+        "com.gs.dmn.feel.lib.type.time.pure",
+        "com.gs.dmn.feel.lib.type.time.uniform",
+        "com.gs.dmn.feel.lib.type.time.xml",
+        "com.gs.dmn.feel.synthesis",
+        "com.gs.dmn.feel.synthesis.type",
+        "com.gs.dmn.log",
+        "com.gs.dmn.runtime",
+        "com.gs.dmn.runtime.annotation",
+        "com.gs.dmn.runtime.cache",
+        "com.gs.dmn.runtime.compiler",
+        "com.gs.dmn.runtime.discovery",
+        "com.gs.dmn.runtime.external",
+        "com.gs.dmn.runtime.interpreter",
+        "com.gs.dmn.runtime.interpreter.environment",
+        "com.gs.dmn.runtime.listener",
+        "com.gs.dmn.runtime.serialization",
+        "com.gs.dmn.serialization",
+        "com.gs.dmn.tck",
+        "com.gs.dmn.transformation",
+        "com.gs.dmn.transformation.basic",
+        "com.gs.dmn.transformation.formatter",
+        "com.gs.dmn.transformation.java",
+        "com.gs.dmn.transformation.lazy",
+        "com.gs.dmn.transformation.template",
+        "com.gs.dmn.validation"
+      ],
+      "exclude": []
+    }
+  },
+  "testCreation": {
+    "advancedTests": {
+      "enabled": false
+    },
+    "essentialTests": {
+      "jcover": false,
+      "fuzzingIterations": 1000,
+      "spring": true
+    },
+    "testVerification": {
+      "enabled": true,
+      "complianceLevel": 8,
+      "command": "mvn clean test",
+      "commandDir": ".."
+    }
+  },
+  "output": {
+    "location": {
+      "testOutputDir": "src/test/java",
+      "mergeExistingTests": false
+    },
+    "naming": {
+      "classNameTemplate": "${CLASS_NAME}DiffblueTest",
+      "methodNameTemplate": "${METHOD_NAME}Test"
+    },
+    "style": {
+      "inlining": {
+        "constants": true,
+        "arrangeIntoActAssert": true,
+        "actIntoAssert": true,
+        "constructors": true,
+        "joinSimpleTests": true
+      },
+      "comments": {
+        "outputComments": true
+      }
+    },
+    "framework": {
+      "testing": null
+    }
+  }
+}
